@@ -1,0 +1,1542 @@
+# Test info
+
+- Name: Procesos de Liquidación
+- Location: /home/maximilianodmorales/playwright/tests/NVAdmin LAB Network/liquidaciones/procesosDeLiquidacion.spec.ts:5:5
+
+# Error details
+
+```
+Error: locator.click: Test timeout of 60000ms exceeded.
+Call log:
+  - waiting for getByTitle('Show All Items')
+
+    at /home/maximilianodmorales/playwright/tests/NVAdmin LAB Network/liquidaciones/procesosDeLiquidacion.spec.ts:53:45
+```
+
+# Page snapshot
+
+```yaml
+- link:
+  - /url: /
+- heading [level=1]
+- heading "Private Labeling Made Easy" [level=2]
+- paragraph:
+  - link "Florencia Acuña (NWAdmin - LAB QA)":
+    - /url: "#"
+  - text: "|"
+  - link "Mis Preferencias":
+    - /url: /UsersAtionetPreferences/Edit
+  - text: "|"
+  - link "Asistencia":
+    - /url: "#"
+  - text: "|"
+  - link "Cerrar Sesion":
+    - /url: /Account/LogOff
+- heading "Navegacion" [level=3]:
+  - link:
+    - /url: "#"
+  - text: Navegacion
+- list:
+  - listitem:
+    - link "Tablero":
+      - /url: /
+  - listitem:
+    - link "Favoritos":
+      - /url: /Favorites
+  - listitem:
+    - text: Reportes
+    - list:
+      - listitem:
+        - link "Conductores":
+          - /url: /Reports/Drivers
+      - listitem:
+        - link "Identificadores":
+          - /url: /Reports/Identifications
+      - listitem:
+        - link "Lista de Precios de Distribución":
+          - /url: /Reports/RackPricesLists
+      - listitem:
+        - link "Detalle de actividad por Vehiculo":
+          - /url: /Reports/ActivityDetailByVehicle
+      - listitem:
+        - link "Sitios":
+          - /url: /Reports/Sites
+      - listitem:
+        - link "Solicitudes de identificación":
+          - /url: /Reports/IdentificationsRequests
+      - listitem:
+        - link "Solicitudes de Reporte":
+          - /url: /ReportRequests
+      - listitem:
+        - link "Transacciones":
+          - /url: /Reports/Transactions
+      - listitem:
+        - link "Transacciones extendidas":
+          - /url: /Reports/ExtendedTransactions
+      - listitem:
+        - link "Vehículos":
+          - /url: /Reports/Vehicles
+  - listitem:
+    - text: Administración
+    - list:
+      - listitem:
+        - link "Banderas":
+          - /url: /Brands
+      - listitem:
+        - link "Categorías de SKUs":
+          - /url: /StockKeepingUnitsCategories
+      - listitem:
+        - link "Combustibles":
+          - /url: /Fuels
+      - listitem:
+        - link "Comercios":
+          - /url: /Merchants
+      - listitem:
+        - link "Compañias":
+          - /url: /Companies
+      - listitem:
+        - link "Conductores":
+          - /url: /Drivers
+      - listitem:
+        - link "Cotizaciones":
+          - /url: /Quotations
+      - listitem:
+        - link "Depositos":
+          - /url: /Warehouses
+      - listitem:
+        - link "Documentos Externos":
+          - /url: /ExternalDocuments
+      - listitem:
+        - link "Grupos de Combustibles Maestros":
+          - /url: /FuelsMastersGroups
+      - listitem:
+        - link "Grupos de Compañias":
+          - /url: /CompaniesGroups
+      - listitem:
+        - link "Grupos de Compañías - Movimientos":
+          - /url: /CompaniesGroupsMovements
+      - listitem:
+        - link "Identificadores":
+          - /url: /Identifications
+      - listitem:
+        - link "Impuestos":
+          - /url: /Taxes
+      - listitem:
+        - link "Instalaciones":
+          - /url: /Installations
+      - listitem:
+        - link "Locaciones":
+          - /url: /Locations
+      - listitem:
+        - link "Métodos de Pago":
+          - /url: /PaymentsMethods
+      - listitem:
+        - link "Modelos de Identificador":
+          - /url: /IdentificationsTypesModels
+      - listitem:
+        - link "Notificaciones":
+          - /url: /NotificationsSuscriber
+      - listitem:
+        - link "Precios de distribución":
+          - /url: /RackPrices
+      - listitem:
+        - link "Procesos de renovación de identificadores":
+          - /url: /IdentificationsRenewerProcesses
+      - listitem:
+        - link "Proveedores de Identificadores":
+          - /url: /IdentificationsProviders
+      - listitem:
+        - link "Sitios":
+          - /url: /Sites
+      - listitem:
+        - link "SKUs":
+          - /url: /StockKeepingUnits
+      - listitem:
+        - link "Terminales / Controladores":
+          - /url: /Terminals
+      - listitem:
+        - link "Vehículos":
+          - /url: /Vehicles
+      - listitem:
+        - link "Workflows de Aprobaciones":
+          - /url: /WorkflowsInstances
+      - listitem:
+        - link "Zonas":
+          - /url: /Zones
+  - listitem:
+    - text: Flotas
+    - list:
+      - listitem:
+        - link "Alertas de Fraude":
+          - /url: /FraudAlerts
+      - listitem:
+        - link "Aprobaciones de Workflows de Flota":
+          - /url: /EntityWorkflows
+      - listitem:
+        - link "Autorizaciones Pendientes":
+          - /url: /TransactionsOutstandingAuthorizations
+      - listitem:
+        - link "Conceptos":
+          - /url: /Products
+      - listitem:
+        - link "Configuración de Alertas de Fraude":
+          - /url: /FraudAlertsConfigurations
+      - listitem:
+        - link "Configuración de Fast Track":
+          - /url: /FastTracks/Configuration
+      - listitem:
+        - link "Contingencias":
+          - /url: /TransactionsContingencies
+      - listitem:
+        - link "Contratos de Comercios":
+          - /url: /MerchantsContracts
+      - listitem:
+        - link "Contratos de Compañias":
+          - /url: /CompanyContracts
+      - listitem:
+        - link "Cuentas corrientes de Comercio":
+          - /url: /MerchantsCurrentAccounts
+      - listitem:
+        - link "Cuentas corrientes de Compañia":
+          - /url: /CurrentAccounts
+      - listitem:
+        - link "Encargados":
+          - /url: /Attendants
+      - listitem:
+        - link "Excepciones":
+          - /url: /TransactionsExceptions
+      - listitem:
+        - link "Facturas":
+          - /url: /CompanyInvoices
+      - listitem:
+        - link "Familias de Conceptos":
+          - /url: /ProductsFamilies
+      - listitem:
+        - link "Fast Tracks":
+          - /url: /FastTracks
+      - listitem:
+        - link "Identificaciones Solicitadas":
+          - /url: /IdentificationsRequests
+      - listitem:
+        - link "Planificador de Identificadores":
+          - /url: /IdentificationsScheduler
+      - listitem:
+        - link "Programas":
+          - /url: /Programs
+      - listitem:
+        - link "Reglas":
+          - /url: /Rules
+      - listitem:
+        - link "Sobregiro":
+          - /url: /CompanyContractsOverLimits
+      - listitem:
+        - link "Tarjeta de Regalo":
+          - /url: /GiftCard
+      - listitem:
+        - link "Tarjetas de Regalo Solicitadas":
+          - /url: /GiftCard/RequestIndex
+      - listitem:
+        - link "Tipo de Comprobante":
+          - /url: /InvoicesTypes
+      - listitem:
+        - link "Transacciones":
+          - /url: /Transactions
+      - listitem:
+        - link "Transacciones Desconocidas":
+          - /url: /TransactionsDisputes
+      - listitem:
+        - link "Transacciones Despachadas":
+          - /url: /TransactionsDispensed
+      - listitem:
+        - link "Transacciones ERP":
+          - /url: /TransactionsERP
+      - listitem:
+        - link "Transacciones por Conductor":
+          - /url: /Transactions/DriverTransactions
+      - listitem:
+        - link "Transacciones por Flota":
+          - /url: /Transactions/FleetTransactions
+      - listitem:
+        - link "Transacciones por Sitio":
+          - /url: /Transactions/SiteTransactions
+      - listitem:
+        - link "Transacciones por Vehiculo":
+          - /url: /Transactions/VehicleTransactions
+      - listitem:
+        - link "Transacciones Rechazadas":
+          - /url: /TransactionsRejected
+      - listitem:
+        - link "Transacciones sin control":
+          - /url: /UncontrolledTransactions
+      - listitem:
+        - link "Vales":
+          - /url: /VoucherIdentifications
+      - listitem:
+        - link "Vales - Administración":
+          - /url: /Vouchers
+  - listitem:
+    - text: Liquidaciones
+    - list:
+      - listitem:
+        - link "Cargos Externos":
+          - /url: /ExternalCharges
+      - listitem:
+        - link "Comprobantes de Comision":
+          - /url: /MerchantCharges
+      - listitem:
+        - link "Configuración de tipos de liquidación":
+          - /url: /BillingTypesConfigurations
+      - listitem:
+        - link "Documentos de Cargos":
+          - /url: /Billing
+      - listitem:
+        - link "Documentos de Liquidaciones":
+          - /url: /BillingDocuments
+      - listitem:
+        - link "Estados de Cuenta":
+          - /url: /Billing/Statements
+      - listitem:
+        - link "Items Liquidados":
+          - /url: /Billing/BilledItems
+      - listitem:
+        - link "Procesos de Liquidación":
+          - /url: /Processes/Billing
+  - listitem:
+    - text: Tarjeta de Regalo
+    - list:
+      - listitem:
+        - link "Autorizaciones Pendientes":
+          - /url: /GiftCardTransactionsOutstandingAuthorizations
+      - listitem:
+        - link "Contingencias":
+          - /url: /GiftCardTransactionsContingencies
+      - listitem:
+        - link "Movimientos":
+          - /url: /GiftCardMovements
+      - listitem:
+        - link "Programas":
+          - /url: /GiftCardPrograms
+      - listitem:
+        - link "Tarjetas":
+          - /url: /GiftCardClients
+      - listitem:
+        - link "Tarjetas Solicitadas":
+          - /url: /GiftCardClientsRequests
+      - listitem:
+        - link "Transacciones":
+          - /url: /GiftCardTransactions
+      - listitem:
+        - link "Transacciones Rechazadas":
+          - /url: /GiftCardTransactionsRejected
+  - listitem:
+    - text: Consumer Card
+    - list:
+      - listitem:
+        - link "Autorizaciones Pendientes":
+          - /url: /ConsumerCardTransactionsOutstandingAuthorizations
+      - listitem:
+        - link "Contingencias":
+          - /url: /ConsumerCardTransactionsContingencies
+      - listitem:
+        - link "Documentos de Cargos":
+          - /url: /ConsumerCardBillingCharges
+      - listitem:
+        - link "Documentos de Liquidaciones":
+          - /url: /ConsumerCardBillingDocuments
+      - listitem:
+        - link "Errores":
+          - /url: /ConsumerCardBillingProcessesErrors
+      - listitem:
+        - link "Estados de Cuenta":
+          - /url: /ConsumerCardBillingStatements
+      - listitem:
+        - link "Items Liquidados":
+          - /url: /ConsumerCardBillingChargesItems
+      - listitem:
+        - link "Movimientos":
+          - /url: /ConsumerCardMovements
+      - listitem:
+        - link "Procesos de Liquidación":
+          - /url: /ConsumerCardBillingProcesses
+      - listitem:
+        - link "Programas":
+          - /url: /ConsumerCardPrograms
+      - listitem:
+        - link "Recargas":
+          - /url: /ConsumerCardRecharges
+      - listitem:
+        - link "Tarjetas":
+          - /url: /ConsumerCardClients
+      - listitem:
+        - link "Tarjetas Solicitadas":
+          - /url: /ConsumerCardClientsRequests
+      - listitem:
+        - link "Transacciones":
+          - /url: /ConsumerCardTransactions
+      - listitem:
+        - link "Transacciones Rechazadas":
+          - /url: /ConsumerCardTransactionsRejected
+  - listitem:
+    - text: Fidelidad
+    - list:
+      - listitem:
+        - link "Ajustes":
+          - /url: /LoyaltyTransactionsAdjustments
+      - listitem:
+        - link "Almacenes de premios":
+          - /url: /LoyaltyStockKeepingUnitsWarehouses
+      - listitem:
+        - link "Canjes":
+          - /url: /LoyaltyTransactionsRedemptions
+      - listitem:
+        - link "Cierres de Lotes":
+          - /url: /LoyaltyBatchCloses
+      - listitem:
+        - link "Clases de Entrada de Servicios":
+          - /url: /ServiceEntryClasses
+      - listitem:
+        - link "Clientes":
+          - /url: /LoyaltyClients/Create
+      - listitem:
+        - link "Comunidades":
+          - /url: /LoyaltyPrograms
+      - listitem:
+        - link "Conciliaciones":
+          - /url: /LoyaltyTransactionsConciliations
+      - listitem:
+        - link "Configuracion de Comunidad":
+          - /url: /CommunitySettings
+      - listitem:
+        - link "Contingencias":
+          - /url: /LoyaltyTransactionsContingencies
+      - listitem:
+        - link "Cuenta Corriente":
+          - /url: /LoyaltyMovementsCurrentAccounts
+      - listitem:
+        - link "Cupones":
+          - /url: /LoyaltyCoupons
+      - listitem:
+        - link "Excepciones":
+          - /url: /LoyaltyTransactionsExceptions
+      - listitem:
+        - link "Grupos de tipo de entrada de servicios":
+          - /url: /ServiceEntryTypesGroups
+      - listitem:
+        - link "Hojas de Servicio":
+          - /url: /ServiceFiles
+      - listitem:
+        - link "Identidades":
+          - /url: /Identities
+      - listitem:
+        - link "Movimientos de stock":
+          - /url: /LoyaltyStockKeepingUnitsMovements
+      - listitem:
+        - link "Parámetros de liquidaciones":
+          - /url: /LoyaltySettlementsParameters
+      - listitem:
+        - link "Procesos de Contingencias":
+          - /url: /LoyaltyTransactionsContingenciesProcessses
+      - listitem:
+        - link "Procesos de cupones de fidelidad":
+          - /url: /LoyaltyCouponsProcesses
+      - listitem:
+        - link "Reglas de Descuento":
+          - /url: /LoyaltyProgramsDiscountRules
+      - listitem:
+        - link "Reglas de Puntos":
+          - /url: /LoyaltyRules
+      - listitem:
+        - link "Tipos de Entrada de Servicio":
+          - /url: /ServiceEntryTypes
+      - listitem:
+        - link "Transacciones":
+          - /url: /LoyaltyTransactions
+      - listitem:
+        - link "Transferencias":
+          - /url: /LoyaltyTransactionsTransfers
+      - listitem:
+        - link "Unidades":
+          - /url: /LoyaltyUnits
+  - listitem:
+    - text: Alertas
+    - list:
+      - listitem:
+        - link "Formatos":
+          - /url: /NotificationsFormats
+      - listitem:
+        - link "Notificaciones":
+          - /url: /Notifications
+      - listitem:
+        - link "Reglas":
+          - /url: /AlertsRules
+  - listitem:
+    - text: Configuración
+    - list:
+      - listitem:
+        - link "Clasificadores de contratos de compañía":
+          - /url: /CompanyContractsClassificationsConfigurations
+      - listitem:
+        - link "- Cor":
+          - /url: /CompanyContractsClassifications/Classification0
+      - listitem:
+        - link "Clasificadores de Sitio":
+          - /url: /SitesClassificationsConfigurations
+      - listitem:
+        - link "Códigos ERP de Combustibles":
+          - /url: /FuelsERPCodes
+      - listitem:
+        - link "Configuraciones de Procesos":
+          - /url: /ProcessesConfigurations
+      - listitem:
+        - link "Configuraciones de Workflows de Flota":
+          - /url: /WorkflowConfigurations
+      - listitem:
+        - link "Motivos de Contingencias":
+          - /url: /TransactionsContingenciesReasons
+      - listitem:
+        - link "Pasarelas de pago":
+          - /url: /PaymentGateways
+      - listitem:
+        - link "Planificador de Identificadores":
+          - /url: /IdentificationsSchedulerConfigurations
+      - listitem:
+        - link "Proveedores de GPS":
+          - /url: /GPSProviders
+      - listitem:
+        - link "Red":
+          - /url: /NetworkConfigurations/Edit
+      - listitem:
+        - link "Servicios de sitios":
+          - /url: /SitesServices
+      - listitem:
+        - link "Tipos de Documentos Externos":
+          - /url: /DocumentTypesAccepted
+  - listitem:
+    - text: Seguridad
+    - list:
+      - listitem:
+        - link "Bitácora de Auditorias":
+          - /url: /AuditLog
+      - listitem:
+        - link "Bitácora de Procesos":
+          - /url: /Processes
+      - listitem:
+        - link "Roles":
+          - /url: /CustomRoles
+      - listitem:
+        - link "Usuarios":
+          - /url: /Users
+- 'heading "Mis Filtros . Ud. esta en: Tablero" [level=3]':
+  - link:
+    - /url: "#"
+  - button "Mis Filtros"
+  - button "."
+  - text: "Ud. esta en: Tablero"
+- heading "Tablero" [level=4]
+- list:
+  - listitem:
+    - heading "Estado General" [level=1]:
+      - text: Estado General
+      - paragraph
+    - table:
+      - rowgroup:
+        - 'row "Algunas compañias no tienen contratos configurados: AVICOLA RENZO''S E.I.R.L. , Company PetroMax, Company PetroMax, Company PetroMax, Company PetroMax, Company PetroMax, Company PetroMax, Company PetroMax, Company PetroMax, Company PetroMax"':
+          - cell
+          - 'cell "Algunas compañias no tienen contratos configurados: AVICOLA RENZO''S E.I.R.L. , Company PetroMax, Company PetroMax, Company PetroMax, Company PetroMax, Company PetroMax, Company PetroMax, Company PetroMax, Company PetroMax, Company PetroMax"':
+            - paragraph: "Algunas compañias no tienen contratos configurados: AVICOLA RENZO'S E.I.R.L. , Company PetroMax, Company PetroMax, Company PetroMax, Company PetroMax, Company PetroMax, Company PetroMax, Company PetroMax, Company PetroMax, Company PetroMax"
+        - row "Ir a configuracion de Contratos":
+          - cell
+          - cell "Ir a configuracion de Contratos":
+            - paragraph:
+              - link "Ir a configuracion de Contratos":
+                - /url: CompanyContracts
+    - table:
+      - rowgroup:
+        - row "Algunos sitios no tienen combustibles configurados":
+          - cell
+          - cell "Algunos sitios no tienen combustibles configurados":
+            - paragraph: Algunos sitios no tienen combustibles configurados
+        - row "Ir a Configuracion de Combustibles":
+          - cell
+          - cell "Ir a Configuracion de Combustibles":
+            - paragraph:
+              - link "Ir a Configuracion de Combustibles":
+                - /url: Fuels
+  - listitem:
+    - heading "Unidades/Mes Refresh" [level=1]:
+      - text: Unidades/Mes
+      - img "Refresh"
+      - paragraph
+    - table:
+      - rowgroup:
+        - row "Comercio":
+          - cell "Comercio":
+            - combobox:
+              - option "Comercio" [selected]
+              - option "Sitio"
+              - option "Compañia"
+              - option "Flota"
+          - cell:
+            - list:
+              - listitem:
+                - textbox "Ingresar Nombre Comercio"
+    - img: 123 Despensa Diesel Excellium Regular Diesel Super TEST Total 14 Apr 21 Apr 28 Apr 5 May 0 10k 20k
+  - listitem:
+    - heading "Transacciones del Día" [level=1]:
+      - text: Transacciones del Día
+      - paragraph
+    - heading "Sin Transacciones Hoy" [level=2]
+  - listitem:
+    - heading "Transacciones recientes" [level=1]:
+      - text: Transacciones recientes
+      - paragraph
+    - table:
+      - rowgroup:
+        - row "Compañia:":
+          - cell "Compañia:"
+          - cell:
+            - list:
+              - listitem:
+                - textbox "Ingresar Nombre Compañia"
+    - table:
+      - rowgroup:
+        - row "Código de Autorización Fecha Sitio Vehículo/Conductor Combustible Volumen despachado Monto despachado":
+          - cell "Código de Autorización"
+          - cell "Fecha"
+          - cell "Sitio"
+          - cell "Vehículo/Conductor"
+          - cell "Combustible"
+          - cell "Volumen despachado"
+          - cell "Monto despachado"
+        - row "677548 2025/05/09 17:58 Test1 TARJETABUGPIN Unleaded Plus 6.693 5.00":
+          - cell "677548"
+          - cell "2025/05/09 17:58"
+          - cell "Test1"
+          - cell "TARJETABUGPIN"
+          - cell "Unleaded Plus"
+          - cell "6.693"
+          - cell "5.00"
+        - row "304768 2025/05/09 17:54 Test1 TARJETABUGPIN Unleaded Plus 6.693 5.00":
+          - cell "304768"
+          - cell "2025/05/09 17:54"
+          - cell "Test1"
+          - cell "TARJETABUGPIN"
+          - cell "Unleaded Plus"
+          - cell "6.693"
+          - cell "5.00"
+        - row "761266 2025/05/09 17:52 Test1 TARJETABUGPIN Unleaded Plus 13.386 10.00":
+          - cell "761266"
+          - cell "2025/05/09 17:52"
+          - cell "Test1"
+          - cell "TARJETABUGPIN"
+          - cell "Unleaded Plus"
+          - cell "13.386"
+          - cell "10.00"
+        - row "499421 2025/05/09 17:42 Test1 TARJETABUGPIN Unleaded Plus 13.386 10.00":
+          - cell "499421"
+          - cell "2025/05/09 17:42"
+          - cell "Test1"
+          - cell "TARJETABUGPIN"
+          - cell "Unleaded Plus"
+          - cell "13.386"
+          - cell "10.00"
+        - row "927746 2025/05/09 17:39 Test1 TARJETABUGPIN Unleaded Plus 6.693 5.00":
+          - cell "927746"
+          - cell "2025/05/09 17:39"
+          - cell "Test1"
+          - cell "TARJETABUGPIN"
+          - cell "Unleaded Plus"
+          - cell "6.693"
+          - cell "5.00"
+        - row "930987 2025/05/09 17:37 Test1 TARJETABUGPIN Unleaded Plus 13.386 10.00":
+          - cell "930987"
+          - cell "2025/05/09 17:37"
+          - cell "Test1"
+          - cell "TARJETABUGPIN"
+          - cell "Unleaded Plus"
+          - cell "13.386"
+          - cell "10.00"
+        - row "494307 2025/05/09 17:34 Test1 TARJETABUGPIN Unleaded Plus 6.693 5.00":
+          - cell "494307"
+          - cell "2025/05/09 17:34"
+          - cell "Test1"
+          - cell "TARJETABUGPIN"
+          - cell "Unleaded Plus"
+          - cell "6.693"
+          - cell "5.00"
+        - row "520614 2025/05/09 17:33 Test1 TARJETABUGPIN Unleaded Plus 13.386 10.00":
+          - cell "520614"
+          - cell "2025/05/09 17:33"
+          - cell "Test1"
+          - cell "TARJETABUGPIN"
+          - cell "Unleaded Plus"
+          - cell "13.386"
+          - cell "10.00"
+        - row "777003 2025/05/09 17:27 Test1 TARJETABUGPIN Unleaded Plus 6.693 5.00":
+          - cell "777003"
+          - cell "2025/05/09 17:27"
+          - cell "Test1"
+          - cell "TARJETABUGPIN"
+          - cell "Unleaded Plus"
+          - cell "6.693"
+          - cell "5.00"
+        - row "022506148 2025/05/09 12:10 sites 2 BUGVEH Diesel 100.000 100.00":
+          - cell "022506148"
+          - cell "2025/05/09 12:10"
+          - cell "sites 2"
+          - cell "BUGVEH"
+          - cell "Diesel"
+          - cell "100.000"
+          - cell "100.00"
+        - row "041701189 2025/05/08 14:09 Las Vegas BUGVEH Super 1.000 100.00":
+          - cell "041701189"
+          - cell "2025/05/08 14:09"
+          - cell "Las Vegas"
+          - cell "BUGVEH"
+          - cell "Super"
+          - cell "1.000"
+          - cell "100.00"
+        - row "045546189 2025/05/08 12:51 Las Vegas BUGVEH Super 15.000 1,500.00":
+          - cell "045546189"
+          - cell "2025/05/08 12:51"
+          - cell "Las Vegas"
+          - cell "BUGVEH"
+          - cell "Super"
+          - cell "15.000"
+          - cell "1,500.00"
+        - row "094348144 2025/05/08 10:44 sites 2 BUGVEH Diesel 4.000 4.00":
+          - cell "094348144"
+          - cell "2025/05/08 10:44"
+          - cell "sites 2"
+          - cell "BUGVEH"
+          - cell "Diesel"
+          - cell "4.000"
+          - cell "4.00"
+        - row "033336175 2025/05/08 10:35 sites 2 000000002 Unleaded Plus 1.510 2,204.59":
+          - cell "033336175"
+          - cell "2025/05/08 10:35"
+          - cell "sites 2"
+          - cell "000000002"
+          - cell "Unleaded Plus"
+          - cell "1.510"
+          - cell "2,204.59"
+        - row "020322147 2025/05/08 10:27 sites 2 BUGVEH Diesel 100.000 100.00":
+          - cell "020322147"
+          - cell "2025/05/08 10:27"
+          - cell "sites 2"
+          - cell "BUGVEH"
+          - cell "Diesel"
+          - cell "100.000"
+          - cell "100.00"
+        - row "062321184 2025/05/08 10:24 sites 2 BUGVEH Diesel 100.000 100.00":
+          - cell "062321184"
+          - cell "2025/05/08 10:24"
+          - cell "sites 2"
+          - cell "BUGVEH"
+          - cell "Diesel"
+          - cell "100.000"
+          - cell "100.00"
+        - row "012308109 2025/05/08 10:10 sites 2 000000002 Diesel 0.008 10.00":
+          - cell "012308109"
+          - cell "2025/05/08 10:10"
+          - cell "sites 2"
+          - cell "000000002"
+          - cell "Diesel"
+          - cell "0.008"
+          - cell "10.00"
+        - row "053232142 2025/05/08 09:38 sites 2 BUGVEH Diesel 90.000 90.00":
+          - cell "053232142"
+          - cell "2025/05/08 09:38"
+          - cell "sites 2"
+          - cell "BUGVEH"
+          - cell "Diesel"
+          - cell "90.000"
+          - cell "90.00"
+        - row "024032289 2025/05/07 17:42 sites 2 BUGVEH Diesel 90.000 90.00":
+          - cell "024032289"
+          - cell "2025/05/07 17:42"
+          - cell "sites 2"
+          - cell "BUGVEH"
+          - cell "Diesel"
+          - cell "90.000"
+          - cell "90.00"
+        - row "005030243 2025/05/07 17:33 sites 2 BUGVEH Diesel 10.000 10.00":
+          - cell "005030243"
+          - cell "2025/05/07 17:33"
+          - cell "sites 2"
+          - cell "BUGVEH"
+          - cell "Diesel"
+          - cell "10.000"
+          - cell "10.00"
+  - listitem:
+    - heading "Contratos sin actividad (último mes)" [level=1]:
+      - text: Contratos sin actividad (último mes)
+      - paragraph
+    - text: El Widget no puede ser cargado
+  - listitem:
+    - heading "Actualizaciones de Identificador en ultimo mes" [level=1]:
+      - text: Actualizaciones de Identificador en ultimo mes
+      - paragraph
+    - paragraph: "Asignada: 34"
+    - paragraph: "Disponible: 111"
+    - paragraph: "Cancelada: 7"
+    - paragraph: "Denunciada: 0"
+    - paragraph: "Suspendido: 0"
+  - listitem
+- list:
+  - listitem:
+    - heading "Medidor de Saldo" [level=1]:
+      - text: Medidor de Saldo
+      - paragraph
+    - table:
+      - rowgroup:
+        - row "Compañia:":
+          - cell "Compañia:"
+          - cell:
+            - list:
+              - listitem:
+                - textbox "Ingresar Nombre Compañia"
+          - cell
+        - row "Contrato:":
+          - cell "Contrato:"
+          - cell:
+            - list:
+              - listitem:
+                - textbox "Ingresar Código Contrato" [disabled]
+          - cell
+    - img: 00 0 4 8 12 16 20 24 28 32 36 40 44 48 52 56 60
+    - text: "Saldo Disponible:"
+    - textbox "Saldo Disponible:": "-"
+  - listitem:
+    - heading "Lista de Pre-autorizaciones pendientes" [level=1]:
+      - text: Lista de Pre-autorizaciones pendientes
+      - paragraph
+    - table:
+      - rowgroup:
+        - row "Compañia:":
+          - cell "Compañia:"
+          - cell:
+            - list:
+              - listitem:
+                - textbox "Ingresar Nombre Compañia"
+    - table:
+      - rowgroup:
+        - row "Código de Autorización Compañia SubCuenta Sitio Autorizado Surtidor Antigüedad":
+          - cell "Código de Autorización"
+          - cell "Compañia"
+          - cell "SubCuenta"
+          - cell "Sitio"
+          - cell "Autorizado"
+          - cell "Surtidor"
+          - cell "Antigüedad"
+        - row "003753153 Test Company 000000002 - Vergano Juan Test1 (USD) 5,000.00 3 76530m":
+          - cell "003753153"
+          - cell "Test Company"
+          - cell "000000002 - Vergano Juan"
+          - cell "Test1"
+          - cell "(USD) 5,000.00"
+          - cell "3"
+          - cell "76530m"
+        - row "064748104 Test Company 000000002 - Vergano Juan Test1 (USD) 6,000.00 8 76539m":
+          - cell "064748104"
+          - cell "Test Company"
+          - cell "000000002 - Vergano Juan"
+          - cell "Test1"
+          - cell "(USD) 6,000.00"
+          - cell "8"
+          - cell "76539m"
+        - row "040746171 Test Company 000000002 - Vergano Juan Test1 (USD) 5,000.00 8 76543m":
+          - cell "040746171"
+          - cell "Test Company"
+          - cell "000000002 - Vergano Juan"
+          - cell "Test1"
+          - cell "(USD) 5,000.00"
+          - cell "8"
+          - cell "76543m"
+        - row "065010298 CompaniaTestedQa TEST - test test Test1 (USD) 40,000.00 8 77825m":
+          - cell "065010298"
+          - cell "CompaniaTestedQa"
+          - cell "TEST - test test"
+          - cell "Test1"
+          - cell "(USD) 40,000.00"
+          - cell "8"
+          - cell "77825m"
+        - row "040927179 CompaniaTestedQa TEST - test test Test1 (USD) 90,000.00 9 77875m":
+          - cell "040927179"
+          - cell "CompaniaTestedQa"
+          - cell "TEST - test test"
+          - cell "Test1"
+          - cell "(USD) 90,000.00"
+          - cell "9"
+          - cell "77875m"
+        - row "023824107 Test Company 000000002 - Vergano Juan Test1 (USD) 100,000.00 8 77936m":
+          - cell "023824107"
+          - cell "Test Company"
+          - cell "000000002 - Vergano Juan"
+          - cell "Test1"
+          - cell "(USD) 100,000.00"
+          - cell "8"
+          - cell "77936m"
+        - row "003807195 CompaniaTestedQa TEST - test test Test1 (USD) 12,456.00 8 77958m":
+          - cell "003807195"
+          - cell "CompaniaTestedQa"
+          - cell "TEST - test test"
+          - cell "Test1"
+          - cell "(USD) 12,456.00"
+          - cell "8"
+          - cell "77958m"
+        - row "054807150 CompaniaTestedQa TEST - test test Test1 (USD) 12,345.00 8 77963m":
+          - cell "054807150"
+          - cell "CompaniaTestedQa"
+          - cell "TEST - test test"
+          - cell "Test1"
+          - cell "(USD) 12,345.00"
+          - cell "8"
+          - cell "77963m"
+        - row "011621181 FORMULA1 YUKITSUNODA - Tsunoda Yuki Test1 (USD) 2.00 1 105423m":
+          - cell "011621181"
+          - cell "FORMULA1"
+          - cell "YUKITSUNODA - Tsunoda Yuki"
+          - cell "Test1"
+          - cell "(USD) 2.00"
+          - cell "1"
+          - cell "105423m"
+  - listitem:
+    - heading "Transacciones marcadas en el mes actual" [level=1]:
+      - text: Transacciones marcadas en el mes actual
+      - paragraph
+    - table:
+      - rowgroup:
+        - row "Compañia:":
+          - cell "Compañia:"
+          - cell:
+            - list:
+              - listitem:
+                - textbox "Ingresar Nombre Compañia"
+    - table:
+      - rowgroup:
+        - row "Código de Autorización Fecha Terminal / Controlador Estado Mensaje respuesta":
+          - cell "Código de Autorización"
+          - cell "Fecha"
+          - cell "Terminal / Controlador"
+          - cell "Estado"
+          - cell "Mensaje respuesta"
+        - row "070607114 2025/05/09 13:04 BPQA2 Voided Autorizado":
+          - cell "070607114"
+          - cell "2025/05/09 13:04"
+          - cell "BPQA2"
+          - cell "Voided"
+          - cell "Autorizado"
+        - row "091604143 2025/05/09 13:03 BPQA2 Voided Autorizado":
+          - cell "091604143"
+          - cell "2025/05/09 13:03"
+          - cell "BPQA2"
+          - cell "Voided"
+          - cell "Autorizado"
+        - row "011545136 2025/05/09 12:46 BPQA2 Declined Solicitud requerida":
+          - cell "011545136"
+          - cell "2025/05/09 12:46"
+          - cell "BPQA2"
+          - cell "Declined"
+          - cell "Solicitud requerida"
+        - row "070518152 2025/05/09 12:12 BPQA2 Declined Cuota max no config":
+          - cell "070518152"
+          - cell "2025/05/09 12:12"
+          - cell "BPQA2"
+          - cell "Declined"
+          - cell "Cuota max no config"
+        - row "064519190 2025/05/09 12:10 BPQA2 Voided Autorizado":
+          - cell "064519190"
+          - cell "2025/05/09 12:10"
+          - cell "BPQA2"
+          - cell "Voided"
+          - cell "Autorizado"
+        - row "002715140 2025/05/08 14:10 FOKF1JM CanceledManual Autorizado":
+          - cell "002715140"
+          - cell "2025/05/08 14:10"
+          - cell "FOKF1JM"
+          - cell "CanceledManual"
+          - cell "Autorizado"
+        - row "073702138 2025/05/08 14:08 FOKF1JM Declined Cuota max no config":
+          - cell "073702138"
+          - cell "2025/05/08 14:08"
+          - cell "FOKF1JM"
+          - cell "Declined"
+          - cell "Cuota max no config"
+        - row "004536136 2025/05/08 12:36 FOKF1JM Declined Mapeo comb req":
+          - cell "004536136"
+          - cell "2025/05/08 12:36"
+          - cell "FOKF1JM"
+          - cell "Declined"
+          - cell "Mapeo comb req"
+        - row "013521148 2025/05/08 12:28 FOKF1JM Declined Mapeo comb req":
+          - cell "013521148"
+          - cell "2025/05/08 12:28"
+          - cell "FOKF1JM"
+          - cell "Declined"
+          - cell "Mapeo comb req"
+        - row "084521172 2025/05/08 12:22 FOKF1JM Declined Mapeo comb req":
+          - cell "084521172"
+          - cell "2025/05/08 12:22"
+          - cell "FOKF1JM"
+          - cell "Declined"
+          - cell "Mapeo comb req"
+        - row "075517199 2025/05/08 12:19 FOKF1JM Declined Mapeo comb req":
+          - cell "075517199"
+          - cell "2025/05/08 12:19"
+          - cell "FOKF1JM"
+          - cell "Declined"
+          - cell "Mapeo comb req"
+        - row "032511165 2025/05/08 12:15 FOKF1JM Declined Mapeo comb req":
+          - cell "032511165"
+          - cell "2025/05/08 12:15"
+          - cell "FOKF1JM"
+          - cell "Declined"
+          - cell "Mapeo comb req"
+        - row "000504166 2025/05/08 12:06 FOKF1JM Declined Mapeo comb req":
+          - cell "000504166"
+          - cell "2025/05/08 12:06"
+          - cell "FOKF1JM"
+          - cell "Declined"
+          - cell "Mapeo comb req"
+        - row "042508130 2025/05/08 12:00 FOKF1JM Declined Mapeo comb req":
+          - cell "042508130"
+          - cell "2025/05/08 12:00"
+          - cell "FOKF1JM"
+          - cell "Declined"
+          - cell "Mapeo comb req"
+        - row "093452156 2025/05/08 11:56 FOKF1JM Declined Mapeo comb req":
+          - cell "093452156"
+          - cell "2025/05/08 11:56"
+          - cell "FOKF1JM"
+          - cell "Declined"
+          - cell "Mapeo comb req"
+        - row "063451184 2025/05/08 11:54 FOKF1JM Declined Mapeo comb req":
+          - cell "063451184"
+          - cell "2025/05/08 11:54"
+          - cell "FOKF1JM"
+          - cell "Declined"
+          - cell "Mapeo comb req"
+        - row "031456112 2025/05/08 11:52 FOKF1JM Declined Mapeo comb req":
+          - cell "031456112"
+          - cell "2025/05/08 11:52"
+          - cell "FOKF1JM"
+          - cell "Declined"
+          - cell "Mapeo comb req"
+        - row "084449163 2025/05/08 11:43 FOKF1JM Declined Mapeo comb req":
+          - cell "084449163"
+          - cell "2025/05/08 11:43"
+          - cell "FOKF1JM"
+          - cell "Declined"
+          - cell "Mapeo comb req"
+        - row "043423127 2025/05/08 11:27 FOKF1JM Declined Mapeo comb req":
+          - cell "043423127"
+          - cell "2025/05/08 11:27"
+          - cell "FOKF1JM"
+          - cell "Declined"
+          - cell "Mapeo comb req"
+        - row "053415139 2025/05/08 11:19 FOKF1JM Declined Mapeo comb req":
+          - cell "053415139"
+          - cell "2025/05/08 11:19"
+          - cell "FOKF1JM"
+          - cell "Declined"
+          - cell "Mapeo comb req"
+        - row "051331142 2025/05/08 10:32 Unlawful Term does not exist":
+          - cell "051331142"
+          - cell "2025/05/08 10:32"
+          - cell
+          - cell "Unlawful"
+          - cell "Term does not exist"
+        - row "074324122 2025/05/08 10:22 Unlawful Term does not exist":
+          - cell "074324122"
+          - cell "2025/05/08 10:22"
+          - cell
+          - cell "Unlawful"
+          - cell "Term does not exist"
+        - row "063315159 2025/05/08 10:19 Unlawful Term does not exist":
+          - cell "063315159"
+          - cell "2025/05/08 10:19"
+          - cell
+          - cell "Unlawful"
+          - cell "Term does not exist"
+        - row "024255176 2025/05/08 09:56 BPQA2 Unlawful Ident inexistente":
+          - cell "024255176"
+          - cell "2025/05/08 09:56"
+          - cell "BPQA2"
+          - cell "Unlawful"
+          - cell "Ident inexistente"
+        - row "042258184 2025/05/08 09:54 BPQA2 Unlawful Ident inexistente":
+          - cell "042258184"
+          - cell "2025/05/08 09:54"
+          - cell "BPQA2"
+          - cell "Unlawful"
+          - cell "Ident inexistente"
+        - row "024032289 2025/05/08 09:36 BPQA2 Unlawful Autorizacion inexist":
+          - cell "024032289"
+          - cell "2025/05/08 09:36"
+          - cell "BPQA2"
+          - cell "Unlawful"
+          - cell "Autorizacion inexist"
+        - row "025015212 2025/05/07 17:12 BPQA2 Unlawful Ident inexistente":
+          - cell "025015212"
+          - cell "2025/05/07 17:12"
+          - cell "BPQA2"
+          - cell "Unlawful"
+          - cell "Ident inexistente"
+        - row "001017262 2025/05/07 17:12 BPQA2 Unlawful Ident inexistente":
+          - cell "001017262"
+          - cell "2025/05/07 17:12"
+          - cell "BPQA2"
+          - cell "Unlawful"
+          - cell "Ident inexistente"
+        - row "085959178 2025/05/07 16:58 BPQA2 Unlawful Ident inexistente":
+          - cell "085959178"
+          - cell "2025/05/07 16:58"
+          - cell "BPQA2"
+          - cell "Unlawful"
+          - cell "Ident inexistente"
+        - row "031957156 2025/05/07 16:56 BPQA2 Unlawful Ident inexistente":
+          - cell "031957156"
+          - cell "2025/05/07 16:56"
+          - cell "BPQA2"
+          - cell "Unlawful"
+          - cell "Ident inexistente"
+        - row "005958165 2025/05/07 16:55 BPQA2 Unlawful Ident inexistente":
+          - cell "005958165"
+          - cell "2025/05/07 16:55"
+          - cell "BPQA2"
+          - cell "Unlawful"
+          - cell "Ident inexistente"
+        - row "010828142 2025/05/07 15:22 BPQA2 Voided Autorizado":
+          - cell "010828142"
+          - cell "2025/05/07 15:22"
+          - cell "BPQA2"
+          - cell "Voided"
+          - cell "Autorizado"
+        - row "020704164 2025/05/07 14:04 BPQA2 Declined Mapeo comb req":
+          - cell "020704164"
+          - cell "2025/05/07 14:04"
+          - cell "BPQA2"
+          - cell "Declined"
+          - cell "Mapeo comb req"
+        - row "025402110 2025/05/06 11:00 BPQA2 Declined Mapeo comb req":
+          - cell "025402110"
+          - cell "2025/05/06 11:00"
+          - cell "BPQA2"
+          - cell "Declined"
+          - cell "Mapeo comb req"
+        - row "040355196 2025/05/06 10:56 BPQA2 Declined Mapeo comb req":
+          - cell "040355196"
+          - cell "2025/05/06 10:56"
+          - cell "BPQA2"
+          - cell "Declined"
+          - cell "Mapeo comb req"
+        - row "041359193 2025/05/06 10:53 BPQA2 Declined Trans inexistente":
+          - cell "041359193"
+          - cell "2025/05/06 10:53"
+          - cell "BPQA2"
+          - cell "Declined"
+          - cell "Trans inexistente"
+        - row "081245156 2025/05/06 09:46 BPQA2 Invalid Fecha hora invalida":
+          - cell "081245156"
+          - cell "2025/05/06 09:46"
+          - cell "BPQA2"
+          - cell "Invalid"
+          - cell "Fecha hora invalida"
+        - row "084037215 2025/05/05 17:35 BPQA2 Unlawful Ident inexistente":
+          - cell "084037215"
+          - cell "2025/05/05 17:35"
+          - cell "BPQA2"
+          - cell "Unlawful"
+          - cell "Ident inexistente"
+        - row "022846198 2025/05/05 15:48 BPQA3 Voided Autorizado":
+          - cell "022846198"
+          - cell "2025/05/05 15:48"
+          - cell "BPQA3"
+          - cell "Voided"
+          - cell "Autorizado"
+        - row "072844124 2025/05/05 15:44 BPQA2 Unlawful Ident inexistente":
+          - cell "072844124"
+          - cell "2025/05/05 15:44"
+          - cell "BPQA2"
+          - cell "Unlawful"
+          - cell "Ident inexistente"
+        - row "035823107 2025/05/05 15:44 BPQA3 Unlawful Autorizacion inexist":
+          - cell "035823107"
+          - cell "2025/05/05 15:44"
+          - cell "BPQA3"
+          - cell "Unlawful"
+          - cell "Autorizacion inexist"
+        - row "083840133 2025/05/05 15:43 BPQA2 Unlawful Ident inexistente":
+          - cell "083840133"
+          - cell "2025/05/05 15:43"
+          - cell "BPQA2"
+          - cell "Unlawful"
+          - cell "Ident inexistente"
+        - row "043847151 2025/05/05 15:41 BPQA3 Voided Autorizado":
+          - cell "043847151"
+          - cell "2025/05/05 15:41"
+          - cell "BPQA3"
+          - cell "Voided"
+          - cell "Autorizado"
+        - row "081804100 2025/05/05 15:00 BPQA2 Unlawful Ident inexistente":
+          - cell "081804100"
+          - cell "2025/05/05 15:00"
+          - cell "BPQA2"
+          - cell "Unlawful"
+          - cell "Ident inexistente"
+        - row "034758168 2025/05/05 14:58 BPQA2 Unlawful Ident inexistente":
+          - cell "034758168"
+          - cell "2025/05/05 14:58"
+          - cell "BPQA2"
+          - cell "Unlawful"
+          - cell "Ident inexistente"
+        - row "080045234 2025/05/05 14:46 BPQA2 Unlawful Autorizacion inexist":
+          - cell "080045234"
+          - cell "2025/05/05 14:46"
+          - cell "BPQA2"
+          - cell "Unlawful"
+          - cell "Autorizacion inexist"
+        - row "013742143 2025/05/05 14:43 BPQA2 Unlawful Ident inexistente":
+          - cell "013742143"
+          - cell "2025/05/05 14:43"
+          - cell "BPQA2"
+          - cell "Unlawful"
+          - cell "Ident inexistente"
+        - row "003748102 2025/05/05 14:42 BPQA2 Unlawful Ident inexistente":
+          - cell "003748102"
+          - cell "2025/05/05 14:42"
+          - cell "BPQA2"
+          - cell "Unlawful"
+          - cell "Ident inexistente"
+        - row "030740142 2025/05/05 14:42 BPQA2 Unlawful Ident inexistente":
+          - cell "030740142"
+          - cell "2025/05/05 14:42"
+          - cell "BPQA2"
+          - cell "Unlawful"
+          - cell "Ident inexistente"
+        - row "042746171 2025/05/05 14:41 BPQA2 Unlawful Ident inexistente":
+          - cell "042746171"
+          - cell "2025/05/05 14:41"
+          - cell "BPQA2"
+          - cell "Unlawful"
+          - cell "Ident inexistente"
+  - listitem:
+    - heading "Instalaciones Recientes" [level=1]:
+      - text: Instalaciones Recientes
+      - paragraph
+    - img: Instalaciones semanales 11/4 18/4 25/4 2/5 9/5 0
+  - listitem:
+    - heading "Listado de Contratos con bajo saldo" [level=1]:
+      - text: Listado de Contratos con bajo saldo
+      - paragraph
+    - table:
+      - rowgroup:
+        - row "Compañia:":
+          - cell "Compañia:"
+          - cell:
+            - list:
+              - listitem:
+                - textbox "Ingresar Nombre Compañia"
+    - table:
+      - rowgroup:
+        - row "Contrato Especies Valor Días disponibles":
+          - cell "Contrato"
+          - cell "Especies"
+          - cell "Valor"
+          - cell "Días disponibles"
+        - row "LocalAgent - Company Repower - Local Agent Contract (Local Agent - Contract LevelUp) Importe 0.00 0":
+          - cell "LocalAgent - Company Repower - Local Agent Contract (Local Agent - Contract LevelUp)":
+            - link "LocalAgent - Company Repower - Local Agent Contract (Local Agent - Contract LevelUp)":
+              - /url: CompanyContracts/Details/be2f25c9-5b15-491b-931f-8cc8d7ca4c70
+          - cell "Importe"
+          - cell "0.00"
+          - cell "0"
+        - row "A - MONI (moni) Importe 0.00 0":
+          - cell "A - MONI (moni)":
+            - link "A - MONI (moni)":
+              - /url: CompanyContracts/Details/39bfb0e8-2209-450d-927d-b0e016f003b1
+          - cell "Importe"
+          - cell "0.00"
+          - cell "0"
+        - row "TestLucas - 2304 (sbi) Importe 0.00 0":
+          - cell "TestLucas - 2304 (sbi)":
+            - link "TestLucas - 2304 (sbi)":
+              - /url: CompanyContracts/Details/ef6175df-4c3b-4b29-8f54-acf48c4cc6ef
+          - cell "Importe"
+          - cell "0.00"
+          - cell "0"
+        - row "FORMULA1 - PRUEBABUGAQUOTA4 (PRUEBABUGAQUOTA4) Importe 0.00 0":
+          - cell "FORMULA1 - PRUEBABUGAQUOTA4 (PRUEBABUGAQUOTA4)":
+            - link "FORMULA1 - PRUEBABUGAQUOTA4 (PRUEBABUGAQUOTA4)":
+              - /url: CompanyContracts/Details/43d7af83-ff32-494a-98c3-036d4ab5b890
+          - cell "Importe"
+          - cell "0.00"
+          - cell "0"
+        - row "FORMULA1 - PRUEBABUGAQUOTA3 (PRUEBABUGAQUOTA3) Importe 0.00 0":
+          - cell "FORMULA1 - PRUEBABUGAQUOTA3 (PRUEBABUGAQUOTA3)":
+            - link "FORMULA1 - PRUEBABUGAQUOTA3 (PRUEBABUGAQUOTA3)":
+              - /url: CompanyContracts/Details/63cd543a-9131-4d63-b068-3ff6b5c3b832
+          - cell "Importe"
+          - cell "0.00"
+          - cell "0"
+        - row "FORMULA1 - CONTRATOHOLOGRAMAS (ologramasTest) Importe 0.00 0":
+          - cell "FORMULA1 - CONTRATOHOLOGRAMAS (ologramasTest)":
+            - link "FORMULA1 - CONTRATOHOLOGRAMAS (ologramasTest)":
+              - /url: CompanyContracts/Details/c4f9ba50-34b6-44c8-b4e2-5b091731cac8
+          - cell "Importe"
+          - cell "0.00"
+          - cell "0"
+        - row "FORMULA1 - BUG109022 (BUG109022) Importe 0.00 0":
+          - cell "FORMULA1 - BUG109022 (BUG109022)":
+            - link "FORMULA1 - BUG109022 (BUG109022)":
+              - /url: CompanyContracts/Details/c0ab9e51-0c08-48bb-a3d1-5d3844d9f80a
+          - cell "Importe"
+          - cell "0.00"
+          - cell "0"
+        - row "FORMULA1 - PRUEBABUGAQUOTA2 (PRUEBABUGAQUOTA2) Importe 0.00 0":
+          - cell "FORMULA1 - PRUEBABUGAQUOTA2 (PRUEBABUGAQUOTA2)":
+            - link "FORMULA1 - PRUEBABUGAQUOTA2 (PRUEBABUGAQUOTA2)":
+              - /url: CompanyContracts/Details/c483d7da-4d8d-445e-8975-6ef942442c86
+          - cell "Importe"
+          - cell "0.00"
+          - cell "0"
+        - row "FORMULA1 - PRUEBA2 (Prueba) Importe 0.00 0":
+          - cell "FORMULA1 - PRUEBA2 (Prueba)":
+            - link "FORMULA1 - PRUEBA2 (Prueba)":
+              - /url: CompanyContracts/Details/327fe1d2-1560-4df4-85e4-b3dd79ed120d
+          - cell "Importe"
+          - cell "0.00"
+          - cell "0"
+        - row "FORMULA1 - PRUEBA3 (Prueba) Importe 0.00 0":
+          - cell "FORMULA1 - PRUEBA3 (Prueba)":
+            - link "FORMULA1 - PRUEBA3 (Prueba)":
+              - /url: CompanyContracts/Details/ed55fbbe-c04a-404f-abfe-cc5601af4e76
+          - cell "Importe"
+          - cell "0.00"
+          - cell "0"
+        - row "FORMULA1 - PRUEBABUGAQUOTA (PRUEBABUGAQUOTA) Importe 0.00 0":
+          - cell "FORMULA1 - PRUEBABUGAQUOTA (PRUEBABUGAQUOTA)":
+            - link "FORMULA1 - PRUEBABUGAQUOTA (PRUEBABUGAQUOTA)":
+              - /url: CompanyContracts/Details/0fb70599-15c4-4a70-861c-f36d77a1e83c
+          - cell "Importe"
+          - cell "0.00"
+          - cell "0"
+        - row "TestV - SINDINERO (sin Dinero) Importe 0.00 0":
+          - cell "TestV - SINDINERO (sin Dinero)":
+            - link "TestV - SINDINERO (sin Dinero)":
+              - /url: CompanyContracts/Details/33836e3a-88b3-4fbc-a01e-02bb38a2459e
+          - cell "Importe"
+          - cell "0.00"
+          - cell "0"
+        - row "JUTERZA DISTRIBUCIONES Y SERVICIOS S.R.L. - 5000000220 (5000000220-Crédito) Importe 0.00 0":
+          - cell "JUTERZA DISTRIBUCIONES Y SERVICIOS S.R.L. - 5000000220 (5000000220-Crédito)":
+            - link "JUTERZA DISTRIBUCIONES Y SERVICIOS S.R.L. - 5000000220 (5000000220-Crédito)":
+              - /url: CompanyContracts/Details/742e529b-e0a6-4975-84f1-3a7300acb1cf
+          - cell "Importe"
+          - cell "0.00"
+          - cell "0"
+        - row "Test Company - BRAIAN PAZ (BRAIAN PAZ) Importe 0.00 0":
+          - cell "Test Company - BRAIAN PAZ (BRAIAN PAZ)":
+            - link "Test Company - BRAIAN PAZ (BRAIAN PAZ)":
+              - /url: CompanyContracts/Details/af795a95-e59e-4897-b59a-33c0d39ab84b
+          - cell "Importe"
+          - cell "0.00"
+          - cell "0"
+        - row "Test Company - TEST PRECIO LA (TEST PRECIO LA) Importe 0.00 0":
+          - cell "Test Company - TEST PRECIO LA (TEST PRECIO LA)":
+            - link "Test Company - TEST PRECIO LA (TEST PRECIO LA)":
+              - /url: CompanyContracts/Details/fcdc6472-9d71-4d5f-afc5-66462846c3e9
+          - cell "Importe"
+          - cell "0.00"
+          - cell "0"
+        - row "beeta - ContratoLocacion3 (ContratoLocacion3Editado) Importe 0.00 0":
+          - cell "beeta - ContratoLocacion3 (ContratoLocacion3Editado)":
+            - link "beeta - ContratoLocacion3 (ContratoLocacion3Editado)":
+              - /url: CompanyContracts/Details/574d4c54-5f5d-46b3-8033-3fabb0b2dbb2
+          - cell "Importe"
+          - cell "0.00"
+          - cell "0"
+        - row "beeta - ApiRestContractEditado2 (ApiRestContractEditad2o) Importe 0.00 0":
+          - cell "beeta - ApiRestContractEditado2 (ApiRestContractEditad2o)":
+            - link "beeta - ApiRestContractEditado2 (ApiRestContractEditad2o)":
+              - /url: CompanyContracts/Details/980fc7d1-31a5-48e8-a651-5df414105649
+          - cell "Importe"
+          - cell "0.00"
+          - cell "0"
+        - row "beeta - ContratoLocacion (ContratoLocacion) Importe 0.00 0":
+          - cell "beeta - ContratoLocacion (ContratoLocacion)":
+            - link "beeta - ContratoLocacion (ContratoLocacion)":
+              - /url: CompanyContracts/Details/effa8b30-e8cd-49a6-b85b-6ee723d3dad5
+          - cell "Importe"
+          - cell "0.00"
+          - cell "0"
+        - row "beeta - 97185 (ApiRestContractEditado) Importe 0.00 0":
+          - cell "beeta - 97185 (ApiRestContractEditado)":
+            - link "beeta - 97185 (ApiRestContractEditado)":
+              - /url: CompanyContracts/Details/f731e8d5-00e4-4ae2-b5ab-b7d44e785688
+          - cell "Importe"
+          - cell "0.00"
+          - cell "0"
+        - row "beeta - APIRESTCONTRACTEDI2 (ApiRestContractEditado) Importe 0.00 0":
+          - cell "beeta - APIRESTCONTRACTEDI2 (ApiRestContractEditado)":
+            - link "beeta - APIRESTCONTRACTEDI2 (ApiRestContractEditado)":
+              - /url: CompanyContracts/Details/046a6596-a300-441f-9e74-d774643f43a6
+          - cell "Importe"
+          - cell "0.00"
+          - cell "0"
+  - listitem:
+    - heading "Pre Autorizacion asistida por Operador" [level=1]:
+      - text: Pre Autorizacion asistida por Operador
+      - paragraph
+    - table:
+      - rowgroup:
+        - row:
+          - cell
+        - 'row "Sitio: *"':
+          - 'cell "Sitio: *"':
+            - paragraph:
+              - text: "Sitio: *"
+              - list:
+                - listitem:
+                  - textbox "Ingresar Código / Nombre corto Sitio"
+          - cell
+        - 'row "Terminal / Controlador: * -- Seleccione --"':
+          - 'cell "Terminal / Controlador: * -- Seleccione --"':
+            - paragraph:
+              - text: "Terminal / Controlador: *"
+              - 'combobox "Terminal / Controlador: *"':
+                - option "-- Seleccione --" [selected]
+          - cell
+        - row "Vehículo / Conductor:":
+          - cell "Vehículo / Conductor:":
+            - paragraph:
+              - text: "Vehículo / Conductor:"
+              - list:
+                - listitem:
+                  - textbox "Ingresar Código / Patente / Nombre Vehículo / Conductor"
+          - cell
+        - 'row "Identificacion: *"':
+          - 'cell "Identificacion: *"':
+            - paragraph:
+              - text: "Identificacion: *"
+              - list:
+                - listitem:
+                  - textbox "Ingresar Etiqueta / Descripción Identificacion"
+          - cell
+        - row "Combustible:":
+          - cell "Combustible:":
+            - paragraph:
+              - text: "Combustible:"
+              - list:
+                - listitem:
+                  - textbox "Ingresar Código / Descripción Combustible" [disabled]
+          - cell
+        - row "Volumen:":
+          - cell "Volumen:":
+            - paragraph:
+              - text: "Volumen:"
+              - textbox "Volumen:"
+          - cell
+        - row "Moneda:":
+          - cell "Moneda:":
+            - paragraph:
+              - text: "Moneda:"
+              - textbox [disabled]
+          - cell
+        - row "Monto:":
+          - cell "Monto:":
+            - paragraph:
+              - text: "Monto:"
+              - 'textbox "Moneda: Monto:"'
+          - cell
+        - row "Precio unitario:":
+          - cell "Precio unitario:":
+            - paragraph:
+              - text: "Precio unitario:"
+              - textbox
+          - cell
+        - row "Nuevo":
+          - cell "Nuevo":
+            - paragraph:
+              - button "Nuevo"
+  - listitem
+- paragraph
+- paragraph:
+  - text: v 2.6.6700.0 | Powered by
+  - link "ATIONET LLC.":
+    - /url: http://www.ationet.com
+  - link "Soporte":
+    - /url: mailto:prodsupport@ationet.com
+  - text: "|"
+  - link "Feedback":
+    - /url: mailto:hello@ationet.com
+```
+
+# Test source
+
+```ts
+   1 | import { test, expect } from '@playwright/test';
+   2 | import { allure } from 'allure-playwright';
+   3 |
+   4 |
+   5 | test('Procesos de Liquidación', async ({ page }, testInfo) => {
+   6 |     //varibles:
+   7 |     const urlBETA = testInfo.project.use?.baseURL;
+   8 |
+   9 |     // Allure metadata
+  10 |
+  11 |     //esto aparece en suite para ordenar mejor
+  12 |     allure.suite('NWAdmin');
+  13 |     allure.subSuite('Liquidaciones');
+  14 |
+  15 |     //usuario que ejecuto la automatizacion
+  16 |     allure.owner('Maximiliano');
+  17 |     allure.tag('regression');
+  18 |
+  19 |     //label para funcionalidades allure
+  20 |     allure.label('epic', 'NWAdmin - Liquidaciones');
+  21 |     allure.label('feature', 'Procesos De Liquidacion');
+  22 |     allure.story('Navegar');
+  23 |
+  24 |     //dentro del test cuando lo abrimos aparece la descripcion
+  25 |     allure.description(`
+  26 |     <b>Objetivo:</b> Este test automatiza el proceso de navegacion en Procesos de liquidacion.<br/>
+  27 |     `);
+  28 |     allure.severity('critical'); // opciones: blocker | critical | normal | minor | trivial    
+  29 |
+  30 |     // Generar un valor aleatorio para cada campo
+  31 |     const hoy = new Date();
+  32 |     hoy.setDate(hoy.getDate() - 1); // Resta un día
+  33 |     const fechaISO = hoy.toISOString().split('T')[0].replace(/-/g, '/');
+  34 |
+  35 |     const randomId = Math.floor(Math.random() * 1000000);
+  36 |     const comentarioContingencia = `${randomId}`;
+  37 |
+  38 |     //acceder a pagina
+  39 |     await page.goto(urlBETA!);
+  40 |     
+  41 |     //ingresar credenciales
+  42 |     await page.locator('#UserName').click();
+  43 |     await page.locator('#UserName').fill('facuna@atioinc.com');
+  44 |   
+  45 |     await page.locator('#Password').click();
+  46 |     await page.locator('#Password').fill('pipo33');
+  47 |   
+  48 |     await page.locator('#submit').click();
+  49 |
+  50 |     //cambiar a NVComany
+  51 |     const primerLink = page.locator('p >> a').first();
+  52 |     await primerLink.click();
+> 53 |     await page.getByTitle('Show All Items').click();
+     |                                             ^ Error: locator.click: Test timeout of 60000ms exceeded.
+  54 |     await page.getByText('NW Admin - LAB QA').click();   
+  55 |
+  56 |     //acceder a modulo Procesos de Liquidación
+  57 |     await page.click('a[href="/Processes/Billing"]'); // Haz clic en el enlace
+  58 |    
+  59 |     //veriricar que estamos en la url de Procesos de Liquidación
+  60 |     await expect(page).toHaveURL('https://console-beta.ationet.com/Processes/Billing');
+  61 |
+  62 | })
+```

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Ejecutor de Tests Automatizados</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      max-width: 600px;
+      margin: 50px auto;
+      padding: 20px;
+      border-radius: 12px;
+      background: #f4f4f4;
+    }
+    h1 { color: #333; }
+    button {
+      padding: 10px 15px;
+      margin-top: 10px;
+      font-size: 16px;
+      cursor: pointer;
+      border: none;
+      background-color: #007bff;
+      color: white;
+      border-radius: 6px;
+    }
+    select, button {
+      width: 100%;
+      margin-bottom: 15px;
+    }
+    .success { color: green; }
+    .error { color: red; }
+    a.report-link {
+      display: inline-block;
+      margin-top: 20px;
+      color: #007bff;
+    }
+
+    .progress-container {
+      margin-top: 10px;
+      width: 100%;
+      height: 20px;
+      background-color: #ddd;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .progress-bar {
+      height: 100%;
+      width: 0%;
+      background-color: #28a745;
+      transition: width 0.4s ease;
+    }
+  </style>
+</head>
+<body>
+  <h1>Ejecutar Tests Playwright</h1>
+
+  <label for="module">Selecciona un módulo:</label>
+  <select id="module">
+    <option value="">-- Seleccionar --</option>
+    <option value="NVAdmin LAB Network/administracion">Administración (LAB Network)</option>
+    <option value="NVAdmin LAB Network/flota">Flota (LAB Network)</option>
+    <option value="NVAdmin LAB Network/liquidaciones">Liquidaciones (LAB Network)</option>
+    <option value="NVCompany Atio Lab Flota/administracion">Administración (Atio Flota)</option>
+    <option value="NVCompany Atio Lab Flota/flota">Flota (Atio Flota)</option>
+  </select>
+
+  <button onclick="runTest()">Ejecutar Test</button>
+
+  <div class="progress-container">
+    <div class="progress-bar" id="progressBar"></div>
+  </div>
+
+  <p id="status">Esperando ejecución...</p>
+  <a id="reportLink" class="report-link" href="#" target="_blank" style="display: none;">Ver Reporte Allure</a>
+
+  <script>
+    async function runTest() {
+      const module = document.getElementById('module').value;
+      const status = document.getElementById('status');
+      const reportLink = document.getElementById('reportLink');
+      const progressBar = document.getElementById('progressBar');
+
+      if (!module) {
+        alert("Por favor selecciona un módulo.");
+        return;
+      }
+
+      // Reset UI
+      status.textContent = 'Ejecutando...';
+      status.className = '';
+      reportLink.style.display = 'none';
+      progressBar.style.width = '0%';
+
+      // Simulación de progreso por etapas
+      const etapas = [
+        { porcentaje: 30, mensaje: "Iniciando pruebas..." },
+        { porcentaje: 60, mensaje: "Preparando reporte..." },
+        { porcentaje: 90, mensaje: "Ejecutando pruebas..." }
+      ];
+
+      let etapaIndex = 0;
+      const simulador = setInterval(() => {
+        if (etapaIndex < etapas.length) {
+          progressBar.style.width = etapas[etapaIndex].porcentaje + '%';
+          status.textContent = etapas[etapaIndex].mensaje;
+          etapaIndex++;
+        }
+      }, 1000);
+
+      // Llamar a backend
+      try {
+        const res = await fetch('/run-tests', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ module })
+        });
+        const data = await res.json();
+
+        clearInterval(simulador);
+        progressBar.style.width = '100%';
+
+        if (res.ok) {
+          status.textContent = data.message || '✅ Test ejecutado correctamente.';
+          status.className = 'success';
+          reportLink.href = data.reportUrl;
+          reportLink.style.display = 'inline-block';
+        } else {
+          throw new Error(data.error || 'Error ejecutando tests');
+        }
+      } catch (err) {
+        clearInterval(simulador);
+        progressBar.style.width = '100%';
+        status.textContent = '❌ ' + err.message;
+        status.className = 'error';
+      }
+    }
+  </script>
+</body>
+</html>

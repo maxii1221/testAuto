@@ -1,0 +1,1 @@
+[{"uid":"99075e67e834f017","name":"Estado de cuenta","time":{"start":1746998638895,"stop":1746998657681,"duration":18786},"status":"passed","severity":"critical"},{"uid":"5761602b2104813d","name":"Procesos de Liquidación","time":{"start":1746998658238,"stop":1746998718690,"duration":60452},"status":"broken","severity":"critical"}]
