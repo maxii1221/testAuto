@@ -51,22 +51,31 @@ app.post('/run-tests', (req, res) => {
         console.log('📊 Reporte generado correctamente.');
 
         // Paso 4 (opcional): Abrir reporte
-        exec(`npx allure open ${reportPath} --host`, { shell: '/bin/bash' }, (openErr, openOut, openStderr) => {
-          if (openErr) {
-            console.warn('⚠️ Error abriendo el reporte:', openStderr || openErr.message);
-            // No bloqueamos aquí
-          } else {
-            console.log('🌐 Reporte abierto.');
-          }
+        //exec(`npx allure open ${reportPath} --host`, { shell: '/bin/bash' }, (openErr, openOut, openStderr) => {
+          //if (openErr) {
+         //   console.warn('⚠️ Error abriendo el reporte:', openStderr || openErr.message);
+        //    // No bloqueamos aquí
+        //  } else {
+        //    console.log('🌐 Reporte abierto.');
+        //  }
 
           // Respuesta al cliente
-          res.json({
-            message: error
-              ? '⚠️ Algunos tests fallaron, pero se generó el reporte.'
-              : '✅ Tests ejecutados y reporte generado.',
-            reportUrl: '/report/index.html'
-          });
-        });
+         // res.json({
+           // message: error
+           //   ? '⚠️ Algunos tests fallaron, pero se generó el reporte.'
+           //   : '✅ Tests ejecutados y reporte generado.',
+           // reportUrl: '/report/index.html'
+       //   });
+        //});
+
+        // Respuesta al cliente sin intentar abrir el reporte en Railway
+res.json({
+  message: error
+    ? '⚠️ Algunos tests fallaron, pero se generó el reporte.'
+    : '✅ Tests ejecutados y reporte generado.',
+  reportUrl: '/report/index.html'
+});
+
       });
     });
   });
