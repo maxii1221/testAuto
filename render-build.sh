@@ -1,6 +1,5 @@
 #!/bin/bash
 
 echo "🧪 Instalando navegadores Playwright..."
-npx playwright install --with-deps
-
+npx playwright install
 echo "✅ Instalación completada."
