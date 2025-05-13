@@ -23,7 +23,7 @@ test('Contratos de compañia', async ({ page }, testInfo) => {
 
     //dentro del test cuando lo abrimos aparece la descripcion
     allure.description(`
-    <b>Objetivo:</b> Este test automatiza el proceso de navegacion, creacion y poder editar Contratos de Compañia.<br/>
+    Objetivo: Este test automatiza el proceso de navegacion, creacion y poder editar Contratos de Compañia.
     `);
     allure.severity('critical'); // opciones: blocker | critical | normal | minor | trivial  
 

@@ -22,7 +22,7 @@ test('Compañias', async ({ page }, testInfo) => {
 
     //dentro del test cuando lo abrimos aparece la descripcion
     allure.description(`
-    <b>Objetivo:</b> Este test automatiza el proceso completo de creación, edición de una compañia.<br/>
+    Objetivo: Este test automatiza el proceso completo de creación, edición de una compañia.
     `);
     allure.severity('critical'); // opciones: blocker | critical | normal | minor | trivial
     

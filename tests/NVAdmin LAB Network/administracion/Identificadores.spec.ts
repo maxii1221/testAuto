@@ -24,7 +24,7 @@ test('Identificadores', async ({ page }, testInfo) => {
 
     //dentro del test cuando lo abrimos aparece la descripcion
     allure.description(`
-    <b>Objetivo:</b> Este test automatiza el proceso de navegacion, creacion y edicion de Identificadores.<br/>
+    Objetivo: Este test automatiza el proceso de navegacion, creacion y edicion de Identificadores.
     `);
     allure.severity('critical'); // opciones: blocker | critical | normal | minor | trivial 
 

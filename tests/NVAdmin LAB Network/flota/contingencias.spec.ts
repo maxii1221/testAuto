@@ -22,7 +22,7 @@ test('Contingencias', async ({ page }, testInfo) => {
 
     //dentro del test cuando lo abrimos aparece la descripcion
     allure.description(`
-    <b>Objetivo:</b> Este test automatiza el proceso de navegacion, creacion y poder editar Contingencia.<br/>
+    Objetivo: Este test automatiza el proceso de navegacion, creacion y poder editar Contingencia.
     `);
     allure.severity('critical'); // opciones: blocker | critical | normal | minor | trivial  
 

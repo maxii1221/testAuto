@@ -24,7 +24,7 @@ test('Autorizaciones Pendientes', async ({ page }, testInfo) => {
 
     //dentro del test cuando lo abrimos aparece la descripcion
     allure.description(`
-    <b>Objetivo:</b> Este test automatiza el proceso de navegacion y acceder a detalles en autorizaciones pendientes.<br/>
+    Objetivo: Este test automatiza el proceso de navegacion y acceder a detalles en autorizaciones pendientes.
     `);
     allure.severity('critical'); // opciones: blocker | critical | normal | minor | trivial  
 

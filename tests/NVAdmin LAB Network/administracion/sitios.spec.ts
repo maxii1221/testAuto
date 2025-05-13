@@ -22,7 +22,7 @@ test('Sitios', async ({ page }, testInfo) => {
 
     //dentro del test cuando lo abrimos aparece la descripcion
     allure.description(`
-    <b>Objetivo:</b> Este test automatiza el proceso de navegacion, creacion y edicion de Sitios.<br/>
+    Objetivo: Este test automatiza el proceso de navegacion, creacion y edicion de Sitios.
     `);
     allure.severity('critical'); // opciones: blocker | critical | normal | minor | trivial 
 
@@ -221,7 +221,7 @@ test('Sitios', async ({ page }, testInfo) => {
         });
     });
 
-    await allure.step('Filtrar Nuevo Sitio', async () => {
+    await allure.step('Filtrar Nuevo Sitio Editado', async () => {
 
         await allure.step('Aseguramos que el panel esté presente', async () => {
             await page.locator('#filterPanel').waitFor({ state: 'visible', timeout: 60000 });

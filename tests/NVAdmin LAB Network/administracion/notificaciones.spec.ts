@@ -24,7 +24,7 @@ test('Nofificaciones', async ({ page }, testInfo) => {
 
     //dentro del test cuando lo abrimos aparece la descripcion
     allure.description(`
-    <b>Objetivo:</b> Este test automatiza el proceso de navegacion en notificaciones.<br/>
+    Objetivo: Este test automatiza el proceso de navegacion en notificaciones.
     `);
     allure.severity('critical'); // opciones: blocker | critical | normal | minor | trivial 
     

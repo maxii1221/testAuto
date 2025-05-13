@@ -23,7 +23,7 @@ test('Procesos de Liquidación', async ({ page }, testInfo) => {
 
     //dentro del test cuando lo abrimos aparece la descripcion
     allure.description(`
-    <b>Objetivo:</b> Este test automatiza el proceso de navegacion en Procesos de liquidacion.<br/>
+    Objetivo: Este test automatiza el proceso de navegacion en Procesos de liquidacion.
     `);
     allure.severity('critical'); // opciones: blocker | critical | normal | minor | trivial    
 

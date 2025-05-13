@@ -23,7 +23,7 @@ test('Identificaciones solicitadas', async ({ page }, testInfo) => {
 
     //dentro del test cuando lo abrimos aparece la descripcion
     allure.description(`
-    <b>Objetivo:</b> Este test automatiza el proceso de navegacion, de identificaciones solicitadas.<br/>
+    Objetivo: Este test automatiza el proceso de navegacion, de identificaciones solicitadas.
     `);
     allure.severity('critical'); // opciones: blocker | critical | normal | minor | trivial  
 

@@ -1,7 +1,7 @@
 "DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
 "
-    <b>Objetivo:</b> Este test automatiza el proceso de navegacion y descargar en Estados de Cuenta.<br/>
-    ","18786","Estado de cuenta","chromium","Sun May 11 21:23:58 UTC 2025","passed","Sun May 11 21:24:17 UTC 2025","Liquidaciones","NWAdmin","",""
+    Objetivo: Este test automatiza el proceso de navegacion y descargar en Estados de Cuenta.
+    ","24131","Estado de cuenta","chromium","Tue May 13 12:55:15 UTC 2025","passed","Tue May 13 12:55:39 UTC 2025","Liquidaciones","NWAdmin","",""
 "
-    <b>Objetivo:</b> Este test automatiza el proceso de navegacion en Procesos de liquidacion.<br/>
-    ","60452","Procesos de Liquidación","chromium","Sun May 11 21:24:18 UTC 2025","broken","Sun May 11 21:25:18 UTC 2025","Liquidaciones","NWAdmin","",""
+    Objetivo: Este test automatiza el proceso de navegacion en Procesos de liquidacion.
+    ","22869","Procesos de Liquidación","chromium","Tue May 13 12:55:44 UTC 2025","passed","Tue May 13 12:56:07 UTC 2025","Liquidaciones","NWAdmin","",""

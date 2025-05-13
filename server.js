@@ -26,7 +26,7 @@ app.post('/run-tests', (req, res) => {
   }
 
   // Comando de prueba
-  const testCommand = `npx playwright test "${module}" --reporter=line,allure-playwright`;
+  const testCommand = `npx playwright test "${module}" --reporter=line,allure-playwright --headed`;
 
   // Paso 1: Ejecutar tests
   exec(testCommand, { shell: '/bin/bash' }, (error, stdout, stderr) => {

@@ -23,7 +23,7 @@ test('Combustibles', async ({ page }, testInfo) => {
 
     //dentro del test cuando lo abrimos aparece la descripcion
     allure.description(`
-    <b>Objetivo:</b> Este test automatiza el proceso de navegacion, creacion y edicion de Combustibles.<br/>
+    Objetivo: Este test automatiza el proceso de navegacion, creacion y edicion de Combustibles.
     `);
     allure.severity('critical'); // opciones: blocker | critical | normal | minor | trivial         
 
@@ -32,31 +32,56 @@ test('Combustibles', async ({ page }, testInfo) => {
 
     const fuelCode = `${randomId}`;
 
-    //acceder a pagina
-    await page.goto(urlBETA!);
+    await allure.step('Navegar y acceder a Combustibles',async () => {
+        await allure.step('Acceder a la url de login', async () => {
+            await page.goto(urlBETA!);
+        });
+
+        await allure.step('Hacer click en input nombre de usuario', async () => {
+            await page.locator('#UserName').click();
+        });
+
+        await allure.step('Escribir en input nombre de usuario', async () => {
+            await page.locator('#UserName').fill('facuna@atioinc.com');
+        });
+
+        await allure.step('Hacer click en input Contraseña de usuario', async () => {
+            await page.locator('#Password').click();
+        });
+
+        await allure.step('Escribir en input Contraseña de usuario', async () => {
+            await page.locator('#Password').fill('pipo33');
+        });
+
+        await allure.step('Hacer Click en ingresar', async () => {
+            await page.locator('#submit').click();
+        });
+        
+        await allure.step('hacer click para cambiar rol', async () => {
+            const primerLink = page.locator('p >> a').first();
+            await primerLink.click();
+        });
     
-    //ingresar credenciales
-    await page.locator('#UserName').click();
-    await page.locator('#UserName').fill('facuna@atioinc.com');
-  
-    await page.locator('#Password').click();
-    await page.locator('#Password').fill('pipo33');
-  
-    await page.locator('#submit').click();
+        await allure.step('hacer click para desplegar lista de roles', async () => {
+            await page.getByTitle('Show All Items').click();
+        });
 
-    //cambiar a NVComany
-    const primerLink = page.locator('p >> a').first();
-    await primerLink.click();
-    await page.getByTitle('Show All Items').click();
-    await page.getByText('NW Admin - LAB QA').click();       
+        await allure.step('hacer click en rol NWAdmin - LAB QA', async () => {
+            await page.getByText('NW Admin - LAB QA').click();
+        });
 
-    //acceder a modulo combustibles
-    await page.getByRole('link', { name: 'Combustibles', exact: true }).click();
-   
-    //veriricar que estamos en la url de combustibles
-    await expect(page).toHaveURL('https://console-beta.ationet.com/Fuels');
+        await allure.step('acceder a modulo combustibles', async () => {
+            await page.getByRole('link', { name: 'Combustibles', exact: true }).click();
+        });
 
-    //acceder a crear combustibles
+        await allure.step('veriricar que estamos en la url de combustibles', async () => {
+            await expect(page).toHaveURL('https://console-beta.ationet.com/Fuels');
+        });    
+    });
+
+    await allure.step('Crear nueva Combustibles',async () => {
+
+            //acceder a crear combustibles
     await page.getByRole('button', { name: 'Nuevo' }).first().click();
     
     //veriricar que estamos en enlase de crear combustibles
@@ -72,10 +97,10 @@ test('Combustibles', async ({ page }, testInfo) => {
   
     //comfirmar creacion
     await page.locator('#save').click();
+    });
 
-    //verificar que la combustibles se haya creado
-    //abrimos filtro
-    // Aseguramos que el panel esté presente
+    await allure.step('Filtrar nueva Combustibles',async () => {
+            // Aseguramos que el panel esté presente
     await page.locator('#filterPanel').waitFor({ state: 'visible', timeout: 60000 });
 
     // Click en el título, no en todo el panel
@@ -91,8 +116,10 @@ test('Combustibles', async ({ page }, testInfo) => {
 
     //verificamos que este nuestra combustibles
     await expect(page.locator('.dtls tr td a').first()).toHaveText(fuelCode);  // Verificar el texto
+    });
 
-    //ingresar a editar combustibles
+    await allure.step('Editar nueva Combustibles',async () => {
+            //ingresar a editar combustibles
     await page.getByRole('link', { name: 'Editar' }).click();
 
     //modificamos campo 
@@ -101,8 +128,10 @@ test('Combustibles', async ({ page }, testInfo) => {
 
     //comfirmamos edicion
     await page.locator('#save').click();
-    
-    //verificar que la combustibles se haya editado
+    });
+
+    await allure.step('Filtrar nueva Combustibles editada',async () => {
+            //verificar que la combustibles se haya editado
     //abrimos filtro
     await page.locator('#filterPanel').waitFor({ state: 'visible', timeout: 60000 });
 
@@ -119,5 +148,6 @@ test('Combustibles', async ({ page }, testInfo) => {
 
     //verificamos que se haya guardado el editado
     await expect(page.getByRole('cell', { name: fuelCode + 'editado', exact: true })).toBeVisible();
+    });
 
 })

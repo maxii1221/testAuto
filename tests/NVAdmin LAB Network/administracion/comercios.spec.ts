@@ -24,7 +24,7 @@ test('Comercios', async ({ page }, testInfo) => {
 
     //dentro del test cuando lo abrimos aparece la descripcion
     allure.description(`
-    <b>Objetivo:</b> Este test automatiza el proceso de navegacion, creacion y edicion de Comercios.<br/>
+    Objetivo: Este test automatiza el proceso de navegacion, creacion y edicion de Comercios.
     `);
     allure.severity('critical'); // opciones: blocker | critical | normal | minor | trivial         
 
@@ -108,7 +108,7 @@ test('Comercios', async ({ page }, testInfo) => {
     await page.locator('#filterPanel .collapsibleContainerContent').waitFor({ state: 'visible', timeout: 60000 });
    
     await page.locator('#name').click();
-    await page.locator('#namee').fill(nameComercio);
+    await page.locator('#name').fill(nameComercio);
 
     await page.locator('#search').click();
 
