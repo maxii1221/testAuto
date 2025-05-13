@@ -1,0 +1,29 @@
+[phases.setup]
+nixPkgs = [
+  "glibc",
+  "nss",
+  "nspr",
+  "dbus",
+  "atk",
+  "atk-bridge",
+  "cups",
+  "libxcb",
+  "xkeyboard_config",
+  "at-spi2-core",
+  "libX11",
+  "libXcomposite",
+  "libXdamage",
+  "libXext",
+  "libXfixes",
+  "libXrandr",
+  "libgbm",
+  "pango",
+  "cairo",
+  "alsaLib"
+]
+
+[phases.install]
+cmds = ["npm ci", "npx playwright install --with-deps"]
+
+[start]
+cmd = "node server.js"
