@@ -38,7 +38,7 @@ app.post('/run-tests', (req, res) => {
     console.log('🧹 Resultados anteriores (allure-results) eliminados.');
   }
 
-  const testCommand = `npx playwright test "${module}" --reporter=line,allure-playwright`;
+  const testCommand = `npx playwright test "${module}" --reporter=line,allure-playwright --headed`;
 
   exec(testCommand, { shell: '/bin/bash' }, (error, stdout, stderr) => {
     console.log('📜 Resultados de ejecución:\n', stdout);

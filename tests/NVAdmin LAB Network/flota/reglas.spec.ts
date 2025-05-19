@@ -35,99 +35,180 @@ test('Reglas', async ({ page }, testInfo) => {
     const randomId = Math.floor(Math.random() * 10000);
     const reglaAutomatica = `regla auto ${randomId}`;
 
-    //acceder a pagina
-    await page.goto(urlBETA!);
+    await allure.step('Navegar y acceder a Reglas',async () => {
+        await allure.step('Acceder a la url de login', async () => {
+            await page.goto(urlBETA!);
+        });
+
+        await allure.step('Hacer click en input nombre de usuario', async () => {
+            await page.locator('#UserName').click();
+        });
+
+        await allure.step('Escribir en input nombre de usuario', async () => {
+            await page.locator('#UserName').fill('facuna@atioinc.com');
+        });
+
+        await allure.step('Hacer click en input Contraseña de usuario', async () => {
+            await page.locator('#Password').click();
+        });
+
+        await allure.step('Escribir en input Contraseña de usuario', async () => {
+            await page.locator('#Password').fill('pipo33');
+        });
+
+        await allure.step('Hacer Click en ingresar', async () => {
+            await page.locator('#submit').click();
+        });
+        
+        await allure.step('hacer click para cambiar rol', async () => {
+            const primerLink = page.locator('p >> a').first();
+            await primerLink.click();
+        });
     
-    //ingresar credenciales  
-    await page.locator('#UserName').click();
-    await page.locator('#UserName').fill('facuna@atioinc.com');
-  
-    await page.locator('#Password').click();
-    await page.locator('#Password').fill('pipo33');
-  
-    await page.locator('#submit').click();
+        await allure.step('hacer click para desplegar lista de roles', async () => {
+            await page.getByTitle('Show All Items').click();
+        });
 
-    //cambiar a NVComany
-    const primerLink = page.locator('p >> a').first();
-    await primerLink.click();
-    await page.getByTitle('Show All Items').click();
-    await page.getByText('NW Admin - LAB QA').click();   
+        await allure.step('hacer click en rol NWAdmin - LAB QA', async () => {
+            await page.getByText('NW Admin - LAB QA').click();
+        });
 
-    //acceder a modulo Reglas
-    await page.click('a[href="/Rules"]'); // Haz clic en el enlace
+        await allure.step('acceder a modulo Reglas', async () => {
+            await page.click('a[href="/Rules"]');
+        });
 
-    //veriricar que estamos en la url de Reglas
-    await expect(page).toHaveURL('https://console-beta.ationet.com/Rules');
+        await allure.step('veriricar que estamos en la url de Reglas', async () => {
+            await expect(page).toHaveURL('https://console-beta.ationet.com/Rules');
+        });    
+    });   
 
-    //acceder a crear Reglas
-    await page.getByRole('button', { name: 'Nuevo' }).first().click();
+    await allure.step('Crear Nueva Regla' , async () => {
+
+        await allure.step('Click en boton nuevo' , async () => {
+            await page.getByRole('button', { name: 'Nuevo' }).first().click();
+        });
+
+        await allure.step('veriricar que estamos en url de crear Reglas' , async () => {
+            await expect(page).toHaveURL('https://console-beta.ationet.com/Rules/Create');
+        });
+
+        await allure.step('Click en input descripcion' , async () => {
+            await page.locator('#Rule_Description').click();
+        });
+
+        await allure.step('Escribir en input descripcion' , async () => {
+            await page.locator('#Rule_Description').fill(reglaAutomatica);
+        });
+
+        await allure.step('Desplegar y selecconar tipo de regla' , async () => {
+            await page.locator('#Rule_RuleType').selectOption({ label: 'Solicitudes' });
+        });
+
+        await allure.step('Click en checbox vehiculo pin' , async () => {
+            await page.locator('#Rule_VehiclePINReprompt').click();
+        });
+
+        await allure.step('Desplegar y seleccionar compañia' , async () => {
+            await page.locator('#IdCompany').selectOption({ label: 'Wano' });
+        });
+
+        await allure.step('Click en boton guardar' , async () => {
+            await page.locator('#save').click();
+        });
+
+    });
+
+    await allure.step('Filtrar Nueva Regla' , async () => {
+
+        await allure.step('Aseguramos que el Filtro esté presente' , async () => {
+            await page.locator('#filterPanel').waitFor({ state: 'visible', timeout: 60000 });
+        });
+
+        await allure.step('Click en el filtro, no en todo el panel' , async () => {
+            await page.locator('#filterPanel .collapsibleContainerTitle').click({ timeout: 60000 });
+        });
+
+        await allure.step('Esperar que se despliegue el contenido' , async () => {
+            await page.locator('#filterPanel .collapsibleContainerContent').waitFor({ state: 'visible', timeout: 60000 });
+        });
+
+        await allure.step('Click en input Regla' , async () => {
+            await page.locator('#rule').click();
+        });
+
+        await allure.step('Escribir en input Regla' , async () => {
+            await page.locator('#rule').fill(reglaAutomatica);
+        });
+
+        await allure.step('Click en boton buscar' , async () => {
+            await page.locator('#search').click();
+        });
+
+        await allure.step('verificamos que este nuestra combustibles' , async () => {
+            await expect(page.locator('.dtls tr td a').first()).toHaveText(reglaAutomatica);
+        });
+
+    });
+
+    await allure.step('Editar Nueva Regla' , async () => {
+
+        await allure.step('Click en editar' , async () => {
+            await page.getByRole('link', { name: 'Editar' }).first().click();
+        });
+
+        await allure.step('Click en input descripcion' , async () => {
+            await page.locator('#Rule_Description').click();
+        });
+
+        await allure.step('Escribir en input descripcion' , async () => {
+            await page.locator('#Rule_Description').fill(reglaAutomatica + 'editado');
+        });
+
+        await allure.step('Click en boton guardar' , async () => {
+            await page.locator('#save').click();
+        });
+    });
+
+    await allure.step('Filtrar Nueva Regla editada' , async () => {
+                await allure.step('Aseguramos que el Filtro esté presente' , async () => {
+            await page.locator('#filterPanel').waitFor({ state: 'visible', timeout: 60000 });
+        });
+
+        await allure.step('Click en el filtro, no en todo el panel' , async () => {
+            await page.locator('#filterPanel .collapsibleContainerTitle').click({ timeout: 60000 });
+        });
+
+        await allure.step('Esperar que se despliegue el contenido' , async () => {
+            await page.locator('#filterPanel .collapsibleContainerContent').waitFor({ state: 'visible', timeout: 60000 });
+        });
+
+        await allure.step('Click en input Regla' , async () => {
+            await page.locator('#rule').click();
+        });
+
+        await allure.step('Escribir en input Regla' , async () => {
+            await page.locator('#rule').fill(reglaAutomatica + 'editado');
+        });
+
+        await allure.step('Click en boton buscar' , async () => {
+            await page.locator('#search').click();
+        });
+
+        await allure.step('verificamos que este nuestra combustibles' , async () => {
+            await expect(page.locator('.dtls tr td a').first()).toHaveText(reglaAutomatica + 'editado');
+        });
+    });
+
+    await allure.step('Elminar Nueva Regla' , async () => {
+
+        await allure.step('Click en eliminar Combustible' , async () => {
+            await page.getByRole('link', { name: 'Eliminar' }).first().click();
+        });
+
+        await allure.step('Click en Ok' , async () => {
+            await page.getByRole('button', { name: 'Ok' }).click();
+        });
+
+    });
     
-    //veriricar que estamos en enlase de crear Reglas
-    await expect(page).toHaveURL('https://console-beta.ationet.com/Rules/Create');
-    
-    //completar los campos necesarios
-    await page.locator('#Rule_Description').click();
-    await page.locator('#Rule_Description').fill(reglaAutomatica);
-
-    await page.locator('#Rule_RuleType').selectOption({ label: 'Solicitudes' });
-
-    await page.locator('#Rule_VehiclePINReprompt').click();
-    
-    await page.locator('#IdCompany').selectOption({ label: 'Wano' });
-
-    //comfirmar creacion
-    await page.locator('#save').click();
-    
-    //abrimos filtro
-    // Aseguramos que el panel esté presente
-    await page.locator('#filterPanel').waitFor({ state: 'visible', timeout: 60000 });
-
-    // Click en el título, no en todo el panel
-    await page.locator('#filterPanel .collapsibleContainerTitle').click({ timeout: 60000 });
-
-    // Esperar que se despliegue el contenido
-    await page.locator('#filterPanel .collapsibleContainerContent').waitFor({ state: 'visible', timeout: 60000 });
-   
-    await page.locator('#rule').click();
-    await page.locator('#rule').fill(reglaAutomatica);
-
-    await page.locator('#search').click();
-
-    //verificamos que este nuestra combustibles
-    await expect(page.locator('.dtls tr td a').first()).toHaveText(reglaAutomatica);  // Verificar el texto
-
-    //ingresar a editar combustibles
-    await page.getByRole('link', { name: 'Editar' }).first().click();
-    
-
-    //modificamos campo 
-    await page.locator('#Rule_Description').click();
-    await page.locator('#Rule_Description').fill(reglaAutomatica + 'editado');
-
-    //comfirmamos edicion
-    await page.locator('#save').click();
-
-    //abrimos filtro
-    // Aseguramos que el panel esté presente
-    await page.locator('#filterPanel').waitFor({ state: 'visible', timeout: 60000 });
-
-    // Click en el título, no en todo el panel
-    await page.locator('#filterPanel .collapsibleContainerTitle').click({ timeout: 60000 });
-
-    // Esperar que se despliegue el contenido
-    await page.locator('#filterPanel .collapsibleContainerContent').waitFor({ state: 'visible', timeout: 60000 });
-   
-    await page.locator('#rule').click();
-    await page.locator('#rule').fill(reglaAutomatica + 'editado');
-
-    await page.locator('#search').click();
-
-    //verificamos que este nuestra combustibles
-    await expect(page.locator('.dtls tr td a').first()).toHaveText(reglaAutomatica + 'editado');  // Verificar el texto
-
-    //ingresar a editar combustibles
-    await page.getByRole('link', { name: 'Eliminar' }).first().click();
-
-    //borrar regla
-    await page.getByRole('button', { name: 'Ok' }).click();
 })

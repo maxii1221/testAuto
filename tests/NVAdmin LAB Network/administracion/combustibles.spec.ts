@@ -79,75 +79,112 @@ test('Combustibles', async ({ page }, testInfo) => {
         });    
     });
 
-    await allure.step('Crear nueva Combustibles',async () => {
+    await allure.step('Crear nuevo Combustibles',async () => {
+        await allure.step('acceder a crear combustibles',async () => {
+            await page.getByRole('button', { name: 'Nuevo' }).first().click();
+        });
 
-            //acceder a crear combustibles
-    await page.getByRole('button', { name: 'Nuevo' }).first().click();
-    
-    //veriricar que estamos en enlase de crear combustibles
-    await expect(page).toHaveURL('https://console-beta.ationet.com/Fuels/Create');
-    
-    //completar los campos necesarios
-    await page.locator('#IdSite').selectOption({ label: 'custom1Pruebaaa' });
+        await allure.step('veriricar que estamos en enlase de crear combustibles',async () => {
+            await expect(page).toHaveURL('https://console-beta.ationet.com/Fuels/Create');
+        });
 
-    await page.locator('#IdFuelMaster').selectOption({ label: 'TEST' });
+        await allure.step('desplegar y seleccionar sitio',async () => {
+            await page.locator('#IdSite').selectOption({ label: 'custom1Pruebaaa' });
+        });
 
-    await page.locator('#Fuel_Code').click();
-    await page.locator('#Fuel_Code').fill(fuelCode);
-  
-    //comfirmar creacion
-    await page.locator('#save').click();
+        await allure.step('desplegar y seleccionar combustible maestro',async () => {
+            await page.locator('#IdFuelMaster').selectOption({ label: 'TEST' });
+        });
+
+        await allure.step('hacer click en input codigo',async () => {
+            await page.locator('#Fuel_Code').click();
+        });
+
+        await allure.step('escribir en input codigo',async () => {
+            await page.locator('#Fuel_Code').fill(fuelCode);
+        });
+
+        await allure.step('click en boton guardar',async () => {
+            await page.locator('#save').click();
+        });
     });
 
-    await allure.step('Filtrar nueva Combustibles',async () => {
-            // Aseguramos que el panel esté presente
-    await page.locator('#filterPanel').waitFor({ state: 'visible', timeout: 60000 });
+    await allure.step('Filtrar nuevo Combustibles',async () => {
+        await allure.step('Aseguramos que el panel esté presente',async () => {
+            await page.locator('#filterPanel').waitFor({ state: 'visible', timeout: 60000 });
+        });
 
-    // Click en el título, no en todo el panel
-    await page.locator('#filterPanel .collapsibleContainerTitle').click({ timeout: 60000 });
+        await allure.step('Click en el título, no en todo el panel',async () => {
+            await page.locator('#filterPanel .collapsibleContainerTitle').click({ timeout: 60000 });
+        });
 
-    // Esperar que se despliegue el contenido
-    await page.locator('#filterPanel .collapsibleContainerContent').waitFor({ state: 'visible', timeout: 60000 });
-   
-    await page.locator('#codeFilter').click();
-    await page.locator('#codeFilter').fill(fuelCode);
+        await allure.step('Esperar que se despliegue el contenido',async () => {
+            await page.locator('#filterPanel .collapsibleContainerContent').waitFor({ state: 'visible', timeout: 60000 });
+        });
 
-    await page.locator('#search').click();
+        await allure.step('Click en input codigo de sitio',async () => {
+            await page.locator('#codeFilter').click();
+        });
 
-    //verificamos que este nuestra combustibles
-    await expect(page.locator('.dtls tr td a').first()).toHaveText(fuelCode);  // Verificar el texto
+        await allure.step('Escribir en input codigo de sitio',async () => {
+            await page.locator('#codeFilter').fill(fuelCode);
+        });
+
+        await allure.step('click en boton buscar',async () => {
+            await page.locator('#search').click();
+        });
+
+        await allure.step('verificamos que exista nuestro combustibles',async () => {
+            await expect(page.locator('.dtls tr td a').first()).toHaveText(fuelCode);
+        });
     });
 
-    await allure.step('Editar nueva Combustibles',async () => {
-            //ingresar a editar combustibles
-    await page.getByRole('link', { name: 'Editar' }).click();
+    await allure.step('Editar nuevo Combustibles',async () => {
+        await allure.step('ingresar a editar combustibles',async () => {
+            await page.getByRole('link', { name: 'Editar' }).click()
+        });
 
-    //modificamos campo 
-    await page.locator('#Fuel_Code').click();
-    await page.locator('#Fuel_Code').fill(fuelCode + 'editado');
+        await allure.step('Click en input codigo',async () => {
+            await page.locator('#Fuel_Code').click();
+        });
 
-    //comfirmamos edicion
-    await page.locator('#save').click();
+        await allure.step('Escribir en input codigo',async () => {
+            await page.locator('#Fuel_Code').fill(fuelCode + 'editado');
+        });
+
+        await allure.step('Click en boton guardar',async () => {
+            await page.locator('#save').click();
+        });
     });
 
-    await allure.step('Filtrar nueva Combustibles editada',async () => {
-            //verificar que la combustibles se haya editado
-    //abrimos filtro
-    await page.locator('#filterPanel').waitFor({ state: 'visible', timeout: 60000 });
+    await allure.step('Filtrar nuevo Combustibles editado',async () => {
+        await allure.step('Verificamos que el panel de filtro exista',async () => {
+            await page.locator('#filterPanel').waitFor({ state: 'visible', timeout: 60000 });
+        });
 
-    // Click en el título, no en todo el panel
-    await page.locator('#filterPanel .collapsibleContainerTitle').click({ timeout: 60000 });
+        await allure.step('Click en el título, no en todo el panel',async () => {
+            await page.locator('#filterPanel .collapsibleContainerTitle').click({ timeout: 60000 });
+        });
 
-    // Esperar que se despliegue el contenido
-    await page.locator('#filterPanel .collapsibleContainerContent').waitFor({ state: 'visible', timeout: 60000 });
+        await allure.step('Esperar que se despliegue el contenido',async () => {
+            await page.locator('#filterPanel .collapsibleContainerContent').waitFor({ state: 'visible', timeout: 60000 });
+        });
 
-    await page.locator('#codeFilter').click();
-    await page.locator('#codeFilter').fill(fuelCode + 'editado');
+        await allure.step('Click en input codigo de sitio',async () => {
+            await page.locator('#codeFilter').click();
+        });
 
-    await page.locator('#search').click();
+        await allure.step('Escribimos en input codigo de sitio',async () => {
+            await page.locator('#codeFilter').fill(fuelCode + 'editado');
+        });
 
-    //verificamos que se haya guardado el editado
-    await expect(page.getByRole('cell', { name: fuelCode + 'editado', exact: true })).toBeVisible();
+        await allure.step('Click en Buscar',async () => {
+            await page.locator('#search').click();
+        });
+
+        await allure.step('Verificamos que este nuestro combustible editado',async () => {
+            await expect(page.getByRole('cell', { name: fuelCode + 'editado', exact: true })).toBeVisible();
+        });
     });
 
 })

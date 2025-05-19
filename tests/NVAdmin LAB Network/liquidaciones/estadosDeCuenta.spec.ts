@@ -1,7 +1,6 @@
 import { test, expect } from '@playwright/test';
 import { allure } from 'allure-playwright';
 
-
 test('Estado de cuenta', async ({ page }, testInfo) => {
     //varibles:
     const urlBETA = testInfo.project.use?.baseURL; 
@@ -27,41 +26,54 @@ test('Estado de cuenta', async ({ page }, testInfo) => {
     `);
     allure.severity('critical'); // opciones: blocker | critical | normal | minor | trivial    
 
+    await allure.step('Navegar y acceder a Estados de Cuenta',async () => {
+        await allure.step('Acceder a la url de login', async () => {
+            await page.goto(urlBETA!);
+        });
 
-    // Generar un valor aleatorio para cada campo
-    const hoy = new Date();
-    hoy.setDate(hoy.getDate() - 1); // Resta un día
-    const fechaISO = hoy.toISOString().split('T')[0].replace(/-/g, '/');
+        await allure.step('Hacer click en input nombre de usuario', async () => {
+            await page.locator('#UserName').click();
+        });
 
-    const randomId = Math.floor(Math.random() * 1000000);
-    const comentarioContingencia = `${randomId}`;
+        await allure.step('Escribir en input nombre de usuario', async () => {
+            await page.locator('#UserName').fill('facuna@atioinc.com');
+        });
 
-    //acceder a pagina
-    await page.goto(urlBETA!);
+        await allure.step('Hacer click en input Contraseña de usuario', async () => {
+            await page.locator('#Password').click();
+        });
+
+        await allure.step('Escribir en input Contraseña de usuario', async () => {
+            await page.locator('#Password').fill('pipo33');
+        });
+
+        await allure.step('Hacer Click en ingresar', async () => {
+            await page.locator('#submit').click();
+        });
+        
+        await allure.step('hacer click para cambiar rol', async () => {
+            const primerLink = page.locator('p >> a').first();
+            await primerLink.click();
+        });
     
-    //ingresar credenciales
-    await page.locator('#UserName').click();
-    await page.locator('#UserName').fill('facuna@atioinc.com');
-  
-    await page.locator('#Password').click();
-    await page.locator('#Password').fill('pipo33');
-  
-    await page.locator('#submit').click();
+        await allure.step('hacer click para desplegar lista de roles', async () => {
+            await page.getByTitle('Show All Items').click();
+        });
 
-    //cambiar a NVComany
-    const primerLink = page.locator('p >> a').first();
-    await primerLink.click();
-    await page.getByTitle('Show All Items').click();
-    await page.getByText('NW Admin - LAB QA').click();   
+        await allure.step('hacer click en rol NWAdmin - LAB QA', async () => {
+            await page.getByText('NW Admin - LAB QA').click();
+        });
 
-    //acceder a modulo estados de cuenta
-    await page.click('a[href="/Billing/Statements"]'); // Haz clic en el enlace
-   
-    //veriricar que estamos en la url de estados de cuenta
-    await expect(page).toHaveURL('https://console-beta.ationet.com/Billing/Statements');
+        await allure.step('acceder a modulo estados de cuenta', async () => {
+            await page.click('a[href="/Billing/Statements"]');
+        });
 
-    //ingresar a descargar
+        await allure.step('veriricar que estamos en la url de estados de cuenta', async () => {
+            await expect(page).toHaveURL('https://console-beta.ationet.com/Billing/Statements');
+        });    
+    });  
 
-    await page.locator('span.pdf.present[title="Descargar"]').first().click();
-
+    await allure.step('Click en boton descargar', async () => {
+        await page.locator('span.pdf.present[title="Descargar"]').first().click();
+    })
 })

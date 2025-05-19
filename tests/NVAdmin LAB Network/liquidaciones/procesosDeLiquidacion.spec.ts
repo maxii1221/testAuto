@@ -27,36 +27,51 @@ test('Procesos de Liquidación', async ({ page }, testInfo) => {
     `);
     allure.severity('critical'); // opciones: blocker | critical | normal | minor | trivial    
 
-    // Generar un valor aleatorio para cada campo
-    const hoy = new Date();
-    hoy.setDate(hoy.getDate() - 1); // Resta un día
-    const fechaISO = hoy.toISOString().split('T')[0].replace(/-/g, '/');
+    await allure.step('Navegar y acceder a Procesos de Liquidación',async () => {
+        await allure.step('Acceder a la url de login', async () => {
+            await page.goto(urlBETA!);
+        });
 
-    const randomId = Math.floor(Math.random() * 1000000);
-    const comentarioContingencia = `${randomId}`;
+        await allure.step('Hacer click en input nombre de usuario', async () => {
+            await page.locator('#UserName').click();
+        });
 
-    //acceder a pagina
-    await page.goto(urlBETA!);
+        await allure.step('Escribir en input nombre de usuario', async () => {
+            await page.locator('#UserName').fill('facuna@atioinc.com');
+        });
+
+        await allure.step('Hacer click en input Contraseña de usuario', async () => {
+            await page.locator('#Password').click();
+        });
+
+        await allure.step('Escribir en input Contraseña de usuario', async () => {
+            await page.locator('#Password').fill('pipo33');
+        });
+
+        await allure.step('Hacer Click en ingresar', async () => {
+            await page.locator('#submit').click();
+        });
+        
+        await allure.step('hacer click para cambiar rol', async () => {
+            const primerLink = page.locator('p >> a').first();
+            await primerLink.click();
+        });
     
-    //ingresar credenciales
-    await page.locator('#UserName').click();
-    await page.locator('#UserName').fill('facuna@atioinc.com');
-  
-    await page.locator('#Password').click();
-    await page.locator('#Password').fill('pipo33');
-  
-    await page.locator('#submit').click();
+        await allure.step('hacer click para desplegar lista de roles', async () => {
+            await page.getByTitle('Show All Items').click();
+        });
 
-    //cambiar a NVComany
-    const primerLink = page.locator('p >> a').first();
-    await primerLink.click();
-    await page.getByTitle('Show All Items').click();
-    await page.getByText('NW Admin - LAB QA').click();   
+        await allure.step('hacer click en rol NWAdmin - LAB QA', async () => {
+            await page.getByText('NW Admin - LAB QA').click();
+        });
 
-    //acceder a modulo Procesos de Liquidación
-    await page.click('a[href="/Processes/Billing"]'); // Haz clic en el enlace
-   
-    //veriricar que estamos en la url de Procesos de Liquidación
-    await expect(page).toHaveURL('https://console-beta.ationet.com/Processes/Billing');
+        await allure.step('acceder a modulo Procesos de Liquidación', async () => {
+            await page.click('a[href="/Processes/Billing"]');
+        });
+
+        await allure.step('veriricar que estamos en la url de Procesos de Liquidación', async () => {
+            await expect(page).toHaveURL('https://console-beta.ationet.com/Processes/Billing');
+        });    
+    });    
 
 })

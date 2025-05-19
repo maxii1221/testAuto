@@ -27,33 +27,66 @@ test('Transacciones Excepciones', async ({ page }, testInfo) => {
     `);
     allure.severity('critical'); // opciones: blocker | critical | normal | minor | trivial  
 
-    //acceder a pagina
-    await page.goto(urlBETA!);
+
+    await allure.step('Navegar y acceder a excepciones',async () => {
+        await allure.step('Acceder a la url de login', async () => {
+            await page.goto(urlBETA!);
+        });
+
+        await allure.step('Hacer click en input nombre de usuario', async () => {
+            await page.locator('#UserName').click();
+        });
+
+        await allure.step('Escribir en input nombre de usuario', async () => {
+            await page.locator('#UserName').fill('facuna@atioinc.com');
+        });
+
+        await allure.step('Hacer click en input Contraseña de usuario', async () => {
+            await page.locator('#Password').click();
+        });
+
+        await allure.step('Escribir en input Contraseña de usuario', async () => {
+            await page.locator('#Password').fill('pipo33');
+        });
+
+        await allure.step('Hacer Click en ingresar', async () => {
+            await page.locator('#submit').click();
+        });
+        
+        await allure.step('hacer click para cambiar rol', async () => {
+            const primerLink = page.locator('p >> a').first();
+            await primerLink.click();
+        });
     
-    //ingresar credenciales
-    await page.locator('#UserName').click();
-    await page.locator('#UserName').fill('facuna@atioinc.com');
-  
-    await page.locator('#Password').click();
-    await page.locator('#Password').fill('pipo33');
-  
-    await page.locator('#submit').click();
+        await allure.step('hacer click para desplegar lista de roles', async () => {
+            await page.getByTitle('Show All Items').click();
+        });
 
-    //cambiar a NVComany
-    const primerLink = page.locator('p >> a').first();
-    await primerLink.click();
-    await page.getByTitle('Show All Items').click();
-    await page.getByText('NW Company Admin - FORMULA1').click();
+        await allure.step('hacer click en rol NW Company Admin- FORMULA1', async () => {
+            await page.getByText('NW Company Admin - FORMULA1').click();
+        });
+        
+        await allure.step('acceder a modulo Transacciones Exepciones', async () => {
+            await page.click('a[href="/TransactionsExceptions"]');
+        });
 
-    //acceder a modulo contrato de Transacciones Exepciones
-    await page.click('a[href="/TransactionsExceptions"]'); // Haz clic en el enlace
+        await allure.step('veriricar que estamos en la url de Transacciones Exepciones', async () => {
+            await expect(page).toHaveURL('https://console-beta.ationet.com/TransactionsExceptions');
+        });    
+    });   
 
-    // Buscar el primer enlace de código de autorización dentro del tbody
-    await page.locator('tr >> td:nth-child(3) >> a').first().click();
+    await allure.step('Ver detalle de Excepciones', async () => {
 
-    //presionamos ok en la vista detalles para volver a autorizaciones pendientes
-    await page.getByRole('button', { name: 'Ok' }).click();
+        await allure.step('Click para ingresar a detalle de Excepcion', async () => {
+            await page.locator('tbody tr td:nth-child(4) a').first().click();
+        });
 
-    //veriricar que estamos en la url de contrato de Transacciones Exepciones
-    await expect(page).toHaveURL('https://console-beta.ationet.com/TransactionsExceptions');
+        await allure.step('Click en boton Ok', async () => {
+            await page.getByRole('button', { name: 'Ok' }).click();
+        });
+
+        await allure.step('veriricar que Volvimos a la url de Transacciones Exepciones', async () => {
+            await expect(page).toHaveURL('https://console-beta.ationet.com/TransactionsExceptions');
+        });    
+    });
 })

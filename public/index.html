@@ -2,76 +2,40 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Ejecutor de Tests Automatizados</title>
-  <style>
-    body {
-      font-family: sans-serif;
-      max-width: 600px;
-      margin: 50px auto;
-      padding: 20px;
-      border-radius: 12px;
-      background: #f4f4f4;
-    }
-    h1 { color: #333; }
-    button {
-      padding: 10px 15px;
-      margin-top: 10px;
-      font-size: 16px;
-      cursor: pointer;
-      border: none;
-      background-color: #007bff;
-      color: white;
-      border-radius: 6px;
-    }
-    select, button {
-      width: 100%;
-      margin-bottom: 15px;
-    }
-    .success { color: green; }
-    .error { color: red; }
-    a.report-link {
-      display: inline-block;
-      margin-top: 20px;
-      color: #007bff;
-    }
-
-    .progress-container {
-      margin-top: 10px;
-      width: 100%;
-      height: 20px;
-      background-color: #ddd;
-      border-radius: 10px;
-      overflow: hidden;
-    }
-    .progress-bar {
-      height: 100%;
-      width: 0%;
-      background-color: #28a745;
-      transition: width 0.4s ease;
-    }
-  </style>
+  <title>Ejecutor de Automatizacion</title>
+  <link rel="stylesheet" href="style/style.css">
 </head>
 <body>
-  <h1>Ejecutar Tests Playwright</h1>
 
-  <label for="module">Selecciona un módulo:</label>
-  <select id="module">
-    <option value="">-- Seleccionar --</option>
-    <option value="NVAdmin LAB Network/administracion">Administración (LAB Network)</option>
-    <option value="NVAdmin LAB Network/flota">Flota (LAB Network)</option>
-    <option value="NVAdmin LAB Network/liquidaciones">Liquidaciones (LAB Network)</option>
-    <option value="NVCompany Atio Lab Flota/administracion">Administración (Atio Flota)</option>
-    <option value="NVCompany Atio Lab Flota/flota">Flota (Atio Flota)</option>
-  </select>
+    <div class="contenedorIzquierdo">
+        
+    </div>
 
-  <button onclick="runTest()">Ejecutar Test</button>
+    <div class="ContenedorDerecho">
+        
+        <h1>Automatizacion portal ATIONET</h1>
 
-  <div class="progress-container">
-    <div class="progress-bar" id="progressBar"></div>
-  </div>
+        <label for="module">Selecciona un módulo:</label>
+        <select id="module">
+            <option value="">-- Seleccionar --</option>
+            <option value="/">Ejecutar Todos</option>
+            <option value="NVAdmin LAB Network/administracion">Administración (LA Network)</option>
+            <option value="NVAdmin LAB Network/flota">Flota (LAB Network)</option>
+            <option value="NVAdmin LAB Network/liquidaciones">Liquidaciones (LAB Network)</option>
+            <option value="NVCompany Atio Lab Flota/administracion">Administración (Atio Flota)</option>
+            <option value="NVCompany Atio Lab Flota/flota">Flota (Atio Flota)</option>
+        </select>
 
-  <p id="status">Esperando ejecución...</p>
-  <a id="reportLink" class="report-link" href="#" target="_blank" style="display: none;">Ver Reporte Allure</a>
+        <button onclick="runTest()">Ejecutar Test</button>
+
+        <div class="progress-container">
+            <div class="progress-bar" id="progressBar"></div>
+        </div>
+
+        <p id="status">Esperando ejecución...</p>
+        <a id="reportLink" class="report-link" href="#" target="_blank" style="display: none;">Ver Reporte Allure</a>
+
+    </div>
 
   <script>
     async function runTest() {

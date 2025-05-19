@@ -1,7 +1,6 @@
 import { test, expect } from '@playwright/test';
 import { allure } from 'allure-playwright';
 
-
 test('Transacciones', async ({ page }, testInfo) => {
     //varibles:
     const urlBETA = testInfo.project.use?.baseURL; 
@@ -27,33 +26,67 @@ test('Transacciones', async ({ page }, testInfo) => {
     `);
     allure.severity('critical'); // opciones: blocker | critical | normal | minor | trivial  
 
-    //acceder a pagina
-    await page.goto(urlBETA!);
+    await allure.step('Navegar y acceder a Transacciones',async () => {
+        await allure.step('Acceder a la url de login', async () => {
+            await page.goto(urlBETA!);
+        });
+
+        await allure.step('Hacer click en input nombre de usuario', async () => {
+            await page.locator('#UserName').click();
+        });
+
+        await allure.step('Escribir en input nombre de usuario', async () => {
+            await page.locator('#UserName').fill('facuna@atioinc.com');
+        });
+
+        await allure.step('Hacer click en input Contraseña de usuario', async () => {
+            await page.locator('#Password').click();
+        });
+
+        await allure.step('Escribir en input Contraseña de usuario', async () => {
+            await page.locator('#Password').fill('pipo33');
+        });
+
+        await allure.step('Hacer Click en ingresar', async () => {
+            await page.locator('#submit').click();
+        });
+        
+        await allure.step('hacer click para cambiar rol', async () => {
+            const primerLink = page.locator('p >> a').first();
+            await primerLink.click();
+        });
     
-    //ingresar credenciales
-    await page.locator('#UserName').click();
-    await page.locator('#UserName').fill('facuna@atioinc.com');
-  
-    await page.locator('#Password').click();
-    await page.locator('#Password').fill('pipo33');
-  
-    await page.locator('#submit').click();
+        await allure.step('hacer click para desplegar lista de roles', async () => {
+            await page.getByTitle('Show All Items').click();
+        });
 
-    //cambiar a NVComany
-    const primerLink = page.locator('p >> a').first();
-    await primerLink.click();
-    await page.getByTitle('Show All Items').click();
-    await page.getByText('NW Admin - LAB QA').click();   
+        await allure.step('hacer click en rol NWAdmin - LAB QA', async () => {
+            await page.getByText('NW Admin - LAB QA').click();
+        });
 
-    //acceder a modulo contrato de Transacciones
-    await page.click('a[href="/Transactions"]'); // Haz clic en el enlace
+        await allure.step('acceder a modulo Transacciones', async () => {
+            await page.click('a[href="/Transactions"]');
+        });
 
-    // Buscar el primer enlace de código de autorización dentro del tbody
+        await allure.step('veriricar que estamos en la url de Transacciones', async () => {
+            await expect(page).toHaveURL('https://console-beta.ationet.com/Transactions');
+        });    
+    });   
 
-    await page.locator('tbody tr td:nth-child(2) a').first().click();
-    //presionamos ok en la vista detalles para volver a autorizaciones pendientes
-    await page.getByRole('button', { name: 'Ok' }).click();
+    await allure.step('Ingresar al detalle de transaccion' , async () => {
 
-    //veriricar que estamos en la url de contrato de Transacciones
-    await expect(page).toHaveURL('https://console-beta.ationet.com/Transactions');
+        await allure.step('Click para ingresar a detalle de transaccion' , async () => {
+            await page.locator('tbody tr td:nth-child(2) a').first().click();
+        });
+
+        await allure.step('Click en boton ok' , async () => {
+            await page.getByRole('button', { name: 'Ok' }).click();
+        });
+
+        await allure.step('Verificamos que volvimos a la url de transacciones' , async () => {
+            await expect(page).toHaveURL('https://console-beta.ationet.com/Transactions');
+        });
+    });
+
+
 })

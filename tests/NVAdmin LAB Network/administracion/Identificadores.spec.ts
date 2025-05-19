@@ -1,8 +1,6 @@
 import { test, expect } from '@playwright/test';
 import { allure } from 'allure-playwright';
 
-
-
 test('Identificadores', async ({ page }, testInfo) => {
     //varibles:
     const urlBETA = testInfo.project.use?.baseURL; 
@@ -33,106 +31,201 @@ test('Identificadores', async ({ page }, testInfo) => {
     const idEtiqueta = `${randomId}`;
     const idCorreo= `${randomId}@atioinc.com`;
 
-    //acceder a pagina
-    await page.goto(urlBETA!);
+    await allure.step('Navegar y acceder a identificadores',async () => {
+        await allure.step('Acceder a la url de login', async () => {
+            await page.goto(urlBETA!);
+        });
+
+        await allure.step('Hacer click en input nombre de usuario', async () => {
+            await page.locator('#UserName').click();
+        });
+
+        await allure.step('Escribir en input nombre de usuario', async () => {
+            await page.locator('#UserName').fill('facuna@atioinc.com');
+        });
+
+        await allure.step('Hacer click en input Contraseña de usuario', async () => {
+            await page.locator('#Password').click();
+        });
+
+        await allure.step('Escribir en input Contraseña de usuario', async () => {
+            await page.locator('#Password').fill('pipo33');
+        });
+
+        await allure.step('Hacer Click en ingresar', async () => {
+            await page.locator('#submit').click();
+        });
+        
+        await allure.step('hacer click para cambiar rol', async () => {
+            const primerLink = page.locator('p >> a').first();
+            await primerLink.click();
+        });
     
-    //ingresar credenciales
-    await page.locator('#UserName').click();
-    await page.locator('#UserName').fill('facuna@atioinc.com');
-  
-    await page.locator('#Password').click();
-    await page.locator('#Password').fill('pipo33');
-  
-    await page.locator('#submit').click();
+        await allure.step('hacer click para desplegar lista de roles', async () => {
+            await page.getByTitle('Show All Items').click();
+        });
 
-    //cambiar a NVComany
-    const primerLink = page.locator('p >> a').first();
-    await primerLink.click();
-    await page.getByTitle('Show All Items').click();
-    await page.getByText('NW Admin - LAB QA').click();   
+        await allure.step('hacer click en rol NWAdmin - LAB QA', async () => {
+            await page.getByText('NW Admin - LAB QA').click();
+        });
 
-    //acceder a modulo Identificadores
-    await page.click('a[href="/Identifications"]'); // Haz clic en el enlace
-    
+        await allure.step('acceder a modulo identificadores', async () => {
+            await page.click('a[href="/Identifications"]')
+        });
 
-    //veriricar que estamos en la url de Identificadores
-    await expect(page).toHaveURL('https://console-beta.ationet.com/Identifications');
+        await allure.step('veriricar que estamos en la url de identificadores', async () => {
+            await expect(page).toHaveURL('https://console-beta.ationet.com/Identifications');
+        });    
+    });
 
-    //acceder a crear Identificadores
-    await page.getByRole('button', { name: 'Nuevo' }).first().click();
-    
-    //veriricar que estamos en enlase de crear identificadores
-    await expect(page).toHaveURL('https://console-beta.ationet.com/Identifications/Create');
-    
-    //completar los campos necesarios
-    await page.locator('#Identification_Type').selectOption({ label: 'Tarjeta' });
+    await allure.step('Crear nuevo identificador',async () => {
 
-    await page.locator('#IdIdentificationsTypesModel').selectOption({ label: 'PRUEBA' });
-    
-    await page.locator('#UseType').selectOption({ label: 'Flota' });
+        await allure.step('Click en boton nuevo',async () => {
+            await page.getByRole('button', { name: 'Nuevo' }).first().click();
+        });
 
-    await page.locator('#IdProgram').selectOption({ label: 'Classic' });
-    
-    await page.locator('#Identification_Label').click();
-    await page.locator('#Identification_Label').fill(idEtiqueta);
+        await allure.step('veriricar que estamos en enlase de crear identificadores',async () => {
+            await expect(page).toHaveURL('https://console-beta.ationet.com/Identifications/Create');
+        });
 
-    await page.locator('#Identification_TrackNumber').click();
-    await page.locator('#Identification_TrackNumber').fill(idEtiqueta+'='+idEtiqueta);
- 
-    await page.locator('#Identification_ExpirationDate').click();
-    await page.locator('#Identification_ExpirationDate').fill('2045/04/22');
-    
-    await page.locator('#Identification_Email').click();
-    await page.locator('#Identification_Email').fill(idCorreo);
+        await allure.step('Desplegamos lista y seleccionamos tipo de identificador',async () => {
+            await page.locator('#Identification_Type').selectOption({ label: 'Tarjeta' });
+        });
 
-    //comfirmar creacion
-    await page.locator('#save').click();
-    
-    //verificar que la identificadores se haya creado
-    //abrimos filtro
-    // Aseguramos que el panel esté presente
-    await page.locator('#filterPanel').waitFor({ state: 'visible', timeout: 60000 });
+        await allure.step('Desplegamos lista y seleccionamos modelo de identificador',async () => {
+            await page.locator('#IdIdentificationsTypesModel').selectOption({ label: 'PRUEBA' });
+        });
 
-    // Click en el título, no en todo el panel
-    await page.locator('#filterPanel .collapsibleContainerTitle').click({ timeout: 60000 });
+        await allure.step('Desplegamos lista y seleccionamos uso',async () => {
+            await page.locator('#UseType').selectOption({ label: 'Flota' });
+        });
 
-    // Esperar que se despliegue el contenido
-    await page.locator('#filterPanel .collapsibleContainerContent').waitFor({ state: 'visible', timeout: 60000 });
-   
-    await page.locator('#label').click();
-    await page.locator('#label').fill(idEtiqueta);
+        await allure.step('Desplegamos lista y seleccionamos programa',async () => {
+            await page.locator('#IdProgram').selectOption({ label: 'Classic' });
+        });
 
-    await page.locator('#search').click();
+        await allure.step('Click en input tarjeta',async () => {
+            await page.locator('#Identification_Label').click();
+        });
 
-    //verificamos que este nuestro identificadores
-    await expect(page.locator('.dtls tr td a').first()).toHaveText(idEtiqueta);  // Verificar el texto
+        await allure.step('Escribir en input tarjeta',async () => {
+            await page.locator('#Identification_Label').fill(idEtiqueta);
+        });
 
-    //ingresar a editar identificadores
-    await page.getByRole('link', { name: 'Editar' }).click();
+        await allure.step('Click en input track',async () => {
+            await page.locator('#Identification_TrackNumber').click()
+        });
 
-    //modificamos campo 
-    await page.locator('#Identification_TrackNumber').click();
-    await page.locator('#Identification_TrackNumber').fill(idEtiqueta+'='+idEtiqueta + 'editado');
+        await allure.step('Escribir en input track',async () => {
+            await page.locator('#Identification_TrackNumber').fill(idEtiqueta+'='+idEtiqueta);
+        });
 
-    //comfirmamos edicion
-    await page.locator('#save').click();
-    
-    //verificar que el identificadores se haya editado
-    //abrimos filtro
-    await page.locator('#filterPanel').waitFor({ state: 'visible', timeout: 60000 });
+        await allure.step('click en input fecha de espiracion',async () => {
+            await page.locator('#Identification_ExpirationDate').click();
+        });
 
-    // Click en el título, no en todo el panel
-    await page.locator('#filterPanel .collapsibleContainerTitle').click({ timeout: 60000 });
+        await allure.step('Escribir en input fecha de espiracion',async () => {
+            await page.locator('#Identification_ExpirationDate').fill('2045/04/22');
+        });
 
-    // Esperar que se despliegue el contenido
-    await page.locator('#filterPanel .collapsibleContainerContent').waitFor({ state: 'visible', timeout: 60000 });
+        await allure.step('Click en input correo',async () => {
+            await page.locator('#Identification_Email').click();
+        });
 
-    await page.locator('#label').click();
-    await page.locator('#label').fill(idEtiqueta);
+        await allure.step('Escribir en input correo',async () => {
+            await page.locator('#Identification_Email').fill(idCorreo);
+        });
 
-    await page.locator('#search').click();
+        await allure.step('Click en boton guardar',async () => {
+            await page.locator('#save').click();
+        });
 
-    //entrar al detalle del id creado
-    await page.getByRole('link', { name: idEtiqueta }).click();
+    });
+
+    await allure.step('Filtrar nuevo identificador',async () => {
+
+        await allure.step('Aseguramos que el panel filtro esté presente',async () => {
+            await page.locator('#filterPanel').waitFor({ state: 'visible', timeout: 60000 });
+        });
+
+        await allure.step('Click en el título filtro',async () => {
+            await page.locator('#filterPanel .collapsibleContainerTitle').click({ timeout: 60000 });
+        });
+
+        await allure.step('Esperar que se despliegue el filtro',async () => {
+            await page.locator('#filterPanel .collapsibleContainerContent').waitFor({ state: 'visible', timeout: 60000 });
+        });
+
+        await allure.step('Click en input etiqueta',async () => {
+            await page.locator('#label').click();
+        });
+
+        await allure.step('Escribir en input etiqueta',async () => {
+            await page.locator('#label').fill(idEtiqueta);
+        });
+
+        await allure.step('Click en boton buscar',async () => {
+            await page.locator('#search').click();
+        });
+
+        await allure.step('Nos aseguramos que este presente nuevo identificador',async () => {
+            await expect(page.locator('.dtls tr td a').first()).toHaveText(idEtiqueta);
+        });
+
+    });
+
+    await allure.step('Editar nuevo identificador',async () => {
+        await allure.step('Click en editar identificador',async () => {
+            await page.getByRole('link', { name: 'Editar' }).click();
+        })
+
+        await allure.step('click en track',async () => {
+            await page.locator('#Identification_TrackNumber').click();
+        })
+
+        await allure.step('escribir track',async () => {
+            await page.locator('#Identification_TrackNumber').fill(idEtiqueta+'='+idEtiqueta + 'editado');
+        })
+
+        await allure.step('click en guardar',async () => {
+            await page.locator('#save').click();
+        })
+
+    });
+
+    await allure.step('Filtrar nuevo Comercio editado',async () => {
+
+        await allure.step('Aseguramos que el panel filtro esté presente',async () => {
+            await page.locator('#filterPanel').waitFor({ state: 'visible', timeout: 60000 });
+        });
+
+        await allure.step('Click en el título filtro',async () => {
+            await page.locator('#filterPanel .collapsibleContainerTitle').click({ timeout: 60000 });
+        });
+
+        await allure.step('Esperar que se despliegue el filtro',async () => {
+            await page.locator('#filterPanel .collapsibleContainerContent').waitFor({ state: 'visible', timeout: 60000 });
+        });
+
+        await allure.step('Click en input etiqueta',async () => {
+            await page.locator('#label').click();
+        });
+
+        await allure.step('Escribir en input etiqueta',async () => {
+            await page.locator('#label').fill(idEtiqueta);
+        });
+
+        await allure.step('Click en boton buscar',async () => {
+            await page.locator('#search').click();
+        });
+
+        await allure.step('entrar al detalle del id creado',async () => {
+            await page.getByRole('link', { name: idEtiqueta }).click();
+        });
+    });
 
 })
+
+
+
+
