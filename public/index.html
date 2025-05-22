@@ -8,34 +8,90 @@
 <body>
 
     <div class="contenedorIzquierdo">
-        
+        <picture class="contenedorLogo">
+          <img class="logo" src="pictures/fd4b8d95-09b9-46ba-bede-7fc04ad02e4d.jpg" alt="">
+        </picture>
+        <div class="divIzquierdo1">
+          <div class="divIzquierdo1-1">
+            <p class="textWhite">Portar de Automatizacion</p>
+          </div>    
+        </div>
+        <div class="divIzquierdo2">
+          <div class="divIzquierdo2-1">
+            <p class="p-menu-lateral">Automatizacion servicios</p>
+          </div>
+        </div>
+        <div class="divIzquierdo2">
+          <div class="divIzquierdo2-1">
+            <p class="p-menu-lateral">Automatizacion beta QA</p>
+          </div>
+        </div>
+        <div class="divIzquierdo2">
+          <div class="divIzquierdo2-1">
+            <p class="p-menu-lateral">Automatizacion preprod QA</p>
+          </div>
+        </div>
+        <div class="divIzquierdo2">
+          <div class="divIzquierdo2-1">
+            <p class="p-menu-lateral">Automatizacion portal Company QA</p>
+          </div>
+        </div>
     </div>
 
     <div class="ContenedorDerecho">
         
-        <h1>Automatizacion portal ATIONET</h1>
+      <div class="contenedorHeader">
+      </div>
 
-        <label for="module">Selecciona un módulo:</label>
-        <select id="module">
-            <option value="">-- Seleccionar --</option>
-            <option value="/">Ejecutar Todos</option>
-            <option value="NVAdmin LAB Network/administracion">Administración (LA Network)</option>
-            <option value="NVAdmin LAB Network/flota">Flota (LAB Network)</option>
-            <option value="NVAdmin LAB Network/liquidaciones">Liquidaciones (LAB Network)</option>
-            <option value="NVCompany Atio Lab Flota/administracion">Administración (Atio Flota)</option>
-            <option value="NVCompany Atio Lab Flota/flota">Flota (Atio Flota)</option>
-        </select>
-
-        <button onclick="runTest()">Ejecutar Test</button>
-
-        <div class="progress-container">
-            <div class="progress-bar" id="progressBar"></div>
+      <div class="contenedorDerecho1">
+        <div class="contenedorDerecho1-1">
+          <p class="textNavegacion">Ud. esta en: Automatizacion servicios</p>
         </div>
+      </div>
 
-        <p id="status">Esperando ejecución...</p>
-        <a id="reportLink" class="report-link" href="#" target="_blank" style="display: none;">Ver Reporte Allure</a>
+      <div class="contenedorDerechoTitulo">
+        <h1 class="tituloDeAutomatizacion">Ejecutar Automatizacion</h1>
+      </div>
 
+      <div class="ContenedorDeEjecutor">
+
+        <div class="contenedorDerecho2">
+
+          <div class="contenedorDerecho2-1">
+            <label for="module">Selecciona un módulo:</label>
+          </div>
+
+          <div class="contenedorDerecho2-2">
+            <select id="module">
+              <option value="">-- Seleccionar --</option>
+              <option value="NVAdmin LAB Network/administracion">Administración (LA Network)</option>
+              <option value="NVAdmin LAB Network/flota">Flota (LAB Network)</option>
+              <option value="NVAdmin LAB Network/liquidaciones">Liquidaciones (LAB Network)</option>
+              <option value="NVCompany Atio Lab Flota/administracion">Administración (Atio Flota)</option>
+              <option value="NVCompany Atio Lab Flota/flota">Flota (Atio Flota)</option>
+            </select>
+          </div>
+
+          <div class="contenedorDerecho2-3">
+            <button class="buttonEjecutarTest" onclick="runTest()">Ejecutar Test</button>
+          </div>
+
+          <div class="contenedorDerecho2-4">
+            <div class="progress-container">
+              <div class="progress-bar" id="progressBar"></div>
+            </div>
+          </div>
+          
+          <div class="contenedorDerecho2-5">
+            <p id="status">Esperando ejecución...</p>
+            <a id="reportLink" class="report-link" href="#" target="_blank" style="display: none;">Ver Reporte Allure</a>
+          </div>            
+          
+        </div>
+        </div>  
     </div>
+
+    
 
   <script>
     async function runTest() {
