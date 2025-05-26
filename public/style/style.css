@@ -159,7 +159,7 @@ body {
 .contenedorDerecho2-2{
     display: flex;
     width: 90%;
-    height: 15%;
+    height: 12%;
     align-items: center;
 }
     
@@ -167,9 +167,8 @@ body {
 .contenedorDerecho2-3{
     display: flex;
     width: 90%;
-    height: 15%;
+    height: 12%;
     align-items: center;
-
 }
 
 .contenedorDerecho2-4{
@@ -180,10 +179,35 @@ body {
 
 }
 
+.headerTerminal{
+    width: 90%;
+    height: 35px;
+    background-color: #49034a;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    display: flex;
+    align-items: center;
+}
+
+.textHeaderTerminal{
+    margin-left: 15px;
+    color: white;
+    font-size: 16px;
+}
+
 .contenedorDerecho2-5{
+    background-color: black;
     display: flex;
     width: 90%;
-    height: 20%;
+    height: 25%;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    overflow: auto; /* Agrega scroll si es necesario (horizontal o vertical) */
+}
+
+#status{
+    color:white;
+    margin-left: 15px;
 }
 
 #module{

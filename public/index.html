@@ -82,6 +82,9 @@
             </div>
           </div>
           
+          <div class="headerTerminal">
+            <p class="textHeaderTerminal">Terminal De progreso</p>
+          </div>
           <div class="contenedorDerecho2-5">
             <p id="status">Esperando ejecución...</p>
             <a id="reportLink" class="report-link" href="#" target="_blank" style="display: none;">Ver Reporte Allure</a>
@@ -155,5 +158,27 @@
       }
     }
   </script>
+  <script src="/socket.io/socket.io.js"></script>
+<script>
+  const socket = io();
+
+  socket.on('test-progress', (data) => {
+    const status = document.getElementById('status');
+    const progressBar = document.getElementById('progressBar');
+
+    // Detectar progreso tipo "[x/y]"
+    const match = data.match(/\[(\d+)\/(\d+)\]/);
+    if (match) {
+      const current = parseInt(match[1]);
+      const total = parseInt(match[2]);
+      const percent = Math.round((current / total) * 100);
+      progressBar.style.width = percent + '%';
+      status.textContent = `Progreso: ${current} de ${total}`;
+    } else {
+      // Mostrar línea por defecto
+      status.textContent = data;
+    }
+  });
+</script>
 </body>
 </html>

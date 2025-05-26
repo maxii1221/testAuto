@@ -1,11 +1,16 @@
 const express = require('express');
-const { exec } = require('child_process');
+const { spawn } = require('child_process');
 const path = require('path');
 const cors = require('cors');
 const fs = require('fs');
 const os = require('os');
+const http = require('http');
+const socketIO = require('socket.io');
 
 const app = express();
+const server = http.createServer(app);
+const io = socketIO(server);
+
 const PORT = process.env.PORT || 3000;
 
 // Función para obtener la IP local
@@ -24,55 +29,45 @@ function getLocalIP() {
 app.use(express.json());
 app.use(cors());
 
+io.on('connection', (socket) => {
+  console.log('🧠 Cliente conectado al socket');
+});
+
 app.post('/run-tests', (req, res) => {
   const module = req.body.module;
   if (!module) return res.status(400).json({ error: 'Falta el parámetro "module"' });
 
-  console.log('📦 Módulo recibido para ejecutar:', module);
-
   const resultsPath = path.join(__dirname, 'allure-results');
   const reportPath = path.join(__dirname, 'allure-report');
 
-  if (fs.existsSync(resultsPath)) {
-    fs.rmSync(resultsPath, { recursive: true, force: true });
-    console.log('🧹 Resultados anteriores (allure-results) eliminados.');
-  }
+  if (fs.existsSync(resultsPath)) fs.rmSync(resultsPath, { recursive: true, force: true });
 
-  const testCommand = `npx playwright test "${module}" --reporter=line,allure-playwright --headed`;
+  const testCommand = `npx playwright test "${module}" --reporter=line,allure-playwright`;
 
-  exec(testCommand, { shell: '/bin/bash' }, (error, stdout, stderr) => {
-    console.log('📜 Resultados de ejecución:\n', stdout);
-    if (stderr) console.warn('⚠️ Stderr:\n', stderr);
+  const testProcess = spawn(testCommand, { shell: true });
 
-    exec(`rm -rf ${reportPath}`, { shell: '/bin/bash' }, (err) => {
-      if (err) {
-        console.error('❌ Error eliminando allure-report:', err.message);
-        return res.status(500).json({ error: 'Error eliminando allure-report' });
-      }
-      console.log('🧹 Directorio allure-report eliminado.');
+  testProcess.stdout.on('data', (data) => {
+    const output = data.toString();
+    console.log(output);
+    io.emit('test-progress', output); // 🔴 Emitir al frontend
+  });
 
-      const generateCommand = `npx allure generate ${resultsPath} --clean -o ${reportPath}`;
-      exec(generateCommand, { shell: '/bin/bash' }, (genErr, genOut, genStderr) => {
-        if (genErr) {
-          console.error('❌ Error generando el reporte:', genStderr || genErr.message);
-          return res.status(500).json({ error: 'Error generando reporte' });
-        }
-        console.log('📊 Reporte generado correctamente.');
+  testProcess.stderr.on('data', (data) => {
+    const errorOutput = data.toString();
+    console.warn(errorOutput);
+    io.emit('test-progress', errorOutput);
+  });
 
-        exec(`npx allure open ${reportPath} --host`, { shell: '/bin/bash' }, (openErr, openOut, openStderr) => {
-          if (openErr) {
-            console.warn('⚠️ Error abriendo el reporte:', openStderr || openErr.message);
-          } else {
-            console.log('🌐 Reporte abierto.');
-          }
+  testProcess.on('close', (code) => {
+    const generateCommand = `npx allure generate ${resultsPath} --clean -o ${reportPath}`;
+    const generate = spawn(generateCommand, { shell: true });
 
-          res.json({
-            message: error
-              ? '⚠️ Algunos tests fallaron, pero se generó el reporte.'
-              : '✅ Tests ejecutados y reporte generado.',
-            reportUrl: '/report/index.html'
-          });
-        });
+    generate.on('close', () => {
+      res.json({
+        message: code === 0
+          ? '✅ Tests ejecutados y reporte generado.'
+          : '⚠️ Algunos tests fallaron, pero se generó el reporte.',
+        reportUrl: '/report/index.html'
       });
     });
   });
@@ -85,8 +80,7 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
-// Escuchar en todas las interfaces
-app.listen(PORT, '0.0.0.0', () => {
+server.listen(PORT, '0.0.0.0', () => {
   const ip = getLocalIP();
   console.log(`🖥️ Servidor corriendo en: http://${ip}:${PORT}`);
 });
