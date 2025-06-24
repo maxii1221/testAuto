@@ -41,7 +41,7 @@ test('Identificadores', async ({ page }, testInfo) => {
         });
 
         await allure.step('Escribir en input nombre de usuario', async () => {
-            await page.locator('#UserName').fill('facuna@atioinc.com');
+            await page.locator('#UserName').fill('QAutomation@gmail.com');
         });
 
         await allure.step('Hacer click en input Contraseña de usuario', async () => {
@@ -49,24 +49,33 @@ test('Identificadores', async ({ page }, testInfo) => {
         });
 
         await allure.step('Escribir en input Contraseña de usuario', async () => {
-            await page.locator('#Password').fill('pipo33');
+            await page.locator('#Password').fill('SVYTY6KA');
         });
 
         await allure.step('Hacer Click en ingresar', async () => {
             await page.locator('#submit').click();
         });
         
+        await allure.step('espera de carga', async () => {
+            await page.waitForTimeout(2000); // espera 2 segundos
+        });
+
         await allure.step('hacer click para cambiar rol', async () => {
-            const primerLink = page.locator('p >> a').first();
-            await primerLink.click();
+            const rolLink = page.getByRole('link', { name: /QAutomation Test \(/ }); // regex para tolerar variantes
+            await rolLink.waitFor({ state: 'visible', timeout: 60000 });
+            await expect(rolLink).toBeEnabled({ timeout: 60000 });
+            await rolLink.click(); 
         });
     
         await allure.step('hacer click para desplegar lista de roles', async () => {
-            await page.getByTitle('Show All Items').click();
+            const showAllBtn = page.getByTitle('Show All Items');
+            await showAllBtn.waitFor({ state: 'visible', timeout: 60000 });
+            await expect(showAllBtn).toBeEnabled({ timeout: 60000 });
+            await showAllBtn.click();
         });
 
         await allure.step('hacer click en rol NWAdmin - LAB QA', async () => {
-            await page.getByText('NW Admin - LAB QA').click();
+            await page.getByText('NW Admin - LAB Network').click();
         });
 
         await allure.step('acceder a modulo identificadores', async () => {
@@ -74,7 +83,7 @@ test('Identificadores', async ({ page }, testInfo) => {
         });
 
         await allure.step('veriricar que estamos en la url de identificadores', async () => {
-            await expect(page).toHaveURL('https://console-beta.ationet.com/Identifications');
+            await expect(page).toHaveURL('https://console.ationet.com/Identifications');
         });    
     });
 
@@ -85,7 +94,7 @@ test('Identificadores', async ({ page }, testInfo) => {
         });
 
         await allure.step('veriricar que estamos en enlase de crear identificadores',async () => {
-            await expect(page).toHaveURL('https://console-beta.ationet.com/Identifications/Create');
+            await expect(page).toHaveURL('https://console.ationet.com/Identifications/Create');
         });
 
         await allure.step('Desplegamos lista y seleccionamos tipo de identificador',async () => {
@@ -93,7 +102,7 @@ test('Identificadores', async ({ page }, testInfo) => {
         });
 
         await allure.step('Desplegamos lista y seleccionamos modelo de identificador',async () => {
-            await page.locator('#IdIdentificationsTypesModel').selectOption({ label: 'PRUEBA' });
+            await page.locator('#IdIdentificationsTypesModel').selectOption({ label: 'Tarjeta con PIN' });
         });
 
         await allure.step('Desplegamos lista y seleccionamos uso',async () => {
@@ -101,7 +110,7 @@ test('Identificadores', async ({ page }, testInfo) => {
         });
 
         await allure.step('Desplegamos lista y seleccionamos programa',async () => {
-            await page.locator('#IdProgram').selectOption({ label: 'Classic' });
+            await page.locator('#IdProgram').selectOption({ label: 'Clasico' });
         });
 
         await allure.step('Click en input tarjeta',async () => {
@@ -128,12 +137,28 @@ test('Identificadores', async ({ page }, testInfo) => {
             await page.locator('#Identification_ExpirationDate').fill('2045/04/22');
         });
 
+        await allure.step('Click en input pan', async () => {
+            await page.getByRole('textbox', { name: 'PAN: *' }).click();
+        });
+
+        await allure.step('Escribir en input pan', async () => {
+            await page.getByRole('textbox', { name: 'PAN: *' }).fill(idEtiqueta);
+        });
+
         await allure.step('Click en input correo',async () => {
-            await page.locator('#Identification_Email').click();
+            await page.getByRole('textbox', { name: 'Correo: *' }).click();
         });
 
         await allure.step('Escribir en input correo',async () => {
             await page.locator('#Identification_Email').fill(idCorreo);
+        });
+
+        await allure.step('Click en input pin',async () => {
+            await page.getByRole('textbox', { name: 'PIN: *' }).click();
+        });
+
+        await allure.step('Escribir en input pin',async () => {
+            await page.getByRole('textbox', { name: 'PIN: *' }).fill('1234');
         });
 
         await allure.step('Click en boton guardar',async () => {
@@ -149,7 +174,19 @@ test('Identificadores', async ({ page }, testInfo) => {
         });
 
         await allure.step('Click en el título filtro',async () => {
-            await page.locator('#filterPanel .collapsibleContainerTitle').click({ timeout: 60000 });
+                    await allure.step('Verificamos que el panel de filtro exista',async () => {
+            await page.locator('#filterPanel').waitFor({ state: 'visible', timeout: 20000 });
+        });
+
+        await allure.step('Click en el título, no en todo el panel',async () => {
+            const panelTitle = page.locator('#filterPanel .collapsibleContainerTitle');
+            await panelTitle.waitFor({ state: 'visible', timeout: 20000 });
+            await panelTitle.click();
+        });
+
+        await allure.step('Esperar que se despliegue el contenido',async () => {
+            await page.locator('#filterPanel .collapsibleContainerContent').waitFor({ state: 'visible', timeout: 20000 });
+        });({ timeout: 60000 });
         });
 
         await allure.step('Esperar que se despliegue el filtro',async () => {
@@ -200,7 +237,19 @@ test('Identificadores', async ({ page }, testInfo) => {
         });
 
         await allure.step('Click en el título filtro',async () => {
-            await page.locator('#filterPanel .collapsibleContainerTitle').click({ timeout: 60000 });
+                    await allure.step('Verificamos que el panel de filtro exista',async () => {
+            await page.locator('#filterPanel').waitFor({ state: 'visible', timeout: 20000 });
+        });
+
+        await allure.step('Click en el título, no en todo el panel',async () => {
+            const panelTitle = page.locator('#filterPanel .collapsibleContainerTitle');
+            await panelTitle.waitFor({ state: 'visible', timeout: 20000 });
+            await panelTitle.click();
+        });
+
+        await allure.step('Esperar que se despliegue el contenido',async () => {
+            await page.locator('#filterPanel .collapsibleContainerContent').waitFor({ state: 'visible', timeout: 20000 });
+        });({ timeout: 60000 });
         });
 
         await allure.step('Esperar que se despliegue el filtro',async () => {

@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Ejecutor de Automatizacion</title>
+  <link rel="stylesheet" href="style/style.css" />
+  <style>
+    /* Clases para mostrar u ocultar secciones */
+    .seccionOculta {
+      display: none;
+    }
+    .seccionVisible {
+      display: block;
+    }
+
+    /* Para marcar el menú activo */
+    .divIzquierdo2.active {
+      background-color: #9ac9d9;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="contenedorIzquierdo">
+    <picture class="contenedorLogo">
+      <img
+        class="logo"
+        src="pictures/fd4b8d95-09b9-46ba-bede-7fc04ad02e4d.jpg"
+        alt=""
+      />
+    </picture>
+    <div class="divIzquierdo1">
+      <div class="divIzquierdo1-1">
+        <p class="textWhite">Portal de Automatizacion</p>
+      </div>
+    </div>
+
+    <!-- Menú lateral -->
+    <div class="divIzquierdo2 active" id="menuHistorial" data-titulo="Historial de Ejecuciones">
+      <div class="divIzquierdo2-1">
+        <p class="p-menu-lateral">Historial de Ejecuciones</p>
+      </div>
+    </div>
+    <div
+      class="divIzquierdo2"
+      id="menuAutoServicios"
+      data-titulo="Estabilización Servicios / Consola ATIONET (Produccion)"
+    >
+      <div class="divIzquierdo2-1">
+        <p class="p-menu-lateral">
+          Estabilización Servicios / Consola ATIONET (Produccion)
+        </p>
+      </div>
+    </div>
+
+    <div
+      class="divIzquierdo2"
+      id="menuAutoBetaQA"
+      data-titulo="Estabilización QA / Consola ATIONET (Beta)"
+    >
+      <div class="divIzquierdo2-1">
+        <p class="p-menu-lateral">Estabilización QA / Consola ATIONET (Beta)</p>
+      </div>
+    </div>
+
+    <div
+      class="divIzquierdo2"
+      id="menuAutoPreprodQA"
+      data-titulo="Estabilización QA / Consola ATIONET (Preprod)"
+    >
+      <div class="divIzquierdo2-1">
+        <p class="p-menu-lateral">Estabilización QA / Consola ATIONET (Preprod)</p>
+      </div>
+    </div>
+
+    <div
+      class="divIzquierdo2"
+      id="menuAutoPortalCompanyQA"
+      data-titulo="Estabilización QA / Consola ATIONET (Prod)"
+    >
+      <div class="divIzquierdo2-1">
+        <p class="p-menu-lateral">Estabilización QA / Consola ATIONET (Prod)</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="ContenedorDerecho">
+    <div class="contenedorHeader">
+      <div class="contenedorHeader1">
+        <div id="iconoConfiguracion" class="contenedorUsuario">
+          <picture class="contenedorUsuario2">
+            <img
+              class="imagenUsuarioMiniatura"
+              src="./pictures/configuraciones.png"
+              alt=""
+            />
+          </picture>
+        </div>
+        <div id="iconoUsuario" class="contenedorUsuario">
+          <picture class="contenedorUsuario2">
+            <img
+              class="imagenUsuarioMiniatura"
+              src="./pictures/perfil.png"
+              alt=""
+            />
+          </picture>
+        </div>
+      </div>
+    </div>
+
+    <div class="contenedorDerecho1">
+      <div class="contenedorDerecho1-1">
+        <p class="textNavegacion">
+          Ud. esta en: Estabilización Servicios / Consola ATIONET (Produccion)
+        </p>
+      </div>
+    </div>
+
+    <div class="contenedorDerechoTitulo">
+      <!-- <h1 class="tituloDeAutomatizacion">Ejecutar Automatizacion</h1> -->
+    </div>
+
+    <!-- Sección para ejecutar tests -->
+    <div id="seccionEjecutar" class="seccionOculta">
+      <div class="ContenedorDeEjecutor">
+        <div class="contenedorDerecho2">
+          <div class="contenedorDerecho2-1">
+            <input id="usuario" placeholder="correo del ejecutor" />
+          </div>
+
+          <div class="contenedorDerecho2-1">
+            <label for="module">Selecciona un módulo:</label>
+          </div>
+
+          <div class="contenedorDerecho2-2">
+            <select id="module">
+              <option value="">-- Seleccionar --</option>
+              <option value="/">Todos los modulos</option>
+              <option value="NVAdmin LAB Network">NWAdmin (LAB Network)</option>
+              <option value="NVCompany Atio Lab Flota">NWCompany (Atio Lab Flota)</option>
+              <option value="NWAdmin Primax peru">NWAdmin (Primax Peru)</option>
+              <option value="NWAdmin Primax peru/flota/transaccionesRechazadas">transacciones Rechazadas</option>
+            </select>
+          </div>
+
+          <div class="contenedorDerecho2-3">
+            <button
+              id="btnEjecutar"
+              class="buttonEjecutarTest"
+              onclick="runTest()"
+            >
+              Ejecutar Test
+            </button>
+          </div>
+
+          <div class="contenedorDerecho2-4">
+            <div class="progress-container">
+              <div class="progress-bar" id="progressBar"></div>
+            </div>
+          </div>
+
+          <div class="headerTerminal">
+            <p class="textHeaderTerminal">Terminal De progreso</p>
+          </div>
+          <div class="contenedorDerecho2-5">
+            <p id="status">Esperando ejecución...</p>
+            <a
+              id="reportLink"
+              class="report-link"
+              href="#"
+              target="_blank"
+              style="display: none;"
+              >Ver Reporte Allure</a
+            >
+          </div>
+
+          <div class="contenedorDerecho2-6">
+            <button
+              id="btnDetener"
+              class="buttonCancelarTest"
+              onclick="stopTest()"
+              disabled
+            >
+              Detener ejecución
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sección para historial -->
+    <div id="seccionHistorial" class="seccionVisible">
+      <div class="contenedorHistorial">
+        <h2 class="tituloHistorial">Historial de Ejecuciones</h2>
+        <table class="tablaHistorial">
+          <thead>
+            <tr>
+              <th>Usuario</th>
+              <th>Módulo</th>
+              <th>Inicio</th>
+              <th>Fin</th>
+              <th>Estado</th>
+            </tr>
+          </thead>
+          <tbody id="tablaHistorialBody">
+            <tr><td colspan="5">Cargando historial...</td></tr>
+          </tbody>
+        </table>
+      </div>  
+    </div>
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+
+  <script>
+  window.addEventListener("DOMContentLoaded", () => {
+    const navegacionTexto = document.querySelector(".textNavegacion");
+    const menusLaterales = document.querySelectorAll(".divIzquierdo2");
+    const iconoUsuario = document.getElementById("iconoUsuario");
+    const iconoConfiguracion = document.getElementById("iconoConfiguracion");
+
+    const seccionEjecutar = document.getElementById("seccionEjecutar");
+    const seccionHistorial = document.getElementById("seccionHistorial");
+
+    // Eventos iconos usuario/configuración
+    iconoUsuario.addEventListener("click", () => alert("se abre desplegable de usuario"));
+    iconoConfiguracion.addEventListener("click", () => alert("se abre desplegable de configuracion"));
+
+    // Función para actualizar menú activo y mostrar sección
+    function activarMenu(menuSeleccionado) {
+      menusLaterales.forEach((menu) => {
+        menu.classList.remove("active");
+      });
+      menuSeleccionado.classList.add("active");
+
+      const titulo = menuSeleccionado.getAttribute("data-titulo");
+      navegacionTexto.textContent = `Ud. está en: ${titulo}`;
+
+      if (menuSeleccionado.id === "menuHistorial") {
+        seccionHistorial.classList.replace("seccionOculta", "seccionVisible");
+        seccionEjecutar.classList.replace("seccionVisible", "seccionOculta");
+        cargarHistorial(); // carga el historial cuando se muestra
+      } else {
+        seccionEjecutar.classList.replace("seccionOculta", "seccionVisible");
+        seccionHistorial.classList.replace("seccionVisible", "seccionOculta");
+      }
+    }
+
+    // Asignar evento click a cada menú lateral
+    menusLaterales.forEach((menu) => {
+      menu.addEventListener("click", () => {
+        activarMenu(menu);
+      });
+    });
+
+    // Activar historial por defecto al cargar la página
+    activarMenu(document.getElementById("menuHistorial"));
+
+    // Código para ejecutar tests
+    window.runTest = async function runTest() {
+      const module = document.getElementById("module").value;
+      const usuario = document.getElementById("usuario").value;
+
+      const status = document.getElementById("status");
+      const reportLink = document.getElementById("reportLink");
+      const progressBar = document.getElementById("progressBar");
+      const btnEjecutar = document.getElementById("btnEjecutar");
+      const btnDetener = document.getElementById("btnDetener");
+
+      if (!module) {
+        alert("Por favor selecciona un módulo.");
+        return;
+      }
+
+      btnEjecutar.disabled = true; // deshabilitar botón ejecutar
+      btnDetener.disabled = false; // habilitar botón detener
+
+      // Reset UI
+      status.textContent = "Ejecutando...";
+      status.className = "";
+      reportLink.style.display = "none";
+      progressBar.style.width = "0%";
+
+      const etapas = [
+        { porcentaje: 30, mensaje: "Iniciando pruebas..." },
+        { porcentaje: 60, mensaje: "Preparando reporte..." },
+        { porcentaje: 90, mensaje: "Ejecutando pruebas..." },
+      ];
+
+      let etapaIndex = 0;
+      const simulador = setInterval(() => {
+        if (etapaIndex < etapas.length) {
+          progressBar.style.width = etapas[etapaIndex].porcentaje + "%";
+          status.textContent = etapas[etapaIndex].mensaje;
+          etapaIndex++;
+        }
+      }, 1000);
+
+      try {
+        const res = await fetch("/run-tests", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ module, usuario }),
+        });
+        const data = await res.json();
+
+        clearInterval(simulador);
+        progressBar.style.width = "100%";
+
+        if (res.ok) {
+          status.textContent =
+            data.message || "✅ Test ejecutado correctamente.";
+          status.className = "success";
+          reportLink.href = data.reportUrl;
+          reportLink.style.display = "inline-block";
+        } else {
+          throw new Error(data.error || "Error ejecutando tests");
+        }
+      } catch (err) {
+        clearInterval(simulador);
+        progressBar.style.width = "100%";
+        status.textContent = "❌ " + err.message;
+        status.className = "error";
+      } finally {
+        btnEjecutar.disabled = false; // habilitar botón ejecutar
+        btnDetener.disabled = true; // deshabilitar botón detener
+      }
+    };
+
+    window.stopTest = async function stopTest() {
+      const btnEjecutar = document.getElementById("btnEjecutar");
+      const btnDetener = document.getElementById("btnDetener");
+      const status = document.getElementById("status");
+      const progressBar = document.getElementById("progressBar");
+
+      try {
+        const res = await fetch("/stop-tests", { method: "POST" });
+        if (res.ok) {
+          status.textContent = "⏹️ Ejecución detenida.";
+        } else {
+          status.textContent = "Error al detener ejecución.";
+        }
+      } catch (error) {
+        status.textContent = "Error al detener ejecución.";
+      } finally {
+        btnEjecutar.disabled = false; // habilitar botón ejecutar
+        btnDetener.disabled = true; // deshabilitar botón detener
+        progressBar.style.width = "0%"; // reiniciar barra de progreso
+      }
+    };
+
+    // Socket.io para progreso en tiempo real
+    const socket = io();
+
+    socket.on("test-progress", (data) => {
+      const status = document.getElementById("status");
+      const progressBar = document.getElementById("progressBar");
+
+      const match = data.match(/\[(\d+)\/(\d+)\]/);
+      if (match) {
+        const current = parseInt(match[1]);
+        const total = parseInt(match[2]);
+        const percent = Math.round((current / total) * 100);
+        progressBar.style.width = percent + "%";
+        status.textContent = `Progreso: ${current} de ${total}`;
+      } else {
+        status.textContent = data;
+      }
+    });
+
+    // Funciones para cargar y mostrar historial
+    async function cargarHistorial() {
+      const cuerpoTabla = document.getElementById("tablaHistorialBody");
+      try {
+        const res = await fetch('/history');
+        const data = await res.json();
+
+        if (data.length === 0) {
+          cuerpoTabla.innerHTML = '<tr><td colspan="5">Sin ejecuciones registradas.</td></tr>';
+          return;
+        }
+
+        cuerpoTabla.innerHTML = "";
+        data.forEach(item => {
+          const fila = document.createElement("tr");
+          fila.innerHTML = `
+            <td>${item.usuario}</td>
+            <td>${item.modulo}</td>
+            <td>${formatearFecha(item.fecha_inicio)}</td>
+            <td>${item.fecha_fin ? formatearFecha(item.fecha_fin) : "-"}</td>
+            <td>${item.estado}</td>
+          `;
+          cuerpoTabla.appendChild(fila);
+        });
+      } catch (error) {
+        cuerpoTabla.innerHTML = '<tr><td colspan="5">⚠️ Error cargando historial.</td></tr>';
+      }
+    }
+
+    function formatearFecha(fecha) {
+      const f = new Date(fecha);
+      return f.toLocaleString("es-AR");
+    }
+  });
+  </script>
+</body>
+</html>

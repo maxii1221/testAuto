@@ -44,7 +44,7 @@ test('Contingencias', async ({ page }, testInfo) => {
         });
 
         await allure.step('Escribir en input nombre de usuario', async () => {
-            await page.locator('#UserName').fill('facuna@atioinc.com');
+            await page.locator('#UserName').fill('QAutomation@gmail.com');
         });
 
         await allure.step('Hacer click en input Contraseña de usuario', async () => {
@@ -52,24 +52,33 @@ test('Contingencias', async ({ page }, testInfo) => {
         });
 
         await allure.step('Escribir en input Contraseña de usuario', async () => {
-            await page.locator('#Password').fill('pipo33');
+            await page.locator('#Password').fill('SVYTY6KA');
         });
 
         await allure.step('Hacer Click en ingresar', async () => {
             await page.locator('#submit').click();
         });
         
+        await allure.step('espera de carga', async () => {
+            await page.waitForTimeout(2000); // espera 2 segundos
+        });
+
         await allure.step('hacer click para cambiar rol', async () => {
-            const primerLink = page.locator('p >> a').first();
-            await primerLink.click();
+            const rolLink = page.getByRole('link', { name: /QAutomation Test \(/ }); // regex para tolerar variantes
+            await rolLink.waitFor({ state: 'visible', timeout: 60000 });
+            await expect(rolLink).toBeEnabled({ timeout: 60000 });
+            await rolLink.click(); 
         });
     
         await allure.step('hacer click para desplegar lista de roles', async () => {
-            await page.getByTitle('Show All Items').click();
+            const showAllBtn = page.getByTitle('Show All Items');
+            await showAllBtn.waitFor({ state: 'visible', timeout: 60000 });
+            await expect(showAllBtn).toBeEnabled({ timeout: 60000 });
+            await showAllBtn.click();
         });
 
         await allure.step('hacer click en rol NWAdmin - LAB QA', async () => {
-            await page.getByText('NW Admin - LAB QA').click();
+            await page.getByText('NW Admin - LAB Network').click();
         });
 
         await allure.step('acceder a modulo contigencia', async () => {
@@ -77,7 +86,7 @@ test('Contingencias', async ({ page }, testInfo) => {
         });
 
         await allure.step('veriricar que estamos en la url de contigencia', async () => {
-            await expect(page).toHaveURL('https://console-beta.ationet.com/TransactionsContingencies');
+            await expect(page).toHaveURL('https://console.ationet.com/TransactionsContingencies');
         });    
     });   
 
@@ -88,11 +97,11 @@ test('Contingencias', async ({ page }, testInfo) => {
         });
 
         await allure.step('veriricar que estamos en enlase de crear contigencia', async () => {
-            await expect(page).toHaveURL('https://console-beta.ationet.com/TransactionsContingencies/Create');
+            await expect(page).toHaveURL('https://console.ationet.com/TransactionsContingencies/Create');
         });
 
         await allure.step('Desplegar y seleccionar motivo', async () => {
-            await page.locator('#TransactionsContingency_ReasonId').selectOption({ label: 'a3123' });
+            await page.locator('#TransactionsContingency_ReasonId').selectOption({ label: 'Billing Error' });
         });
 
         await allure.step('Click en input sitio', async () => {
@@ -100,11 +109,11 @@ test('Contingencias', async ({ page }, testInfo) => {
         });
 
         await allure.step('Escribir en input sitio', async () => {
-            await page.locator('#token-input-TransactionsContingency_SiteId').type('as', { delay: 100 });
+            await page.locator('#token-input-TransactionsContingency_SiteId').type('ASH', { delay: 100 });
         });
 
         await allure.step('seleccionar en input sitio', async () => {
-            await page.locator('.token-input-dropdown-ationet li', { hasText: 'asd' }).first().click();
+            await page.locator('.token-input-dropdown-ationet li', { hasText: 'ASH KE' }).first().click();
         });
 
         await allure.step('Click en input terminal / controlador', async () => {
@@ -112,11 +121,11 @@ test('Contingencias', async ({ page }, testInfo) => {
         });
 
         await allure.step('Escribir en input terminal / controlador', async () => {
-            await page.locator('#token-input-TransactionsContingency_TerminalId').type('F', { delay: 100 });
+            await page.locator('#token-input-TransactionsContingency_TerminalId').type('0T8', { delay: 100 });
         });
 
         await allure.step('Click en input terminal / controlador', async () => {
-            await page.locator('.token-input-dropdown-ationet li', { hasText: 'FOK12' }).first().click();
+            await page.locator('.token-input-dropdown-ationet li', { hasText: '0T8RANLOX' }).first().click();
         });
 
         await allure.step('Click en input fecha', async () => {
@@ -140,11 +149,11 @@ test('Contingencias', async ({ page }, testInfo) => {
         });
 
         await allure.step('Escribir en input cuenta primaria', async () => {
-            await page.locator('#token-input-primaryAccount').type('max', { delay: 100 });
+            await page.locator('#token-input-primaryAccount').type('BSASMAN', { delay: 100 });
         });
 
         await allure.step('Seleccionar en input cuenta primaria', async () => {
-            await page.locator('.token-input-dropdown-ationet li', { hasText: '7090420184457065980 - Max, Verstappen (7090420184457065980)' }).first().click();
+            await page.locator('.token-input-dropdown-ationet li', { hasText: 'BSASMANUAL - ABC000 (BSAS_MANUAL)' }).first().click();
         });
 
         await allure.step('Click en input combustible', async () => {
@@ -152,11 +161,11 @@ test('Contingencias', async ({ page }, testInfo) => {
         });
 
         await allure.step('Escribir en input combustible', async () => {
-            await page.locator('#token-input-TransactionsContingency_FuelMasterId').type('Die', { delay: 100 });
+            await page.locator('#token-input-TransactionsContingency_FuelMasterId').type('Compre', { delay: 100 });
         });
 
         await allure.step('Seleccionar en input combustible', async () => {
-            await page.locator('.token-input-dropdown-ationet li', { hasText: 'Diesel' }).first().click();
+            await page.locator('.token-input-dropdown-ationet li', { hasText: 'Compressed Natural Gas' }).first().click();
         });
 
         await allure.step('Click en input volumen de despacho', async () => {

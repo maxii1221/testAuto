@@ -23,7 +23,7 @@ test('Reglas', async ({ page }, testInfo) => {
 
     //dentro del test cuando lo abrimos aparece la descripcion
     allure.description(`
-    <b>Objetivo:</b> Este test automatiza el proceso completo de creación, edición y eliminación de una regla.<br/>
+    Objetivo: Este test automatiza el proceso completo de creación, edición y eliminación de una regla.
     `);
     allure.severity('critical'); // opciones: blocker | critical | normal | minor | trivial
 
@@ -45,7 +45,7 @@ test('Reglas', async ({ page }, testInfo) => {
         });
 
         await allure.step('Escribir en input nombre de usuario', async () => {
-            await page.locator('#UserName').fill('facuna@atioinc.com');
+            await page.locator('#UserName').fill('QAutomation@gmail.com');
         });
 
         await allure.step('Hacer click en input Contraseña de usuario', async () => {
@@ -53,24 +53,33 @@ test('Reglas', async ({ page }, testInfo) => {
         });
 
         await allure.step('Escribir en input Contraseña de usuario', async () => {
-            await page.locator('#Password').fill('pipo33');
+            await page.locator('#Password').fill('SVYTY6KA');
         });
 
         await allure.step('Hacer Click en ingresar', async () => {
             await page.locator('#submit').click();
         });
         
+        await allure.step('espera de carga', async () => {
+            await page.waitForTimeout(2000); // espera 2 segundos
+        });
+
         await allure.step('hacer click para cambiar rol', async () => {
-            const primerLink = page.locator('p >> a').first();
-            await primerLink.click();
+            const rolLink = page.getByRole('link', { name: /QAutomation Test \(/ }); // regex para tolerar variantes
+            await rolLink.waitFor({ state: 'visible', timeout: 60000 });
+            await expect(rolLink).toBeEnabled({ timeout: 60000 });
+            await rolLink.click(); 
         });
     
         await allure.step('hacer click para desplegar lista de roles', async () => {
-            await page.getByTitle('Show All Items').click();
+            const showAllBtn = page.getByTitle('Show All Items');
+            await showAllBtn.waitFor({ state: 'visible', timeout: 60000 });
+            await expect(showAllBtn).toBeEnabled({ timeout: 60000 });
+            await showAllBtn.click();
         });
 
-        await allure.step('hacer click en rol NW Company Admin- FORMULA1', async () => {
-            await page.getByText('NW Company Admin - FORMULA1').click();
+        await allure.step('hacer click en rol NW Company - Atio Lab Flota', async () => {
+            await page.getByText('NW Company Admin - Atio Lab').click();
         });
 
         await allure.step('acceder a modulo Reglas', async () => {
@@ -78,7 +87,7 @@ test('Reglas', async ({ page }, testInfo) => {
         });
 
         await allure.step('veriricar que estamos en la url de Reglas', async () => {
-            await expect(page).toHaveURL('https://console-beta.ationet.com/Rules');
+            await expect(page).toHaveURL('https://console.ationet.com/Rules');
         });    
     });   
 
@@ -88,9 +97,9 @@ test('Reglas', async ({ page }, testInfo) => {
             await page.getByRole('button', { name: 'Nuevo' }).first().click();
         });
 
-        await allure.step('veriricar que estamos en url de crear Reglas' , async () => {
-            await expect(page).toHaveURL('https://console-beta.ationet.com/Rules/Create');
-        });
+        // await allure.step('veriricar que estamos en url de crear Reglas' , async () => {
+        //     await expect(page).toHaveURL('https://console.ationet.com/Rules/Create');
+        // });
 
         await allure.step('Click en input descripcion' , async () => {
             await page.locator('#Rule_Description').click();
@@ -109,23 +118,39 @@ test('Reglas', async ({ page }, testInfo) => {
         });
 
         await allure.step('Desplegar y seleccionar compañia' , async () => {
-            await page.locator('#IdCompany').selectOption({ label: 'Wano' });
+            await page.locator('#IdCompanyContract').selectOption({ label: '001 - Debito' });
         });
 
         await allure.step('Click en boton guardar' , async () => {
             await page.locator('#save').click();
         });
 
+        await allure.step('Click en Ok' , async () => {
+            await page.getByRole('button', { name: 'Ok' }).click();
+        });
+
     });
 
     await allure.step('Filtrar Nueva Regla' , async () => {
 
-        await allure.step('Aseguramos que el Filtro esté presente' , async () => {
-            await page.locator('#filterPanel').waitFor({ state: 'visible', timeout: 60000 });
-        });
+        // await allure.step('Aseguramos que el Filtro esté presente' , async () => {
+        //     await page.locator('#filterPanel').waitFor({ state: 'visible', timeout: 60000 });
+        // });
 
         await allure.step('Click en el filtro, no en todo el panel' , async () => {
-            await page.locator('#filterPanel .collapsibleContainerTitle').click({ timeout: 60000 });
+                    await allure.step('Verificamos que el panel de filtro exista',async () => {
+            await page.locator('#filterPanel').waitFor({ state: 'visible', timeout: 20000 });
+        });
+
+        await allure.step('Click en el título, no en todo el panel',async () => {
+            const panelTitle = page.locator('#filterPanel .collapsibleContainerTitle');
+            await panelTitle.waitFor({ state: 'visible', timeout: 20000 });
+            await panelTitle.click();
+        });
+
+        await allure.step('Esperar que se despliegue el contenido',async () => {
+            await page.locator('#filterPanel .collapsibleContainerContent').waitFor({ state: 'visible', timeout: 20000 });
+        });({ timeout: 60000 });
         });
 
         await allure.step('Esperar que se despliegue el contenido' , async () => {
@@ -167,6 +192,10 @@ test('Reglas', async ({ page }, testInfo) => {
         await allure.step('Click en boton guardar' , async () => {
             await page.locator('#save').click();
         });
+
+        await allure.step('Click en Ok' , async () => {
+            await page.getByRole('button', { name: 'Ok' }).click();
+        });
     });
 
     await allure.step('Filtrar Nueva Regla editada' , async () => {
@@ -175,7 +204,19 @@ test('Reglas', async ({ page }, testInfo) => {
         });
 
         await allure.step('Click en el filtro, no en todo el panel' , async () => {
-            await page.locator('#filterPanel .collapsibleContainerTitle').click({ timeout: 60000 });
+                    await allure.step('Verificamos que el panel de filtro exista',async () => {
+            await page.locator('#filterPanel').waitFor({ state: 'visible', timeout: 20000 });
+        });
+
+        await allure.step('Click en el título, no en todo el panel',async () => {
+            const panelTitle = page.locator('#filterPanel .collapsibleContainerTitle');
+            await panelTitle.waitFor({ state: 'visible', timeout: 20000 });
+            await panelTitle.click();
+        });
+
+        await allure.step('Esperar que se despliegue el contenido',async () => {
+            await page.locator('#filterPanel .collapsibleContainerContent').waitFor({ state: 'visible', timeout: 20000 });
+        });({ timeout: 60000 });
         });
 
         await allure.step('Esperar que se despliegue el contenido' , async () => {

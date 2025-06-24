@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="style/style.css">
+</head>
+<body>
+    <div class="contenedorIzquierdo">
+        <picture class="contenedorLogo">
+          <img class="logo" src="pictures/fd4b8d95-09b9-46ba-bede-7fc04ad02e4d.jpg" alt="">
+        </picture>
+        <div class="divIzquierdo1">
+          <div class="divIzquierdo1-1">
+            <p class="textWhite">Portal de Automatizacion</p>
+          </div>    
+        </div>
+        <div class="divIzquierdo2" id="menuAutoServicios" data-titulo="Estabilización Servicios / Consola ATIONET (Produccion)">
+          <div class="divIzquierdo2-1">
+            <p class="p-menu-lateral">Estabilización Servicios / Consola ATIONET (Produccion)</p>
+          </div>
+        </div>
+
+        <div class="divIzquierdo2" id="menuAutoBetaQA" data-titulo="Estabilización QA / Consola ATIONET (Beta)">
+          <div class="divIzquierdo2-1">
+            <p class="p-menu-lateral">Estabilización QA / Consola ATIONET (Beta)</p>
+          </div>
+        </div>
+
+        <div class="divIzquierdo2" id="menuAutoPreprodQA" data-titulo="Estabilización QA / Consola ATIONET (Preprod)">
+          <div class="divIzquierdo2-1">
+            <p class="p-menu-lateral">Estabilización QA / Consola ATIONET (Preprod)</p>
+          </div>
+        </div>
+
+        <div class="divIzquierdo2" id="menuAutoPortalCompanyQA" data-titulo="Estabilización QA / Consola ATIONET (Prod)">
+          <div class="divIzquierdo2-1">
+            <p class="p-menu-lateral">Estabilización QA / Consola ATIONET (Prod)</p>
+          </div>
+        </div>
+    </div>
+
+    <div class="ContenedorDerecho">
+        
+      <div class="contenedorHeader">
+      </div>
+
+      <div class="contenedorDerecho1">
+        <div class="contenedorDerecho1-1">
+          <p class="textNavegacion">Ud. esta en: Estabilización Servicios / Consola ATIONET (Produccion)</p>
+        </div>
+      </div>
+
+      <div class="contenedorDerechoTitulo">
+        <h1 class="tituloDeAutomatizacion">Ejecutar Automatizacion</h1>
+      </div>
+
+      <div class="ContenedorDeEjecutor">
+
+        <div class="contenedorDerecho2">
+
+          <div class="contenedorDerecho2-1">
+            <label for="module">Selecciona un módulo:</label>
+          </div>
+
+          <div class="contenedorDerecho2-2">
+            <select id="module">
+              <option value="">-- Seleccionar --</option>
+              <option value="/">Todos los modulos</option>
+              <option value="NVAdmin LAB Network/administracion">Administración (LA Network)</option>
+              <option value="NVAdmin LAB Network/flota">Flota (LAB Network)</option>
+              <option value="NVAdmin LAB Network/liquidaciones">Liquidaciones (LAB Network)</option>
+              <option value="NVCompany Atio Lab Flota/administracion">Administración (Atio Flota)</option>
+              <option value="NVCompany Atio Lab Flota/flota">Flota (Atio Flota)</option>
+            </select>
+          </div>
+
+          <div class="contenedorDerecho2-3">
+            <button id="btnEjecutar" class="buttonEjecutarTest" onclick="runTest()">Ejecutar Test</button>
+          </div>
+
+          <div class="contenedorDerecho2-4">
+            <div class="progress-container">
+              <div class="progress-bar" id="progressBar"></div>
+            </div>
+          </div>
+          
+          <div class="headerTerminal">
+            <p class="textHeaderTerminal">Terminal De progreso</p>
+          </div>
+          <div class="contenedorDerecho2-5">
+            <p id="status">Esperando ejecución...</p>
+            <a id="reportLink" class="report-link" href="#" target="_blank" style="display: none;">Ver Reporte Allure</a>
+          </div>            
+          
+        </div>
+        </div>  
+    </div>
+</body>
+</html>

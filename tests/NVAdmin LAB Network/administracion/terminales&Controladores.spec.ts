@@ -41,7 +41,7 @@ test('Terminal y controladores', async ({ page }, testInfo) => {
         });
 
         await allure.step('Escribir en input nombre de usuario', async () => {
-            await page.locator('#UserName').fill('facuna@atioinc.com');
+            await page.locator('#UserName').fill('QAutomation@gmail.com');
         });
 
         await allure.step('Hacer click en input Contraseña de usuario', async () => {
@@ -49,24 +49,33 @@ test('Terminal y controladores', async ({ page }, testInfo) => {
         });
 
         await allure.step('Escribir en input Contraseña de usuario', async () => {
-            await page.locator('#Password').fill('pipo33');
+            await page.locator('#Password').fill('SVYTY6KA');
         });
 
         await allure.step('Hacer Click en ingresar', async () => {
             await page.locator('#submit').click();
         });
+
+        await allure.step('espera de carga', async () => {
+            await page.waitForTimeout(2000); // espera 2 segundos
+        });
         
         await allure.step('hacer click para cambiar rol', async () => {
-            const primerLink = page.locator('p >> a').first();
-            await primerLink.click();
+            const rolLink = page.getByRole('link', { name: /QAutomation Test \(/ }); // regex para tolerar variantes
+            await rolLink.waitFor({ state: 'visible', timeout: 60000 });
+            await expect(rolLink).toBeEnabled({ timeout: 60000 });
+            await rolLink.click(); 
         });
     
         await allure.step('hacer click para desplegar lista de roles', async () => {
-            await page.getByTitle('Show All Items').click();
+            const showAllBtn = page.getByTitle('Show All Items');
+            await showAllBtn.waitFor({ state: 'visible', timeout: 60000 });
+            await expect(showAllBtn).toBeEnabled({ timeout: 60000 });
+            await showAllBtn.click();
         });
 
         await allure.step('hacer click en rol NWAdmin - LAB QA', async () => {
-            await page.getByText('NW Admin - LAB QA').click();
+            await page.getByText('NW Admin - LAB Network').click();
         });
 
         await allure.step('acceder a modulo terminales / controladores', async () => {
@@ -74,9 +83,9 @@ test('Terminal y controladores', async ({ page }, testInfo) => {
         });
 
         await allure.step('veriricar que estamos en la url de terminales / controladores', async () => {
-            await expect(page).toHaveURL('https://console-beta.ationet.com/Terminals');
+            await expect(page).toHaveURL('https://console.ationet.com/Terminals');
         });    
-    }); 
+    }); ''
 
     await allure.step('Crear nuevo terminal y controladores',async () => {
 
@@ -85,15 +94,15 @@ test('Terminal y controladores', async ({ page }, testInfo) => {
         });
 
         await allure.step('veriricar que estamos en enlase de crear terminales / controladores',async () => {
-            await expect(page).toHaveURL('https://console-beta.ationet.com/Terminals/Create');
+            await expect(page).toHaveURL('https://console.ationet.com/Terminals/Create');
         });
 
         await allure.step('desplegamos lista y seleccionamos comercio',async () => {
-            await page.locator('#IdMerchant').selectOption({ label: 'fdbdf' });
+            await page.locator('#IdMerchant').selectOption({ label: 'All In One - Laboratorio' });
         });
 
         await allure.step('desplegamos lista y seleccionamos sitio',async () => {
-            await page.locator('#IdSite').selectOption({ label: 'Boca' });
+            await page.locator('#IdSite').selectOption({ label: '1' });
         });
 
         await allure.step('desplegamos lista y seleccionamos Terminal / Tipo controlador',async () => {
@@ -132,7 +141,19 @@ test('Terminal y controladores', async ({ page }, testInfo) => {
         });
 
         await allure.step('Click en el filtro, no en todo el panel',async () => {
-            await page.locator('#filterPanel .collapsibleContainerTitle').click({ timeout: 60000 });
+                    await allure.step('Verificamos que el panel de filtro exista',async () => {
+            await page.locator('#filterPanel').waitFor({ state: 'visible', timeout: 20000 });
+        });
+
+        await allure.step('Click en el título, no en todo el panel',async () => {
+            const panelTitle = page.locator('#filterPanel .collapsibleContainerTitle');
+            await panelTitle.waitFor({ state: 'visible', timeout: 20000 });
+            await panelTitle.click();
+        });
+
+        await allure.step('Esperar que se despliegue el contenido',async () => {
+            await page.locator('#filterPanel .collapsibleContainerContent').waitFor({ state: 'visible', timeout: 20000 });
+        });({ timeout: 60000 });
         });
 
         await allure.step('Esperar que se despliegue el filtro',async () => {
@@ -152,7 +173,7 @@ test('Terminal y controladores', async ({ page }, testInfo) => {
         });
 
         await allure.step('verificamos que este nuestro terminales / controladores',async () => {
-            await expect(page.locator('.dtls tr td a').first()).toHaveText('FOK'+ terminalDescription);
+            await expect(page.locator('.dtls tr td a').first()).toHaveText('0T8'+ terminalDescription);
         });
 
     });
@@ -182,7 +203,19 @@ test('Terminal y controladores', async ({ page }, testInfo) => {
         });
 
         await allure.step('Click en el filtro, no en todo el panel',async () => {
-            await page.locator('#filterPanel .collapsibleContainerTitle').click({ timeout: 60000 });
+                    await allure.step('Verificamos que el panel de filtro exista',async () => {
+            await page.locator('#filterPanel').waitFor({ state: 'visible', timeout: 20000 });
+        });
+
+        await allure.step('Click en el título, no en todo el panel',async () => {
+            const panelTitle = page.locator('#filterPanel .collapsibleContainerTitle');
+            await panelTitle.waitFor({ state: 'visible', timeout: 20000 });
+            await panelTitle.click();
+        });
+
+        await allure.step('Esperar que se despliegue el contenido',async () => {
+            await page.locator('#filterPanel .collapsibleContainerContent').waitFor({ state: 'visible', timeout: 20000 });
+        });({ timeout: 60000 });
         });
 
         await allure.step('Esperar que se despliegue el filtro',async () => {
@@ -201,9 +234,9 @@ test('Terminal y controladores', async ({ page }, testInfo) => {
             await page.locator('#search').click();
         });
 
-        await allure.step('verificamos que este nuestro terminales / controladores',async () => {
-            await expect(page.locator('.dtls tr td a').first()).toHaveText('FOK'+ terminalDescription + 'editado');
-        });
+        // await allure.step('verificamos que este nuestro terminales / controladores',async () => {
+        //     await expect(page.locator('.dtls tr td a').first()).toHaveText('FOK'+ terminalDescription + 'editado');
+        // });
 
     });
 

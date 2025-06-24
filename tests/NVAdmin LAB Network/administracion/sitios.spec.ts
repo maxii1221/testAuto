@@ -43,7 +43,7 @@ test('Sitios', async ({ page }, testInfo) => {
         });
 
         await allure.step('Escribir en input nombre de usuario', async () => {
-            await page.locator('#UserName').fill('facuna@atioinc.com');
+            await page.locator('#UserName').fill('QAutomation@gmail.com');
         });
 
         await allure.step('Hacer click en input Contraseña de usuario', async () => {
@@ -51,24 +51,33 @@ test('Sitios', async ({ page }, testInfo) => {
         });
 
         await allure.step('Escribir en input Contraseña de usuario', async () => {
-            await page.locator('#Password').fill('pipo33');
+            await page.locator('#Password').fill('SVYTY6KA');
         });
 
         await allure.step('Hacer Click en ingresar', async () => {
             await page.locator('#submit').click();
         });
+
+        await allure.step('espera de carga', async () => {
+            await page.waitForTimeout(2000); // espera 2 segundos
+        });        
         
         await allure.step('hacer click para cambiar rol', async () => {
-            const primerLink = page.locator('p >> a').first();
-            await primerLink.click();
+            const rolLink = page.getByRole('link', { name: /QAutomation Test \(/ }); // regex para tolerar variantes
+            await rolLink.waitFor({ state: 'visible', timeout: 60000 });
+            await expect(rolLink).toBeEnabled({ timeout: 60000 });
+            await rolLink.click(); 
         });
     
         await allure.step('hacer click para desplegar lista de roles', async () => {
-            await page.getByTitle('Show All Items').click();
+            const showAllBtn = page.getByTitle('Show All Items');
+            await showAllBtn.waitFor({ state: 'visible', timeout: 60000 });
+            await expect(showAllBtn).toBeEnabled({ timeout: 60000 });
+            await showAllBtn.click();
         });
 
         await allure.step('hacer click en rol NWAdmin - LAB QA', async () => {
-            await page.getByText('NW Admin - LAB QA').click();
+            await page.getByText('NW Admin - LAB Network').click();
         });
         
         await allure.step('Ingresar al modulo sitios', async () => {
@@ -76,7 +85,7 @@ test('Sitios', async ({ page }, testInfo) => {
         });
 
         await allure.step('verificar que estamos en la url de sitios', async () => {
-            await expect(page).toHaveURL('https://console-beta.ationet.com/Sites');
+            await expect(page).toHaveURL('https://console.ationet.com/Sites');
         });
     }); 
 
@@ -87,11 +96,11 @@ test('Sitios', async ({ page }, testInfo) => {
         });
 
         await allure.step('veriricar que estamos en enlase de crear Sitios', async () => {
-            await expect(page).toHaveURL('https://console-beta.ationet.com/Sites/Create');
+            await expect(page).toHaveURL('https://console.ationet.com/Sites/Create');
         });
 
         await allure.step('Desplegar lista y seleccionar comercio', async () => {
-            await page.locator('#IdMerchant').selectOption({ label: 'fdbdf' });
+            await page.locator('#IdMerchant').selectOption({ label: 'All In One - Laboratorio' });
         });
 
         await allure.step('hacer click en input codigo de sitio', async () => {
@@ -107,15 +116,15 @@ test('Sitios', async ({ page }, testInfo) => {
         });
 
         await allure.step('escribir la letra z en input zona', async () => {
-            await page.locator('#token-input-IdZone').type('z', { delay: 100 });
+            await page.locator('#token-input-IdZone').type('Ca', { delay: 100 });
         });
 
         await allure.step('seleccionar zona de lista desplegable', async () => {
-            await page.getByText('Zone1744047811843', { exact: false }).click();
+            await page.getByText('Cabe', { exact: false }).click();
         });
 
         await allure.step('Desplegar lista y seleccionar bandera', async () => {
-            await page.locator('#IdBrand').selectOption({ label: 'BRAND55' });
+            await page.locator('#IdBrand').selectOption({ label: 'DEFAULT' });
         });
 
         await allure.step('Desplegar lista y seleccionar idioma', async () => {
@@ -159,7 +168,7 @@ test('Sitios', async ({ page }, testInfo) => {
         });
 
         await allure.step('Desplegar lista y seleccionar moneda de sitio', async () => {
-            await page.locator('#IdCurrencyCode').selectOption({ label: 'USD' });
+            await page.getByLabel('Moneda: *').selectOption({ label: 'ARS' });
         });
 
         await allure.step('Hacer click en boton guardar', async () => {
@@ -178,7 +187,19 @@ test('Sitios', async ({ page }, testInfo) => {
         })
 
         await allure.step('Click en el título, no en todo el panel', async () => {
-            await page.locator('#filterPanel .collapsibleContainerTitle').click({ timeout: 60000 });        
+                    await allure.step('Verificamos que el panel de filtro exista',async () => {
+            await page.locator('#filterPanel').waitFor({ state: 'visible', timeout: 20000 });
+        });
+
+        await allure.step('Click en el título, no en todo el panel',async () => {
+            const panelTitle = page.locator('#filterPanel .collapsibleContainerTitle');
+            await panelTitle.waitFor({ state: 'visible', timeout: 20000 });
+            await panelTitle.click();
+        });
+
+        await allure.step('Esperar que se despliegue el contenido',async () => {
+            await page.locator('#filterPanel .collapsibleContainerContent').waitFor({ state: 'visible', timeout: 20000 });
+        });({ timeout: 60000 });        
         })
 
         await allure.step('Esperar que se despliegue el contenido', async () => {
@@ -228,7 +249,19 @@ test('Sitios', async ({ page }, testInfo) => {
         })
 
         await allure.step('Click en el título, no en todo el panel', async () => {
-            await page.locator('#filterPanel .collapsibleContainerTitle').click({ timeout: 60000 });            
+                    await allure.step('Verificamos que el panel de filtro exista',async () => {
+            await page.locator('#filterPanel').waitFor({ state: 'visible', timeout: 20000 });
+        });
+
+        await allure.step('Click en el título, no en todo el panel',async () => {
+            const panelTitle = page.locator('#filterPanel .collapsibleContainerTitle');
+            await panelTitle.waitFor({ state: 'visible', timeout: 20000 });
+            await panelTitle.click();
+        });
+
+        await allure.step('Esperar que se despliegue el contenido',async () => {
+            await page.locator('#filterPanel .collapsibleContainerContent').waitFor({ state: 'visible', timeout: 20000 });
+        });({ timeout: 60000 });            
         })
 
         await allure.step('Esperamos que de despliege el filtro', async () => {

@@ -42,7 +42,7 @@ test('Combustibles', async ({ page }, testInfo) => {
         });
 
         await allure.step('Escribir en input nombre de usuario', async () => {
-            await page.locator('#UserName').fill('facuna@atioinc.com');
+            await page.locator('#UserName').fill('QAutomation@gmail.com');
         });
 
         await allure.step('Hacer click en input Contraseña de usuario', async () => {
@@ -50,24 +50,34 @@ test('Combustibles', async ({ page }, testInfo) => {
         });
 
         await allure.step('Escribir en input Contraseña de usuario', async () => {
-            await page.locator('#Password').fill('pipo33');
+            await page.locator('#Password').fill('SVYTY6KA');
         });
 
         await allure.step('Hacer Click en ingresar', async () => {
             await page.locator('#submit').click();
         });
         
-        await allure.step('hacer click para cambiar rol', async () => {
-            const primerLink = page.locator('p >> a').first();
-            await primerLink.click();
+        await allure.step('espera de carga', async () => {
+            await page.waitForTimeout(2000); // espera 2 segundos
         });
-    
+
+        await allure.step('hacer click para cambiar rol', async () => {
+            const rolLink = page.getByRole('link', { name: /QAutomation Test \(/ }); // regex para tolerar variantes
+            await rolLink.waitFor({ state: 'visible', timeout: 60000 });
+            await expect(rolLink).toBeEnabled({ timeout: 60000 });
+            await rolLink.click(); 
+        });
+   
+
         await allure.step('hacer click para desplegar lista de roles', async () => {
-            await page.getByTitle('Show All Items').click();
+            const showAllBtn = page.getByTitle('Show All Items');
+            await showAllBtn.waitFor({ state: 'visible', timeout: 60000 });
+            await expect(showAllBtn).toBeEnabled({ timeout: 60000 });
+            await showAllBtn.click();
         });
 
         await allure.step('hacer click en rol NWAdmin - LAB QA', async () => {
-            await page.getByText('NW Admin - LAB QA').click();
+            await page.getByText('NW Admin - LAB Network').click();
         });
 
         await allure.step('acceder a modulo combustibles', async () => {
@@ -75,7 +85,7 @@ test('Combustibles', async ({ page }, testInfo) => {
         });
 
         await allure.step('veriricar que estamos en la url de combustibles', async () => {
-            await expect(page).toHaveURL('https://console-beta.ationet.com/Fuels');
+            await expect(page).toHaveURL('https://console.ationet.com/Fuels');
         });    
     });
 
@@ -85,15 +95,15 @@ test('Combustibles', async ({ page }, testInfo) => {
         });
 
         await allure.step('veriricar que estamos en enlase de crear combustibles',async () => {
-            await expect(page).toHaveURL('https://console-beta.ationet.com/Fuels/Create');
+            await expect(page).toHaveURL('https://console.ationet.com/Fuels/Create');
         });
 
         await allure.step('desplegar y seleccionar sitio',async () => {
-            await page.locator('#IdSite').selectOption({ label: 'custom1Pruebaaa' });
+            await page.locator('#IdSite').selectOption({ label: 'All In One' });
         });
 
         await allure.step('desplegar y seleccionar combustible maestro',async () => {
-            await page.locator('#IdFuelMaster').selectOption({ label: 'TEST' });
+            await page.locator('#IdFuelMaster').selectOption({ label: 'Super' });
         });
 
         await allure.step('hacer click en input codigo',async () => {
@@ -110,16 +120,18 @@ test('Combustibles', async ({ page }, testInfo) => {
     });
 
     await allure.step('Filtrar nuevo Combustibles',async () => {
-        await allure.step('Aseguramos que el panel esté presente',async () => {
-            await page.locator('#filterPanel').waitFor({ state: 'visible', timeout: 60000 });
+        await allure.step('Verificamos que el panel de filtro exista',async () => {
+            await page.locator('#filterPanel').waitFor({ state: 'visible', timeout: 20000 });
         });
 
         await allure.step('Click en el título, no en todo el panel',async () => {
-            await page.locator('#filterPanel .collapsibleContainerTitle').click({ timeout: 60000 });
+            const panelTitle = page.locator('#filterPanel .collapsibleContainerTitle');
+            await panelTitle.waitFor({ state: 'visible', timeout: 20000 });
+            await panelTitle.click();
         });
 
         await allure.step('Esperar que se despliegue el contenido',async () => {
-            await page.locator('#filterPanel .collapsibleContainerContent').waitFor({ state: 'visible', timeout: 60000 });
+            await page.locator('#filterPanel .collapsibleContainerContent').waitFor({ state: 'visible', timeout: 20000 });
         });
 
         await allure.step('Click en input codigo de sitio',async () => {
@@ -159,15 +171,17 @@ test('Combustibles', async ({ page }, testInfo) => {
 
     await allure.step('Filtrar nuevo Combustibles editado',async () => {
         await allure.step('Verificamos que el panel de filtro exista',async () => {
-            await page.locator('#filterPanel').waitFor({ state: 'visible', timeout: 60000 });
+            await page.locator('#filterPanel').waitFor({ state: 'visible', timeout: 20000 });
         });
 
         await allure.step('Click en el título, no en todo el panel',async () => {
-            await page.locator('#filterPanel .collapsibleContainerTitle').click({ timeout: 60000 });
+            const panelTitle = page.locator('#filterPanel .collapsibleContainerTitle');
+            await panelTitle.waitFor({ state: 'visible', timeout: 20000 });
+            await panelTitle.click();
         });
 
         await allure.step('Esperar que se despliegue el contenido',async () => {
-            await page.locator('#filterPanel .collapsibleContainerContent').waitFor({ state: 'visible', timeout: 60000 });
+            await page.locator('#filterPanel .collapsibleContainerContent').waitFor({ state: 'visible', timeout: 20000 });
         });
 
         await allure.step('Click en input codigo de sitio',async () => {

@@ -43,7 +43,7 @@ test('Contratos de compañia', async ({ page }, testInfo) => {
         });
 
         await allure.step('Escribir en input nombre de usuario', async () => {
-            await page.locator('#UserName').fill('facuna@atioinc.com');
+            await page.locator('#UserName').fill('QAutomation@gmail.com');
         });
 
         await allure.step('Hacer click en input Contraseña de usuario', async () => {
@@ -51,24 +51,33 @@ test('Contratos de compañia', async ({ page }, testInfo) => {
         });
 
         await allure.step('Escribir en input Contraseña de usuario', async () => {
-            await page.locator('#Password').fill('pipo33');
+            await page.locator('#Password').fill('SVYTY6KA');
         });
 
         await allure.step('Hacer Click en ingresar', async () => {
             await page.locator('#submit').click();
         });
         
+        await allure.step('espera de carga', async () => {
+            await page.waitForTimeout(2000); // espera 2 segundos
+        });
+
         await allure.step('hacer click para cambiar rol', async () => {
-            const primerLink = page.locator('p >> a').first();
-            await primerLink.click();
+            const rolLink = page.getByRole('link', { name: /QAutomation Test \(/ }); // regex para tolerar variantes
+            await rolLink.waitFor({ state: 'visible', timeout: 60000 });
+            await expect(rolLink).toBeEnabled({ timeout: 60000 });
+            await rolLink.click(); 
         });
     
         await allure.step('hacer click para desplegar lista de roles', async () => {
-            await page.getByTitle('Show All Items').click();
+            const showAllBtn = page.getByTitle('Show All Items');
+            await showAllBtn.waitFor({ state: 'visible', timeout: 60000 });
+            await expect(showAllBtn).toBeEnabled({ timeout: 60000 });
+            await showAllBtn.click();
         });
 
         await allure.step('hacer click en rol NWAdmin - LAB QA', async () => {
-            await page.getByText('NW Admin - LAB QA').click();
+            await page.getByText('NW Admin - LAB Network').click();
         });
 
         await allure.step('acceder a modulo contratos de compañia', async () => {
@@ -76,7 +85,7 @@ test('Contratos de compañia', async ({ page }, testInfo) => {
         });
 
         await allure.step('veriricar que estamos en la url de contrato de compañia', async () => {
-            await expect(page).toHaveURL('https://console-beta.ationet.com/CompanyContracts');
+            await expect(page).toHaveURL('https://console.ationet.com/CompanyContracts');
         });    
     });   
 
@@ -87,7 +96,7 @@ test('Contratos de compañia', async ({ page }, testInfo) => {
         });
 
         await allure.step('Verificar que estamos en la url de crear contrato de compañia' , async () => {
-            await expect(page).toHaveURL('https://console-beta.ationet.com/CompanyContracts/Create');
+            await expect(page).toHaveURL('https://console.ationet.com/CompanyContracts/Create');
         });
 
         await allure.step('Click en input compañia' , async () => {
@@ -95,11 +104,11 @@ test('Contratos de compañia', async ({ page }, testInfo) => {
         });
 
         await allure.step('Escribir en input compañia' , async () => {
-            await page.locator('#token-input-CompanyContract_CompanyId').type('comp', { delay: 100 });
+            await page.locator('#token-input-CompanyContract_CompanyId').type('All', { delay: 100 });
         });
 
         await allure.step('Selecionar Opcion en input compañia' , async () => {
-            await page.locator('.token-input-dropdown-ationet li', { hasText: 'Company PetroMax' }).first().click();
+            await page.locator('.token-input-dropdown-ationet li', { hasText: 'All In One Laboratorio' }).first().click();
         });
 
         await allure.step('Click en input Codigo' , async () => {
@@ -151,11 +160,11 @@ test('Contratos de compañia', async ({ page }, testInfo) => {
         });
 
         await allure.step('Escribir en input combustible' , async () => {
-            await page.locator('#token-input-Fuel').type('Prem', { delay: 100 });
+            await page.locator('#token-input-Fuel').type('Compre', { delay: 100 });
         });
 
         await allure.step('Seleccionar en input combustible' , async () => {
-            await page.getByText('Premium Diesel', { exact: false }).click();
+            await page.getByText('Compressed Natural Gas', { exact: false }).click();
         });
 
         await allure.step('Click en boton guardar' , async () => {
@@ -171,7 +180,19 @@ test('Contratos de compañia', async ({ page }, testInfo) => {
             });
 
             await allure.step('Click en filtro no en todo el panel' , async () => {
-                await page.locator('#filterPanel .collapsibleContainerTitle').click({ timeout: 60000 });
+                        await allure.step('Verificamos que el panel de filtro exista',async () => {
+            await page.locator('#filterPanel').waitFor({ state: 'visible', timeout: 20000 });
+        });
+
+        await allure.step('Click en el título, no en todo el panel',async () => {
+            const panelTitle = page.locator('#filterPanel .collapsibleContainerTitle');
+            await panelTitle.waitFor({ state: 'visible', timeout: 20000 });
+            await panelTitle.click();
+        });
+
+        await allure.step('Esperar que se despliegue el contenido',async () => {
+            await page.locator('#filterPanel .collapsibleContainerContent').waitFor({ state: 'visible', timeout: 20000 });
+        });({ timeout: 60000 });
             });
 
             await allure.step('Esperar que de desplegue el filtro' , async () => {
@@ -223,7 +244,19 @@ test('Contratos de compañia', async ({ page }, testInfo) => {
             });
 
             await allure.step('Click en filtro no en todo el panel' , async () => {
-                await page.locator('#filterPanel .collapsibleContainerTitle').click({ timeout: 60000 });
+                        await allure.step('Verificamos que el panel de filtro exista',async () => {
+            await page.locator('#filterPanel').waitFor({ state: 'visible', timeout: 20000 });
+        });
+
+        await allure.step('Click en el título, no en todo el panel',async () => {
+            const panelTitle = page.locator('#filterPanel .collapsibleContainerTitle');
+            await panelTitle.waitFor({ state: 'visible', timeout: 20000 });
+            await panelTitle.click();
+        });
+
+        await allure.step('Esperar que se despliegue el contenido',async () => {
+            await page.locator('#filterPanel .collapsibleContainerContent').waitFor({ state: 'visible', timeout: 20000 });
+        });({ timeout: 60000 });
             });
 
             await allure.step('Esperar que de desplegue el filtro' , async () => {

@@ -45,7 +45,7 @@ test('Contratos de Comercio', async ({ page }, testInfo) => {
         });
 
         await allure.step('Escribir en input nombre de usuario', async () => {
-            await page.locator('#UserName').fill('facuna@atioinc.com');
+            await page.locator('#UserName').fill('QAutomation@gmail.com');
         });
 
         await allure.step('Hacer click en input Contraseña de usuario', async () => {
@@ -53,24 +53,33 @@ test('Contratos de Comercio', async ({ page }, testInfo) => {
         });
 
         await allure.step('Escribir en input Contraseña de usuario', async () => {
-            await page.locator('#Password').fill('pipo33');
+            await page.locator('#Password').fill('SVYTY6KA');
         });
 
         await allure.step('Hacer Click en ingresar', async () => {
             await page.locator('#submit').click();
         });
         
+        await allure.step('espera de carga', async () => {
+            await page.waitForTimeout(2000); // espera 2 segundos
+        });
+
         await allure.step('hacer click para cambiar rol', async () => {
-            const primerLink = page.locator('p >> a').first();
-            await primerLink.click();
+            const rolLink = page.getByRole('link', { name: /QAutomation Test \(/ }); // regex para tolerar variantes
+            await rolLink.waitFor({ state: 'visible', timeout: 60000 });
+            await expect(rolLink).toBeEnabled({ timeout: 60000 });
+            await rolLink.click(); 
         });
     
         await allure.step('hacer click para desplegar lista de roles', async () => {
-            await page.getByTitle('Show All Items').click();
+            const showAllBtn = page.getByTitle('Show All Items');
+            await showAllBtn.waitFor({ state: 'visible', timeout: 60000 });
+            await expect(showAllBtn).toBeEnabled({ timeout: 60000 });
+            await showAllBtn.click();
         });
 
         await allure.step('hacer click en rol NWAdmin - LAB QA', async () => {
-            await page.getByText('NW Admin - LAB QA').click();
+            await page.getByText('NW Admin - LAB Network').click();
         });
 
         await allure.step('acceder a modulo contratos de comercio', async () => {
@@ -78,7 +87,7 @@ test('Contratos de Comercio', async ({ page }, testInfo) => {
         });
 
         await allure.step('veriricar que estamos en la url de contrato de comercio', async () => {
-            await expect(page).toHaveURL('https://console-beta.ationet.com/MerchantsContracts');
+            await expect(page).toHaveURL('https://console.ationet.com/MerchantsContracts');
         });    
     });   
 
@@ -89,7 +98,7 @@ test('Contratos de Comercio', async ({ page }, testInfo) => {
         });
 
         await allure.step('Verificamos que estemos en la url nuevo contrato de comercio' , async () => {
-            await expect(page).toHaveURL('https://console-beta.ationet.com/MerchantsContracts/Create');
+            await expect(page).toHaveURL('https://console.ationet.com/MerchantsContracts/Create');
         });
 
         await allure.step('Click en input Comercio' , async () => {
@@ -97,11 +106,11 @@ test('Contratos de Comercio', async ({ page }, testInfo) => {
         });
 
         await allure.step('Escribir en input Comercio' , async () => {
-            await page.locator('#token-input-MerchantsContract_MerchantId').type('Lab', { delay: 100 });
+            await page.locator('#token-input-MerchantsContract_MerchantId').type('Contr', { delay: 100 });
         });
 
         await allure.step('Seleccionar opcion en input Comercio' , async () => {
-            await page.getByText('Laboratorio Fisu', { exact: false }).click();
+            await page.getByText('Control Truck Lab', { exact: false }).click();
         });
 
         await allure.step('Click en input codigo' , async () => {
@@ -142,7 +151,7 @@ test('Contratos de Comercio', async ({ page }, testInfo) => {
         });
 
         await allure.step('Desplegar lista y seleccionar Moneda' , async () => {
-            await page.locator('#MerchantsContract_CurrencyId').selectOption({ label: 'PAB4' });
+            await page.locator('#MerchantsContract_CurrencyId').selectOption({ label: 'ARS' });
         });
 
         await allure.step('Click en input sitio' , async () => {
@@ -150,11 +159,11 @@ test('Contratos de Comercio', async ({ page }, testInfo) => {
         });
 
         await allure.step('Escribir en input sitio' , async () => {
-            await page.locator('#token-input-Site').type('Lab', { delay: 100 });
+            await page.locator('#token-input-Site').type('Kitts', { delay: 100 });
         });
 
         await allure.step('Seleccionar sitio (es normal que falle porque el sitio ya fue asignado en otro contrato de comercio' , async () => {
-            await page.getByText('Laboratorio', { exact: false }).click();
+            await page.getByText('Kitts Nevis P2343 LAB', { exact: false }).click();
         });
 
         await allure.step('Click en boton Guardar' , async () => {
@@ -170,7 +179,19 @@ test('Contratos de Comercio', async ({ page }, testInfo) => {
         });
 
         await allure.step('Click en el filtro, no en todo el panel' , async () => {
-            await page.locator('#filterPanel .collapsibleContainerTitle').click({ timeout: 60000 });
+                    await allure.step('Verificamos que el panel de filtro exista',async () => {
+            await page.locator('#filterPanel').waitFor({ state: 'visible', timeout: 20000 });
+        });
+
+        await allure.step('Click en el título, no en todo el panel',async () => {
+            const panelTitle = page.locator('#filterPanel .collapsibleContainerTitle');
+            await panelTitle.waitFor({ state: 'visible', timeout: 20000 });
+            await panelTitle.click();
+        });
+
+        await allure.step('Esperar que se despliegue el contenido',async () => {
+            await page.locator('#filterPanel .collapsibleContainerContent').waitFor({ state: 'visible', timeout: 20000 });
+        });({ timeout: 60000 });
         });
 
         await allure.step('Esperar que se despliegue el filtro' , async () => {
@@ -221,7 +242,19 @@ test('Contratos de Comercio', async ({ page }, testInfo) => {
         });
 
         await allure.step('Click en el filtro, no en todo el panel' , async () => {
-            await page.locator('#filterPanel .collapsibleContainerTitle').click({ timeout: 60000 });
+                    await allure.step('Verificamos que el panel de filtro exista',async () => {
+            await page.locator('#filterPanel').waitFor({ state: 'visible', timeout: 20000 });
+        });
+
+        await allure.step('Click en el título, no en todo el panel',async () => {
+            const panelTitle = page.locator('#filterPanel .collapsibleContainerTitle');
+            await panelTitle.waitFor({ state: 'visible', timeout: 20000 });
+            await panelTitle.click();
+        });
+
+        await allure.step('Esperar que se despliegue el contenido',async () => {
+            await page.locator('#filterPanel .collapsibleContainerContent').waitFor({ state: 'visible', timeout: 20000 });
+        });({ timeout: 60000 });
         });
 
         await allure.step('Esperar que se despliegue el filtro' , async () => {

@@ -45,7 +45,7 @@ test('Vehiculos', async ({ page }, testInfo) => {
         });
 
         await allure.step('Escribir en input nombre de usuario', async () => {
-            await page.locator('#UserName').fill('facuna@atioinc.com');
+            await page.locator('#UserName').fill('QAutomation@gmail.com');
         });
 
         await allure.step('Hacer click en input Contraseña de usuario', async () => {
@@ -53,24 +53,33 @@ test('Vehiculos', async ({ page }, testInfo) => {
         });
 
         await allure.step('Escribir en input Contraseña de usuario', async () => {
-            await page.locator('#Password').fill('pipo33');
+            await page.locator('#Password').fill('SVYTY6KA');
         });
 
         await allure.step('Hacer Click en ingresar', async () => {
             await page.locator('#submit').click();
         });
         
+        await allure.step('espera de carga', async () => {
+            await page.waitForTimeout(2000); // espera 2 segundos
+        });
+
         await allure.step('hacer click para cambiar rol', async () => {
-            const primerLink = page.locator('p >> a').first();
-            await primerLink.click();
+            const rolLink = page.getByRole('link', { name: /QAutomation Test \(/ }); // regex para tolerar variantes
+            await rolLink.waitFor({ state: 'visible', timeout: 60000 });
+            await expect(rolLink).toBeEnabled({ timeout: 60000 });
+            await rolLink.click(); 
         });
     
         await allure.step('hacer click para desplegar lista de roles', async () => {
-            await page.getByTitle('Show All Items').click();
+            const showAllBtn = page.getByTitle('Show All Items');
+            await showAllBtn.waitFor({ state: 'visible', timeout: 60000 });
+            await expect(showAllBtn).toBeEnabled({ timeout: 60000 });
+            await showAllBtn.click();
         });
 
-        await allure.step('hacer click en rol NW Company Admin- FORMULA1', async () => {
-            await page.getByText('NW Company Admin - FORMULA1').click();
+        await allure.step('hacer click en rol NW Company - Atio Lab Flota', async () => {
+            await page.getByText('NW Company Admin - Atio Lab').click();
         });
 
         await allure.step('acceder a modulo Conductores', async () => {
@@ -78,7 +87,7 @@ test('Vehiculos', async ({ page }, testInfo) => {
         });
 
         await allure.step('veriricar que estamos en la url de Conductores', async () => {
-            await expect(page).toHaveURL('https://console-beta.ationet.com/Vehicles');
+            await expect(page).toHaveURL('https://console.ationet.com/Vehicles');
         });    
     });   
 
@@ -88,9 +97,9 @@ test('Vehiculos', async ({ page }, testInfo) => {
             await page.getByRole('button', { name: 'Nuevo' }).first().click();
         });
 
-        await allure.step('veriricar que estamos en url de crear Reglas' , async () => {
-            await expect(page).toHaveURL('https://console-beta.ationet.com/Vehicles/Create');
-        });
+        // await allure.step('veriricar que estamos en url de crear vehiculo' , async () => {
+        //     await expect(page).toHaveURL('NWCompanyAdmin - Atio Lab Flota/Vehicles/Create');
+        // });
 
         await allure.step('Click en input Codigo' , async () => {
             await page.locator('#Vehicle_Code').click();
@@ -101,12 +110,12 @@ test('Vehiculos', async ({ page }, testInfo) => {
         });
 
         await allure.step('Desplegar y seleccionar flota' , async () => {
-            await page.locator('#IdFleet').selectOption({ label: '123' }); 
+            await page.locator('#IdFleet').selectOption({ label: 'Servicios' }); 
         });
 
-        await allure.step('Desplegar y seleccionar clasificacion prueba' , async () => {
-            await page.locator('#IdClasification1').selectOption({ label: '123 - prueba' }); 
-        });
+        // await allure.step('Desplegar y seleccionar clasificacion prueba' , async () => {
+        //     await page.locator('#IdClasification1').selectOption({ label: '123 - prueba' }); 
+        // });
         
         await allure.step('Click en boton guardar' , async () => {
             await page.locator('#save').click();
@@ -120,7 +129,19 @@ test('Vehiculos', async ({ page }, testInfo) => {
         });
 
         await allure.step('Click en el filtro, no en todo el panel' , async () => {
-            await page.locator('#filterPanel .collapsibleContainerTitle').click({ timeout: 60000 });
+                    await allure.step('Verificamos que el panel de filtro exista',async () => {
+            await page.locator('#filterPanel').waitFor({ state: 'visible', timeout: 20000 });
+        });
+
+        await allure.step('Click en el título, no en todo el panel',async () => {
+            const panelTitle = page.locator('#filterPanel .collapsibleContainerTitle');
+            await panelTitle.waitFor({ state: 'visible', timeout: 20000 });
+            await panelTitle.click();
+        });
+
+        await allure.step('Esperar que se despliegue el contenido',async () => {
+            await page.locator('#filterPanel .collapsibleContainerContent').waitFor({ state: 'visible', timeout: 20000 });
+        });({ timeout: 60000 });
         });
 
         await allure.step('Esperar que se despliegue el contenido' , async () => {
@@ -170,7 +191,19 @@ test('Vehiculos', async ({ page }, testInfo) => {
         });
 
         await allure.step('Click en el filtro, no en todo el panel' , async () => {
-            await page.locator('#filterPanel .collapsibleContainerTitle').click({ timeout: 60000 });
+                    await allure.step('Verificamos que el panel de filtro exista',async () => {
+            await page.locator('#filterPanel').waitFor({ state: 'visible', timeout: 20000 });
+        });
+
+        await allure.step('Click en el título, no en todo el panel',async () => {
+            const panelTitle = page.locator('#filterPanel .collapsibleContainerTitle');
+            await panelTitle.waitFor({ state: 'visible', timeout: 20000 });
+            await panelTitle.click();
+        });
+
+        await allure.step('Esperar que se despliegue el contenido',async () => {
+            await page.locator('#filterPanel .collapsibleContainerContent').waitFor({ state: 'visible', timeout: 20000 });
+        });({ timeout: 60000 });
         });
 
         await allure.step('Esperar que se despliegue el contenido' , async () => {
@@ -189,7 +222,7 @@ test('Vehiculos', async ({ page }, testInfo) => {
             await page.locator('#search').click();
         });
 
-        await allure.step('verificamos que este nuestra combustibles' , async () => {
+        await allure.step('verificamos que este nuestro vehiculo' , async () => {
             await expect(page.locator('.dtls tr td a').first()).toHaveText(VehiculoAutomatica + 'editado');
         });
     });

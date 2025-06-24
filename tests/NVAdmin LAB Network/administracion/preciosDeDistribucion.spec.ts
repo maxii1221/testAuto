@@ -43,7 +43,7 @@ test('Precios de distribucion', async ({ page }, testInfo) => {
         });
 
         await allure.step('Escribir en input nombre de usuario', async () => {
-            await page.locator('#UserName').fill('facuna@atioinc.com');
+            await page.locator('#UserName').fill('QAutomation@gmail.com');
         });
 
         await allure.step('Hacer click en input Contraseña de usuario', async () => {
@@ -51,24 +51,33 @@ test('Precios de distribucion', async ({ page }, testInfo) => {
         });
 
         await allure.step('Escribir en input Contraseña de usuario', async () => {
-            await page.locator('#Password').fill('pipo33');
+            await page.locator('#Password').fill('SVYTY6KA');
         });
 
         await allure.step('Hacer Click en ingresar', async () => {
             await page.locator('#submit').click();
         });
         
+        await allure.step('espera de carga', async () => {
+            await page.waitForTimeout(2000); // espera 2 segundos
+        });
+
         await allure.step('hacer click para cambiar rol', async () => {
-            const primerLink = page.locator('p >> a').first();
-            await primerLink.click();
+            const rolLink = page.getByRole('link', { name: /QAutomation Test \(/ }); // regex para tolerar variantes
+            await rolLink.waitFor({ state: 'visible', timeout: 60000 });
+            await expect(rolLink).toBeEnabled({ timeout: 60000 });
+            await rolLink.click(); 
         });
     
         await allure.step('hacer click para desplegar lista de roles', async () => {
-            await page.getByTitle('Show All Items').click();
+            const showAllBtn = page.getByTitle('Show All Items');
+            await showAllBtn.waitFor({ state: 'visible', timeout: 60000 });
+            await expect(showAllBtn).toBeEnabled({ timeout: 60000 });
+            await showAllBtn.click();
         });
 
         await allure.step('hacer click en rol NWAdmin - LAB QA', async () => {
-            await page.getByText('NW Admin - LAB QA').click();
+            await page.getByText('NW Admin - LAB Network').click();
         });
 
         await allure.step('acceder a modulo Precios de distribucion', async () => {
@@ -76,7 +85,7 @@ test('Precios de distribucion', async ({ page }, testInfo) => {
         });
 
         await allure.step('veriricar que estamos en la url de Precios de distribucion', async () => {
-            await expect(page).toHaveURL('https://console-beta.ationet.com/RackPrices');
+            await expect(page).toHaveURL('https://console.ationet.com/RackPrices');
         });    
     }); 
 
@@ -87,7 +96,7 @@ test('Precios de distribucion', async ({ page }, testInfo) => {
         });
 
         await allure.step('veriricar que estamos en enlase de crear Precios de distribucion',async () => {
-            await expect(page).toHaveURL('https://console-beta.ationet.com/RackPrices/Create');
+            await expect(page).toHaveURL('https://console.ationet.com/RackPrices/Create');
         });
 
         await allure.step('Click en input nombre precios de distribucion',async () => {
@@ -107,7 +116,7 @@ test('Precios de distribucion', async ({ page }, testInfo) => {
         });
 
         await allure.step('Desplegar lista y seleccionar moneda',async () => {
-            await page.locator('#RackPricesList_IdCurrencyCode').selectOption({ label: 'USD' });
+            await page.locator('#RackPricesList_IdCurrencyCode').selectOption({ label: 'ARS' });
         });
 
         await allure.step('Click en boton guardar',async () => {
@@ -123,7 +132,19 @@ test('Precios de distribucion', async ({ page }, testInfo) => {
         });
 
         await allure.step('Click en el título filtro, no en todo el panel',async () => {
-            await page.locator('#filterPanel .collapsibleContainerTitle').click({ timeout: 60000 });
+                    await allure.step('Verificamos que el panel de filtro exista',async () => {
+            await page.locator('#filterPanel').waitFor({ state: 'visible', timeout: 20000 });
+        });
+
+        await allure.step('Click en el título, no en todo el panel',async () => {
+            const panelTitle = page.locator('#filterPanel .collapsibleContainerTitle');
+            await panelTitle.waitFor({ state: 'visible', timeout: 20000 });
+            await panelTitle.click();
+        });
+
+        await allure.step('Esperar que se despliegue el contenido',async () => {
+            await page.locator('#filterPanel .collapsibleContainerContent').waitFor({ state: 'visible', timeout: 20000 });
+        });({ timeout: 60000 });
         });
 
         await allure.step('Esperar que se despliegue el contenido del filtro',async () => {
@@ -173,7 +194,19 @@ test('Precios de distribucion', async ({ page }, testInfo) => {
         });
 
         await allure.step('Click en el título filtro, no en todo el panel',async () => {
-            await page.locator('#filterPanel .collapsibleContainerTitle').click({ timeout: 60000 });
+                    await allure.step('Verificamos que el panel de filtro exista',async () => {
+            await page.locator('#filterPanel').waitFor({ state: 'visible', timeout: 20000 });
+        });
+
+        await allure.step('Click en el título, no en todo el panel',async () => {
+            const panelTitle = page.locator('#filterPanel .collapsibleContainerTitle');
+            await panelTitle.waitFor({ state: 'visible', timeout: 20000 });
+            await panelTitle.click();
+        });
+
+        await allure.step('Esperar que se despliegue el contenido',async () => {
+            await page.locator('#filterPanel .collapsibleContainerContent').waitFor({ state: 'visible', timeout: 20000 });
+        });({ timeout: 60000 });
         });
 
         await allure.step('Esperar que se despliegue el contenido del filtro',async () => {
