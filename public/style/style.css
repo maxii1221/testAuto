@@ -91,7 +91,7 @@ body {
   justify-content: flex-end;
   align-items: center;
   height: 60px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 .contenedorHeader1{
@@ -121,12 +121,18 @@ body {
   object-fit: contain;
 }
 
+.desplegableConfiguracion{
+  width: 30px;
+  height: auto;
+  background-color: #2980b9;
+}
+
 /* Navegación */
 .contenedorDerecho1 {
   background-color: #2980b9;
   color: white;
   padding: 12px 20px;
-  margin-bottom: 20px;
+  margin-bottom: 5px;
   border-radius: 8px;
   font-weight: 600;
   font-size: 1rem;
@@ -143,7 +149,7 @@ body {
   margin-bottom: 30px;
   width: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: center;  
 }
 
 .contenedorDerecho2 {
@@ -200,12 +206,12 @@ select#module:focus {
 }
 
 .buttonCancelarTest {
-  background-color: #c0392b;
+  background-color: #a84136;
   color: white;
 }
 
 .buttonCancelarTest:hover:not(:disabled) {
-  background-color: #922b21;
+  background-color: #ac2d22;
 }
 
 button:disabled {
@@ -270,7 +276,7 @@ button:disabled {
 .error {
   color: #e74c3c;
   font-weight: 700;
-}
+}   
 
 /* Historial */
 .contenedorHistorial {
@@ -329,4 +335,49 @@ a.report-link {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.menu-config {
+  display: none;
+  position: absolute;
+  top: 60px;
+  right: 60px;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  list-style: none;
+  padding: 0;
+  z-index: 1000;
+  width: 150px;
+}
+
+.menu-config li {
+  padding: 10px 15px;
+  cursor: pointer;
+  position: relative;
+  font-size: 0.95rem;
+  color: #333;
+  white-space: nowrap;
+}
+
+.menu-config li:hover {
+  background-color: #f0f0f0;
+}
+
+.menu-config .submenu {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 100%;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  list-style: none;
+  padding: 0;
+  width: 120px;
+}
+
+.menu-config li:hover > .submenu {
+  display: block;
 }

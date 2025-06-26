@@ -20,9 +20,9 @@
         <p class="p-menu-lateral">Historial de Ejecuciones</p>
       </div>
     </div>
-    <div class="divIzquierdo2" id="menuAutoServicios" data-titulo="Estabilización Servicios / Consola ATIONET (Produccion)">
+    <div class="divIzquierdo2" id="menuAutoServicios" data-titulo="Estabilización Servicios / Consola ATIONET (Producción)">
       <div class="divIzquierdo2-1">
-        <p class="p-menu-lateral">Estabilización Servicios / Consola ATIONET (Produccion)</p>
+        <p class="p-menu-lateral">Estabilización Servicios / Consola ATIONET (Producción)</p>
       </div>
     </div>
     
@@ -32,6 +32,16 @@
     <div class="contenedorHeader">
       <div class="contenedorHeader1">
         <div id="iconoConfiguracion" class="contenedorUsuario">
+          <ul class="menu-config" id="menuConfiguracion">
+            <li>
+              Temas
+              <ul class="submenu">
+                <li onclick="cambiarTema('black')">Black</li>
+                <li onclick="cambiarTema('blue')">Blue</li>
+                <li onclick="cambiarTema('light')">Light</li>
+              </ul>
+            </li>
+          </ul>
           <picture class="contenedorUsuario2">
             <img class="imagenUsuarioMiniatura" src="./pictures/configuraciones.png" alt="" />
           </picture>
@@ -46,7 +56,7 @@
 
     <div class="contenedorDerecho1">
       <div class="contenedorDerecho1-1">
-        <p class="textNavegacion">Ud. esta en: Estabilización Servicios / Consola ATIONET (Produccion)</p>
+        <p class="textNavegacion">Ud. esta en: Estabilización Servicios / Consola ATIONET (Producción)</p>
       </div>
     </div>
 
@@ -90,7 +100,7 @@
           </div>
 
           <div class="headerTerminal">
-            <p class="textHeaderTerminal">Terminal De progreso</p>
+            <p class="textHeaderTerminal">Terminal de progreso</p>
           </div>
           <div class="contenedorDerecho2-5">
             <p id="status">Esperando ejecución...</p>
@@ -142,18 +152,37 @@
 
   <script src="/socket.io/socket.io.js"></script>
 
-    <script>
+  <script>
     window.addEventListener("DOMContentLoaded", () => {
       const navegacionTexto = document.querySelector(".textNavegacion");
       const menusLaterales = document.querySelectorAll(".divIzquierdo2");
       const iconoUsuario = document.getElementById("iconoUsuario");
       const iconoConfiguracion = document.getElementById("iconoConfiguracion");
+      const menuConfiguracion = document.getElementById("menuConfiguracion");
+
+      //Logica para cambiar tema.
+      iconoConfiguracion?.addEventListener("click", () => {
+        menuConfiguracion.style.display =
+          menuConfiguracion.style.display === "block" ? "none" : "block";
+      });
+
+      // Ocultar el menú si clickeás fuera
+      window.addEventListener("click", (e) => {
+        if (!e.target.closest("#iconoConfiguracion") && !e.target.closest("#menuConfiguracion")) {
+          menuConfiguracion.style.display = "none";
+        }
+      });
+
+      // Cambiar tema (ejemplo simple, podés hacer más)
+      window.cambiarTema = function (tema) {
+        alert("Tema seleccionado: " + tema);
+        // Acá podrías agregar lógica para cambiar clases del body, etc.
+      };
 
       const seccionEjecutar = document.getElementById("seccionEjecutar");
       const seccionHistorial = document.getElementById("seccionHistorial");
 
       iconoUsuario?.addEventListener("click", () => alert("se abre desplegable de usuario"));
-      iconoConfiguracion?.addEventListener("click", () => alert("se abre desplegable de configuracion"));
 
       function activarMenu(menuSeleccionado) {
         menusLaterales.forEach((menu) => menu.classList.remove("active"));
