@@ -8,7 +8,7 @@
 <body>
   <div class="contenedorIzquierdo">
     <picture class="contenedorLogo">
-      <img class="logo" src="pictures/fd4b8d95-09b9-46ba-bede-7fc04ad02e4d.jpg" alt="" />
+      <img class="logo" src="pictures/LogoATIONET.png" alt="" />
     </picture>
     <div class="divIzquierdo1">
       <div class="divIzquierdo1-1">
@@ -32,12 +32,12 @@
     <div class="contenedorHeader">
       <div class="contenedorHeader1">
         <div id="iconoConfiguracion" class="contenedorUsuario">
-          <ul class="menu-config" id="menuConfiguracion">
+          <ul id="menuConfiguracion" class="menu-config">
             <li>
-              Temas
+              Tema
               <ul class="submenu">
-                <li onclick="cambiarTema('black')">Black</li>
                 <li onclick="cambiarTema('blue')">Blue</li>
+                <li onclick="cambiarTema('black')">Black</li>
                 <li onclick="cambiarTema('light')">Light</li>
               </ul>
             </li>
@@ -159,25 +159,6 @@
       const iconoUsuario = document.getElementById("iconoUsuario");
       const iconoConfiguracion = document.getElementById("iconoConfiguracion");
       const menuConfiguracion = document.getElementById("menuConfiguracion");
-
-      //Logica para cambiar tema.
-      iconoConfiguracion?.addEventListener("click", () => {
-        menuConfiguracion.style.display =
-          menuConfiguracion.style.display === "block" ? "none" : "block";
-      });
-
-      // Ocultar el menú si clickeás fuera
-      window.addEventListener("click", (e) => {
-        if (!e.target.closest("#iconoConfiguracion") && !e.target.closest("#menuConfiguracion")) {
-          menuConfiguracion.style.display = "none";
-        }
-      });
-
-      // Cambiar tema (ejemplo simple, podés hacer más)
-      window.cambiarTema = function (tema) {
-        alert("Tema seleccionado: " + tema);
-        // Acá podrías agregar lógica para cambiar clases del body, etc.
-      };
 
       const seccionEjecutar = document.getElementById("seccionEjecutar");
       const seccionHistorial = document.getElementById("seccionHistorial");
@@ -350,6 +331,34 @@
     });
   </script>
 
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const iconoConfiguracion = document.getElementById("iconoConfiguracion");
+      const menuConfiguracion = document.getElementById("menuConfiguracion");
+
+      iconoConfiguracion?.addEventListener("click", (e) => {
+        e.stopPropagation();
+        menuConfiguracion.style.display = menuConfiguracion.style.display === "block" ? "none" : "block";
+      });
+
+      window.addEventListener("click", () => {
+        menuConfiguracion.style.display = "none";
+      });
+
+      function aplicarTema(tema) {
+        document.body.classList.remove("tema-blue", "tema-black", "tema-light");
+        document.body.classList.add("tema-" + tema);
+      }
+
+      window.cambiarTema = function (tema) {
+        aplicarTema(tema);
+        localStorage.setItem("temaSeleccionado", tema);
+      };
+
+      const temaGuardado = localStorage.getItem("temaSeleccionado") || "blue";
+      aplicarTema(temaGuardado);
+    });
+  </script>
   
 </body>
 </html>
