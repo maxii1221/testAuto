@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8" />
   <title>Ejecutor de Automatizacion</title>
   <link rel="stylesheet" href="style/style.css" />
 </head>
+
 <body>
   <div class="contenedorIzquierdo">
 
@@ -28,7 +30,8 @@
         </div>
       </div>
 
-      <div class="divIzquierdo2" id="menuAutoServicios" data-titulo="Estabilización Servicios / Consola ATIONET (Producción)">
+      <div class="divIzquierdo2" id="menuAutoServicios"
+        data-titulo="Estabilización Servicios / Consola ATIONET (Producción)">
         <div class="divIzquierdo2-1">
           <p class="p-menu-lateral">Estabilización Servicios / Consola ATIONET (Producción)</p>
         </div>
@@ -45,10 +48,10 @@
       </div>
       <div id="toggleMenuBtn" class="toggle-menu-boton" title="Ocultar menú lateral">
         <picture class="contenedorImgBuscador">
-          <img  class="iconoOcultar" src="./pictures/ArrowDoublef2f2f2.png" alt="arrowAbierto">
-          <img  class="iconoOcultar1" src="./pictures/ArrowDoublef2f2f22.png" alt="arrowCerrado">
-          <img  class="iconoOcultar2" src="./pictures/ArrowDoubleBlack.png" alt="arrowAbiertoBlack">
-          <img  class="iconoOcultar3" src="./pictures/ArrowDoubleBlack2.png" alt="arrowCerradoBlack">
+          <img class="iconoOcultar" src="./pictures/ArrowDoublef2f2f2.png" alt="arrowAbierto">
+          <img class="iconoOcultar1" src="./pictures/ArrowDoublef2f2f22.png" alt="arrowCerrado">
+          <img class="iconoOcultar2" src="./pictures/ArrowDoubleBlack.png" alt="arrowAbiertoBlack">
+          <img class="iconoOcultar3" src="./pictures/ArrowDoubleBlack2.png" alt="arrowCerradoBlack">
         </picture>
       </div>
     </div>
@@ -95,7 +98,7 @@
     <div id="seccionEjecutar" class="seccionOculta">
       <div class="ContenedorDeEjecutor">
         <div class="contenedorDerecho2">
-          
+
           <div class="contenedorInputsEjecutor">
 
             <div class="contenedoresLabelInput">
@@ -114,7 +117,7 @@
               </div>
 
               <div class="contenedorDerecho2-2">
-                <select  class="module" id="cliente">
+                <select class="module" id="cliente">
                   <option value="">-- Seleccionar --</option>
                   <option value="/">Todos los clientes</option>
                   <option value="LAB Network">LAB Network</option>
@@ -130,7 +133,7 @@
               </div>
 
               <div class="contenedorDerecho2-2">
-                <select class="module"  id="rol">
+                <select class="module" id="rol">
                   <option value="">-- Seleccionar --</option>
                   <option value="/">Todos los Roles</option>
                   <option value="NWAdmin">NWAdmin</option>
@@ -152,17 +155,13 @@
                   <option value="flota">Flota</option>
                   <option value="liquidaciones">Liquidaciones</option>
                 </select>
-              </div> 
+              </div>
             </div>
-         
+
           </div>
 
           <div class="contenedorDerecho2-3">
-            <button
-              id="btnEjecutar"
-              class="buttonEjecutarTest"
-              onclick="runTest()"
-            >
+            <button id="btnEjecutar" class="buttonEjecutarTest" onclick="runTest()">
               Ejecutar Test
             </button>
           </div>
@@ -178,23 +177,12 @@
           </div>
           <div class="contenedorDerecho2-5">
             <p id="status">Esperando ejecución...</p>
-            <a
-              id="reportLink"
-              class="report-link"
-              href="#"
-              target="_blank"
-              style="display: none;"
-              >Ver Reporte Allure</a
-            >
+            <a id="reportLink" class="report-link" href="#" target="_blank" style="display: none;">Ver Reporte
+              Allure</a>
           </div>
 
           <div class="contenedorDerecho2-6">
-            <button
-              id="btnDetener"
-              class="buttonCancelarTest"
-              onclick="stopTest()"
-              disabled
-            >
+            <button id="btnDetener" class="buttonCancelarTest" onclick="stopTest()" disabled>
               Detener ejecución
             </button>
           </div>
@@ -217,10 +205,12 @@
             </tr>
           </thead>
           <tbody id="tablaHistorialBody">
-            <tr><td colspan="5">Cargando historial...</td></tr>
+            <tr>
+              <td colspan="5">Cargando historial...</td>
+            </tr>
           </tbody>
         </table>
-      </div>  
+      </div>
     </div>
   </div>
 
@@ -250,7 +240,7 @@
 
         toggleMenuBtn.title = isHidden ? "Mostrar menú lateral" : "Ocultar menú lateral";
 
-        const estiloActual = window.getComputedStyle(ocutarMostrar).display;  
+        const estiloActual = window.getComputedStyle(ocutarMostrar).display;
 
 
         ocutarMostrar.style.display = (estiloActual === "none") ? "flex" : "none";
@@ -283,9 +273,9 @@
       //ejecucion de inputs
 
       function resetSelect(select, placeholder = "-- Seleccionar --") {
-      select.innerHTML = `<option value="">${placeholder}</option>`;
-      select.value = "";
-}
+        select.innerHTML = `<option value="">${placeholder}</option>`;
+        select.value = "";
+      }
 
       const selectCliente = document.getElementById("cliente");
       const selectRol = document.getElementById("rol");
@@ -296,27 +286,51 @@
       selectRol.disabled = true;
       selectModulo.disabled = true;
 
+      function agregarOpciones(select, opciones) {
+        opciones.forEach((opcion) => {
+          const opt = document.createElement("option");
+          opt.value = opcion;
+          opt.textContent = opcion;
+          select.appendChild(opt);
+        });
+      }
+
       // Lógica para el cambio en Cliente
       selectCliente.addEventListener("change", () => {
-  const valorCliente = selectCliente.value;
+        const valorCliente = selectCliente.value;
 
-  // Limpiar valores seleccionados de rol y módulo
-  selectRol.value = "";
-  selectModulo.value = "";
+        // Limpiar valores seleccionados
+        selectRol.value = "";
+        selectModulo.value = "";
 
-  // También deshabilitar el módulo siempre que se cambie el cliente
-  selectModulo.disabled = true;
+        // Deshabilitar por defecto
+        selectRol.disabled = true;
+        selectModulo.disabled = true;
 
-  if (valorCliente && valorCliente !== "/") {
-    // Cliente válido (no "Todos los clientes")
-    selectRol.disabled = false;
-  } else {
-    // Cliente vacío o "Todos los clientes"
-    selectRol.disabled = true;
-    selectModulo.disabled = true;
-  }
-});
-      
+        // Resetear las opciones del rol y módulo
+        resetSelect(selectRol, "-- Seleccionar Rol --");
+        resetSelect(selectModulo, "-- Seleccionar Módulo --");
+
+        if (valorCliente && valorCliente !== "/") {
+          selectRol.disabled = false;
+
+          // Cargar roles y módulos según el cliente seleccionado
+          if (valorCliente === "Primax peru") {
+            agregarOpciones(selectRol, ["NWAdmin"]);
+            agregarOpciones(selectModulo, ["flota"]);
+          } else if (valorCliente === "Atio Lab Flota") {
+            agregarOpciones(selectRol, ["NWCompany"]);
+            agregarOpciones(selectModulo, ["Todos los modulos" ,"flota", "admin"]);
+          } else if (valorCliente === "LAB Network") {
+            agregarOpciones(selectRol, ["NWAdmin"]);
+            agregarOpciones(selectModulo, ["Todos los modulos" ,"admin", "flota", "liquidaciones"]);
+          } else {
+            // Si no coincide, mantené los selects limpios
+            selectRol.disabled = true;
+            selectModulo.disabled = true;
+          }
+        }
+      });
 
       // Lógica para el cambio en Rol
       selectRol.addEventListener("change", () => {
@@ -333,7 +347,7 @@
           selectModulo.disabled = true;
         }
       });
-      
+
       window.runTest = async function () {
         const clienteSelect = document.getElementById("cliente");
         const rolSelect = document.getElementById("rol");
@@ -373,7 +387,7 @@
 
         // Construcción del path de ejecución:
         const module = `${cliente}/${rol}/${modulo}`;
-       
+
         const status = document.getElementById("status");
         const reportLink = document.getElementById("reportLink");
         const progressBar = document.getElementById("progressBar");
@@ -427,18 +441,18 @@
           status.textContent = "❌ " + err.message;
           status.className = "error";
         } finally {
-            btnEjecutar.disabled = false;
-            btnDetener.disabled = true;
+          btnEjecutar.disabled = false;
+          btnDetener.disabled = true;
 
-            // 🔽 RESET DE INPUTS
-            usuarioInput.value = "";
-            clienteSelect.value = "";
-            rolSelect.value = "";
-            moduloSelect.value = "";
+          // 🔽 RESET DE INPUTS
+          usuarioInput.value = "";
+          clienteSelect.value = "";
+          rolSelect.value = "";
+          moduloSelect.value = "";
 
-            rolSelect.disabled = true;
-            moduloSelect.disabled = true;
-          }
+          rolSelect.disabled = true;
+          moduloSelect.disabled = true;
+        }
       };
 
       window.stopTest = async function () {
@@ -538,6 +552,7 @@
       aplicarTema(temaGuardado);
     });
   </script>
-  
+
 </body>
+
 </html>
