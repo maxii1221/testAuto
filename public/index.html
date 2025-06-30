@@ -427,9 +427,18 @@
           status.textContent = "❌ " + err.message;
           status.className = "error";
         } finally {
-          btnEjecutar.disabled = false;
-          btnDetener.disabled = true;
-        }
+            btnEjecutar.disabled = false;
+            btnDetener.disabled = true;
+
+            // 🔽 RESET DE INPUTS
+            usuarioInput.value = "";
+            clienteSelect.value = "";
+            rolSelect.value = "";
+            moduloSelect.value = "";
+
+            rolSelect.disabled = true;
+            moduloSelect.disabled = true;
+          }
       };
 
       window.stopTest = async function () {
