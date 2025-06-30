@@ -7,28 +7,57 @@
 </head>
 <body>
   <div class="contenedorIzquierdo">
-    <picture class="contenedorLogo">
-      <img class="logo" src="pictures/LogoATIONET.png" alt="" />
-    </picture>
-    <div class="divIzquierdo1">
-      <div class="divIzquierdo1-1">
-        <p class="textWhite">Portal de Automatizacion</p>
+
+    <div class="contenedorLogo">
+      <picture class="contenedorLogo1">
+        <img class="logoNormal" src="pictures/logoAtioNET2.png" alt="Logo grande" />
+        <img class="logoMini" src="pictures/logoAtioNET3.png" alt="Logo pequeño" />
+      </picture>
+    </div>
+
+    <div id="ocutarMostrar" class="ocutarMostrar">
+      <div class="divIzquierdo1">
+        <div class="divIzquierdo1-1">
+          <p class="textWhite">Automatizacion y Data</p>
+        </div>
+      </div>
+
+      <div class="divIzquierdo2" id="menuHistorial" data-titulo="Historial de Ejecuciones">
+        <div class="divIzquierdo2-1">
+          <p class="p-menu-lateral">Historial de Ejecuciones</p>
+        </div>
+      </div>
+
+      <div class="divIzquierdo2" id="menuAutoServicios" data-titulo="Estabilización Servicios / Consola ATIONET (Producción)">
+        <div class="divIzquierdo2-1">
+          <p class="p-menu-lateral">Estabilización Servicios / Consola ATIONET (Producción)</p>
+        </div>
       </div>
     </div>
-    <div class="divIzquierdo2" id="menuHistorial" data-titulo="Historial de Ejecuciones">
-      <div class="divIzquierdo2-1">
-        <p class="p-menu-lateral">Historial de Ejecuciones</p>
+
+    <div class="contenedorParaOcultar">
+      <div id="contenedorParaOcultar1" class="contenedorParaOcultar1">
+        <picture class="contenedorImgBuscador">
+          <img class="imgBuscador" src="./pictures/lupaBlack.png" alt="">
+          <img class="imgBuscador1" src="./pictures/lupaf2f2f2.png" alt="">
+        </picture>
+        <input class="inputBuscador" type="text" placeholder="Buscador">
+      </div>
+      <div id="toggleMenuBtn" class="toggle-menu-boton" title="Ocultar menú lateral">
+        <picture class="contenedorImgBuscador">
+          <img  class="iconoOcultar" src="./pictures/ArrowDoublef2f2f2.png" alt="arrowAbierto">
+          <img  class="iconoOcultar1" src="./pictures/ArrowDoublef2f2f22.png" alt="arrowCerrado">
+          <img  class="iconoOcultar2" src="./pictures/ArrowDoubleBlack.png" alt="arrowAbiertoBlack">
+          <img  class="iconoOcultar3" src="./pictures/ArrowDoubleBlack2.png" alt="arrowCerradoBlack">
+        </picture>
       </div>
     </div>
-    <div class="divIzquierdo2" id="menuAutoServicios" data-titulo="Estabilización Servicios / Consola ATIONET (Producción)">
-      <div class="divIzquierdo2-1">
-        <p class="p-menu-lateral">Estabilización Servicios / Consola ATIONET (Producción)</p>
-      </div>
-    </div>
-    
+
+
   </div>
 
   <div class="ContenedorDerecho">
+
     <div class="contenedorHeader">
       <div class="contenedorHeader1">
         <div id="iconoConfiguracion" class="contenedorUsuario">
@@ -42,13 +71,15 @@
               </ul>
             </li>
           </ul>
-          <picture class="contenedorUsuario2">
-            <img class="imagenUsuarioMiniatura" src="./pictures/configuraciones.png" alt="" />
+          <picture class="contenedorUsuario">
+            <img class="imagenUsuarioMiniatura" src="./pictures/iconoConfigf2f2f2.png" alt="" />
+            <img class="imagenUsuarioMiniatura1" src="./pictures/iconoConfigBlack.png" alt="" />
           </picture>
         </div>
         <div id="iconoUsuario" class="contenedorUsuario">
-          <picture class="contenedorUsuario2">
-            <img class="imagenUsuarioMiniatura" src="./pictures/perfil.png" alt="" />
+          <picture class="contenedorUsuario">
+            <img class="imagenUsuarioMiniatura" src="./pictures/userf2f2f2.png" alt="" />
+            <img class="imagenUsuarioMiniatura1" src="./pictures/userBlack.png" alt="" />
           </picture>
         </div>
       </div>
@@ -64,23 +95,66 @@
     <div id="seccionEjecutar" class="seccionOculta">
       <div class="ContenedorDeEjecutor">
         <div class="contenedorDerecho2">
-          <div class="contenedorDerecho2-1">
-            <input id="usuario" placeholder="correo del ejecutor" />
-          </div>
+          
+          <div class="contenedorInputsEjecutor">
 
-          <div class="contenedorDerecho2-1">
-            <label for="module">Selecciona un módulo:</label>
-          </div>
+            <div class="contenedoresLabelInput">
+              <div class="contenedorDerecho2-1">
+                <label for="usuario">Correo del Ejecutor</label>
+              </div>
 
-          <div class="contenedorDerecho2-2">
-            <select id="module">
-              <option value="">-- Seleccionar --</option>
-              <option value="/">Todos los modulos</option>
-              <option value="NVAdmin LAB Network">NWAdmin (LAB Network)</option>
-              <option value="NVCompany Atio Lab Flota">NWCompany (Atio Lab Flota)</option>
-              <option value="NWAdmin Primax peru">NWAdmin (Primax Peru)</option>
-              <option value="NWAdmin Primax peru/flota/transaccionesRechazadas">transacciones Rechazadas</option>
-            </select>
+              <div class="contenedorDerecho2-1">
+                <input id="usuario" placeholder="correo del ejecutor" />
+              </div>
+            </div>
+
+            <div class="contenedoresLabelInput">
+              <div class="contenedorDerecho2-1">
+                <label for="cliente">Cliente / Suscripcion</label>
+              </div>
+
+              <div class="contenedorDerecho2-2">
+                <select  class="module" id="cliente">
+                  <option value="">-- Seleccionar --</option>
+                  <option value="/">Todos los clientes</option>
+                  <option value="LAB Network">LAB Network</option>
+                  <option value="Atio Lab Flota">Atio Lab Flota</option>
+                  <option value="Primax peru">Primax Peru</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="contenedoresLabelInput">
+              <div class="contenedorDerecho2-1">
+                <label for="rol">Rol</label>
+              </div>
+
+              <div class="contenedorDerecho2-2">
+                <select class="module"  id="rol">
+                  <option value="">-- Seleccionar --</option>
+                  <option value="/">Todos los Roles</option>
+                  <option value="NWAdmin">NWAdmin</option>
+                  <option value="NWCompany">NWCompany</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="contenedoresLabelInput">
+              <div class="contenedorDerecho2-1">
+                <label for="modulo">Modulo</label>
+              </div>
+
+              <div class="contenedorDerecho2-2">
+                <select class="module" id="modulo">
+                  <option value="">-- Seleccionar --</option>
+                  <option value="/">Todos los modulos</option>
+                  <option value="administracion">Administracion</option>
+                  <option value="flota">Flota</option>
+                  <option value="liquidaciones">Liquidaciones</option>
+                </select>
+              </div> 
+            </div>
+         
           </div>
 
           <div class="contenedorDerecho2-3">
@@ -159,11 +233,30 @@
       const iconoUsuario = document.getElementById("iconoUsuario");
       const iconoConfiguracion = document.getElementById("iconoConfiguracion");
       const menuConfiguracion = document.getElementById("menuConfiguracion");
-
       const seccionEjecutar = document.getElementById("seccionEjecutar");
       const seccionHistorial = document.getElementById("seccionHistorial");
 
       iconoUsuario?.addEventListener("click", () => alert("se abre desplegable de usuario"));
+
+      const toggleMenuBtn = document.getElementById("toggleMenuBtn");
+
+      const opcionesDeMenu = document.getElementById("ocutarMostrar");
+      const contenedorParaOcultar1 = document.getElementById("contenedorParaOcultar1");
+
+      toggleMenuBtn.addEventListener("click", () => {
+        document.body.classList.toggle("menu-oculto");
+
+        const isHidden = document.body.classList.contains("menu-oculto");
+
+        toggleMenuBtn.title = isHidden ? "Mostrar menú lateral" : "Ocultar menú lateral";
+
+        const estiloActual = window.getComputedStyle(ocutarMostrar).display;  
+
+
+        ocutarMostrar.style.display = (estiloActual === "none") ? "flex" : "none";
+        contenedorParaOcultar1.style.display = (estiloActual === "none") ? "flex" : "none";
+      });
+
 
       function activarMenu(menuSeleccionado) {
         menusLaterales.forEach((menu) => menu.classList.remove("active"));
@@ -187,23 +280,100 @@
       // Activar vista por defecto
       activarMenu(document.getElementById("menuAutoServicios"));
 
+      //ejecucion de inputs
+
+      function resetSelect(select, placeholder = "-- Seleccionar --") {
+      select.innerHTML = `<option value="">${placeholder}</option>`;
+      select.value = "";
+}
+
+      const selectCliente = document.getElementById("cliente");
+      const selectRol = document.getElementById("rol");
+      const selectModulo = document.getElementById("modulo");
+
+      // Estado inicial: solo cliente habilitado
+      selectCliente.disabled = false;
+      selectRol.disabled = true;
+      selectModulo.disabled = true;
+
+      // Lógica para el cambio en Cliente
+      selectCliente.addEventListener("change", () => {
+  const valorCliente = selectCliente.value;
+
+  // Limpiar valores seleccionados de rol y módulo
+  selectRol.value = "";
+  selectModulo.value = "";
+
+  // También deshabilitar el módulo siempre que se cambie el cliente
+  selectModulo.disabled = true;
+
+  if (valorCliente && valorCliente !== "/") {
+    // Cliente válido (no "Todos los clientes")
+    selectRol.disabled = false;
+  } else {
+    // Cliente vacío o "Todos los clientes"
+    selectRol.disabled = true;
+    selectModulo.disabled = true;
+  }
+});
+      
+
+      // Lógica para el cambio en Rol
+      selectRol.addEventListener("change", () => {
+        const valorRol = selectRol.value;
+
+        // Limpiar valor seleccionado de módulo
+        selectModulo.value = "";
+
+        if (valorRol && valorRol !== "/") {
+          // Rol válido (no "Todos los roles")
+          selectModulo.disabled = false;
+        } else {
+          // Rol vacío o "Todos los roles"
+          selectModulo.disabled = true;
+        }
+      });
+      
       window.runTest = async function () {
-        const module = document.getElementById("module")?.value;
-        const usuario = document.getElementById("usuario")?.value.trim();
+        const clienteSelect = document.getElementById("cliente");
+        const rolSelect = document.getElementById("rol");
+        const moduloSelect = document.getElementById("modulo");
+        const usuarioInput = document.getElementById("usuario");
+
+        const cliente = clienteSelect.value;
+        const rol = rolSelect.value;
+        const modulo = moduloSelect.value;
+        const usuario = usuarioInput.value.trim();
 
         if (!usuario) {
           alert("Por favor ingrese el correo del ejecutor.");
-          document.getElementById("usuario").style.border = "2px solid red";
+          usuarioInput.style.border = "2px solid red";
           return;
         } else {
-          document.getElementById("usuario").style.border = "";
+          usuarioInput.style.border = "";
         }
 
-        if (!module) {
-          alert("Por favor selecciona un módulo.");
+        if (clienteSelect.disabled === false && !cliente) {
+          alert("Por favor selecciona un Cliente.");
+          clienteSelect.focus();
           return;
         }
 
+        if (rolSelect.disabled === false && !rol) {
+          alert("Por favor selecciona un Rol.");
+          rolSelect.focus();
+          return;
+        }
+
+        if (moduloSelect.disabled === false && !modulo) {
+          alert("Por favor selecciona un Módulo.");
+          moduloSelect.focus();
+          return;
+        }
+
+        // Construcción del path de ejecución:
+        const module = `${cliente}/${rol}/${modulo}`;
+       
         const status = document.getElementById("status");
         const reportLink = document.getElementById("reportLink");
         const progressBar = document.getElementById("progressBar");

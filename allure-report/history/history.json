@@ -1,1 +1,1 @@
-{"e1c92b99af3a7f1b581dfc2da9b6fd75:5bd835b0d6b1d4ada3b9f0db936e82c8":{"statistic":{"failed":0,"broken":0,"skipped":0,"passed":1,"unknown":0,"total":1},"items":[{"uid":"4d7a8b28edce3c0a","reportUrl":"http://localhost:3000/report/index.html#testresult/4d7a8b28edce3c0a","status":"passed","time":{"start":1750948756524,"stop":1750948813647,"duration":57123}}]}}
+{}
