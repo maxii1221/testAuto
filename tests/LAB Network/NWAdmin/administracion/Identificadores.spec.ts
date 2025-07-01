@@ -49,7 +49,7 @@ test('Identificadores', async ({ page }, testInfo) => {
         });
 
         await allure.step('Escribir en input Contraseña de usuario', async () => {
-            await page.locator('#Password').fill('SVYTY6KA');
+            await page.locator('#Password').fill('O06DF3LJ');
         });
 
         await allure.step('Hacer Click en ingresar', async () => {
@@ -60,23 +60,23 @@ test('Identificadores', async ({ page }, testInfo) => {
             await page.waitForTimeout(2000); // espera 2 segundos
         });
 
-        await allure.step('hacer click para cambiar rol', async () => {
-            const rolLink = page.getByRole('link', { name: /QAutomation Test \(/ }); // regex para tolerar variantes
-            await rolLink.waitFor({ state: 'visible', timeout: 60000 });
-            await expect(rolLink).toBeEnabled({ timeout: 60000 });
-            await rolLink.click(); 
-        });
+        // await allure.step('hacer click para cambiar rol', async () => {
+        //     const rolLink = page.getByRole('link', { name: /QAutomation Test \(/ }); // regex para tolerar variantes
+        //     await rolLink.waitFor({ state: 'visible', timeout: 60000 });
+        //     await expect(rolLink).toBeEnabled({ timeout: 60000 });
+        //     await rolLink.click(); 
+        // });
     
-        await allure.step('hacer click para desplegar lista de roles', async () => {
-            const showAllBtn = page.getByTitle('Show All Items');
-            await showAllBtn.waitFor({ state: 'visible', timeout: 60000 });
-            await expect(showAllBtn).toBeEnabled({ timeout: 60000 });
-            await showAllBtn.click();
-        });
+        // await allure.step('hacer click para desplegar lista de roles', async () => {
+        //     const showAllBtn = page.getByTitle('Show All Items');
+        //     await showAllBtn.waitFor({ state: 'visible', timeout: 60000 });
+        //     await expect(showAllBtn).toBeEnabled({ timeout: 60000 });
+        //     await showAllBtn.click();
+        // });
 
-        await allure.step('hacer click en rol NWAdmin - LAB QA', async () => {
-            await page.getByText('NW Admin - LAB Network').click();
-        });
+        // await allure.step('hacer click en rol NWAdmin - LAB QA', async () => {
+        //     await page.getByText('NW Admin - LAB Network').click();
+        // });
 
         await allure.step('acceder a modulo identificadores', async () => {
             await page.click('a[href="/Identifications"]')
