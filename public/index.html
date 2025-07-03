@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8" />
-  <title>Ejecutor de Automatizacion</title>
+  <title>Portal QA</title>
   <link rel="stylesheet" href="style/style.css" />
 </head>
 
@@ -20,7 +20,8 @@
     <div id="ocutarMostrar" class="ocutarMostrar">
       <div class="divIzquierdo1">
         <div class="divIzquierdo1-1">
-          <p class="textWhite">Automatizacion y Data</p>
+          <!-- <p class="textWhite">Tu Espacio QA</p> -->
+          <p class="textWhite">Herramientas QA</p>
         </div>
       </div>
 
@@ -103,11 +104,11 @@
 
             <div class="contenedoresLabelInput">
               <div class="contenedorDerecho2-1">
-                <label for="usuario">Correo del Ejecutor</label>
+                <label for="usuario">Correo de usuario</label>
               </div>
 
               <div class="contenedorDerecho2-1">
-                <input id="usuario" placeholder="correo del ejecutor" />
+                <input type="email" name="" id="usuario" placeholder="correo del usuario">
               </div>
             </div>
 
@@ -161,8 +162,11 @@
           </div>
 
           <div class="contenedorDerecho2-3">
-            <button id="btnEjecutar" class="buttonEjecutarTest" onclick="runTest()">
-              Ejecutar Test
+            <button id="btnEjecutar" class="buttonEjecutarTest" onclick="toggleTest()">
+              Empezar Test
+              <picture class="contenedorPlayStop">
+                <img id="iconoTest" class="imgPlayStop" src="./pictures/boton-de-play.png" alt="icono">
+              </picture>
             </button>
           </div>
 
@@ -181,11 +185,7 @@
               Allure</a>
           </div>
 
-          <div class="contenedorDerecho2-6">
-            <button id="btnDetener" class="buttonCancelarTest" onclick="stopTest()" disabled>
-              Detener ejecución
-            </button>
-          </div>
+
         </div>
       </div>
     </div>
@@ -198,10 +198,13 @@
           <thead>
             <tr>
               <th>Usuario</th>
+              <th>Cliente/Suscripcion</th>
+              <th>Rol</th>
               <th>Módulo</th>
               <th>Inicio</th>
               <th>Fin</th>
               <th>Estado</th>
+              <th>Reporte</th>
             </tr>
           </thead>
           <tbody id="tablaHistorialBody">
@@ -277,6 +280,21 @@
         select.value = "";
       }
 
+      // Función para agregar opciones, acepta strings o objetos { label, value }
+      function agregarOpciones(select, opciones) {
+        opciones.forEach((opcion) => {
+          const opt = document.createElement("option");
+          if (typeof opcion === "object") {
+            opt.value = opcion.value;
+            opt.textContent = opcion.label;
+          } else {
+            opt.value = opcion;
+            opt.textContent = opcion;
+          }
+          select.appendChild(opt);
+        });
+      }
+
       const selectCliente = document.getElementById("cliente");
       const selectRol = document.getElementById("rol");
       const selectModulo = document.getElementById("modulo");
@@ -286,48 +304,51 @@
       selectRol.disabled = true;
       selectModulo.disabled = true;
 
-      function agregarOpciones(select, opciones) {
-        opciones.forEach((opcion) => {
-          const opt = document.createElement("option");
-          opt.value = opcion;
-          opt.textContent = opcion;
-          select.appendChild(opt);
-        });
-      }
-
-      // Lógica para el cambio en Cliente
+      // Listener sobre el select de cliente
       selectCliente.addEventListener("change", () => {
         const valorCliente = selectCliente.value;
 
-        // Limpiar valores seleccionados
+        // Limpiar valores y opciones anteriores
         selectRol.value = "";
         selectModulo.value = "";
-
-        // Deshabilitar por defecto
         selectRol.disabled = true;
         selectModulo.disabled = true;
-
-        // Resetear las opciones del rol y módulo
         resetSelect(selectRol, "-- Seleccionar Rol --");
         resetSelect(selectModulo, "-- Seleccionar Módulo --");
 
         if (valorCliente && valorCliente !== "/") {
           selectRol.disabled = false;
 
-          // Cargar roles y módulos según el cliente seleccionado
+          // Cargar roles y módulos según el cliente
           if (valorCliente === "Primax peru") {
-            agregarOpciones(selectRol, ["NWAdmin"]);
-            agregarOpciones(selectModulo, ["flota"]);
+            agregarOpciones(selectRol, [
+              { label: "NWAdmin", value: "NWAdmin" }
+            ]);
+            agregarOpciones(selectModulo, [
+              { label: "Todos los modulos", value: "/" },
+              { label: "flota", value: "flota" }
+            ]);
+
           } else if (valorCliente === "Atio Lab Flota") {
-            agregarOpciones(selectRol, ["NWCompany"]);
-            agregarOpciones(selectModulo, ["Todos los modulos" ,"flota", "admin"]);
+            agregarOpciones(selectRol, [
+              { label: "NWCompany", value: "NWCompany" }
+            ]);
+            agregarOpciones(selectModulo, [
+
+              { label: "flota", value: "flota" },
+              { label: "administracion", value: "administracion" }
+            ]);
+
           } else if (valorCliente === "LAB Network") {
-            agregarOpciones(selectRol, ["NWAdmin"]);
-            agregarOpciones(selectModulo, ["Todos los modulos" ,"admin", "flota", "liquidaciones"]);
-          } else {
-            // Si no coincide, mantené los selects limpios
-            selectRol.disabled = true;
-            selectModulo.disabled = true;
+            agregarOpciones(selectRol, [
+              { label: "NWAdmin", value: "NWAdmin" }
+            ]);
+            agregarOpciones(selectModulo, [
+              { label: "Todos los modulos", value: "/" },
+              { label: "administracion", value: "administracion" },
+              { label: "flota", value: "flota" },
+              { label: "liquidaciones", value: "liquidaciones" }
+            ]);
           }
         }
       });
@@ -336,17 +357,24 @@
       selectRol.addEventListener("change", () => {
         const valorRol = selectRol.value;
 
-        // Limpiar valor seleccionado de módulo
-        selectModulo.value = "";
-
-        if (valorRol && valorRol !== "/") {
-          // Rol válido (no "Todos los roles")
-          selectModulo.disabled = false;
-        } else {
-          // Rol vacío o "Todos los roles"
+        // Si se selecciona "Todos los roles", deshabilitar el módulo
+        if (valorRol === "/") {
+          selectModulo.value = "";
           selectModulo.disabled = true;
+        } else {
+          selectModulo.disabled = false;
         }
       });
+
+      let isRunning = false;
+
+      window.toggleTest = async function () {
+        if (!isRunning) {
+          await runTest();
+        } else {
+          await stopTest();
+        }
+      }
 
       window.runTest = async function () {
         const clienteSelect = document.getElementById("cliente");
@@ -359,6 +387,13 @@
         const modulo = moduloSelect.value;
         const usuario = usuarioInput.value.trim();
 
+        const btnEjecutar = document.getElementById("btnEjecutar");
+        const iconoTest = document.getElementById("iconoTest");
+        const status = document.getElementById("status");
+        const reportLink = document.getElementById("reportLink");
+        const progressBar = document.getElementById("progressBar");
+
+        // Validaciones
         if (!usuario) {
           alert("Por favor ingrese el correo del ejecutor.");
           usuarioInput.style.border = "2px solid red";
@@ -367,35 +402,36 @@
           usuarioInput.style.border = "";
         }
 
-        if (clienteSelect.disabled === false && !cliente) {
+        if (!cliente && !clienteSelect.disabled) {
           alert("Por favor selecciona un Cliente.");
           clienteSelect.focus();
           return;
         }
 
-        if (rolSelect.disabled === false && !rol) {
+        if (!rol && !rolSelect.disabled) {
           alert("Por favor selecciona un Rol.");
           rolSelect.focus();
           return;
         }
 
-        if (moduloSelect.disabled === false && !modulo) {
+        if (!modulo && !moduloSelect.disabled) {
           alert("Por favor selecciona un Módulo.");
           moduloSelect.focus();
           return;
         }
 
-        // Construcción del path de ejecución:
-        const module = `${cliente}/${rol}/${modulo}`;
+        // Construcción del path de módulo
+        const parts = [cliente, rol, modulo].filter(val => val && val !== "/");
+        const module = parts.length ? parts.join("/") : "/";
 
-        const status = document.getElementById("status");
-        const reportLink = document.getElementById("reportLink");
-        const progressBar = document.getElementById("progressBar");
-        const btnEjecutar = document.getElementById("btnEjecutar");
-        const btnDetener = document.getElementById("btnDetener");
-
-        btnEjecutar.disabled = true;
-        btnDetener.disabled = false;
+        // Estado inicial de ejecución
+        isRunning = true;
+        btnEjecutar.classList.add("btn-rojo");
+        btnEjecutar.innerHTML = `Detener Test
+    <picture class="contenedorPlayStop">
+      <img id="iconoTest" class="imgPlayStop" src="./pictures/detener-jugador.png" alt="icono">
+    </picture>`;
+        btnEjecutar.disabled = false;
 
         status.textContent = "Ejecutando...";
         status.className = "";
@@ -421,8 +457,9 @@
           const res = await fetch("/run-tests", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ module, usuario }),
+            body: JSON.stringify({ module, usuario, cliente, rol, modulo }),
           });
+
           const data = await res.json();
           clearInterval(simulador);
           progressBar.style.width = "100%";
@@ -441,10 +478,14 @@
           status.textContent = "❌ " + err.message;
           status.className = "error";
         } finally {
+          isRunning = false;
+          btnEjecutar.classList.remove("btn-rojo");
+          btnEjecutar.innerHTML = `Ejecutar Test
+      <picture class="contenedorPlayStop">
+        <img id="iconoTest" class="imgPlayStop" src="./pictures/boton-de-play.png" alt="icono">
+      </picture>`;
           btnEjecutar.disabled = false;
-          btnDetener.disabled = true;
 
-          // 🔽 RESET DE INPUTS
           usuarioInput.value = "";
           clienteSelect.value = "";
           rolSelect.value = "";
@@ -453,11 +494,11 @@
           rolSelect.disabled = true;
           moduloSelect.disabled = true;
         }
-      };
+      }
 
       window.stopTest = async function () {
         const btnEjecutar = document.getElementById("btnEjecutar");
-        const btnDetener = document.getElementById("btnDetener");
+        const iconoTest = document.getElementById("iconoTest");
         const status = document.getElementById("status");
         const progressBar = document.getElementById("progressBar");
 
@@ -471,12 +512,15 @@
         } catch (error) {
           status.textContent = "Error al detener ejecución.";
         } finally {
-          btnEjecutar.disabled = false;
-          btnDetener.disabled = true;
+          isRunning = false;
+          btnEjecutar.classList.remove("btn-rojo");
+          btnEjecutar.innerHTML = `Ejecutar Test
+      <picture class="contenedorPlayStop">
+        <img id="iconoTest" class="imgPlayStop" src="./pictures/boton-de-play.png" alt="icono">
+      </picture>`;
           progressBar.style.width = "0%";
         }
-      };
-
+      }
       const socket = io();
       socket.on("test-progress", (data) => {
         const status = document.getElementById("status");
@@ -501,26 +545,57 @@
           const data = await res.json();
 
           if (data.length === 0) {
-            cuerpoTabla.innerHTML = '<tr><td colspan="5">Sin ejecuciones registradas.</td></tr>';
+            cuerpoTabla.innerHTML = '<tr><td colspan="8">Sin ejecuciones registradas.</td></tr>';
             return;
           }
 
+          function parseModulo(modulo) {
+            if (!modulo) return ["-", "-", "-"];
+            if (modulo === "/") return ["/", "/", "/"];
+            const partes = modulo.split("/");
+            while (partes.length < 3) partes.push("-");
+            return partes;
+          }
+
+          function mostrarTextoAmigable(parte, tipo) {
+            if (parte === "/") {
+              if (tipo === "cliente") return "Todos los clientes";
+              if (tipo === "rol") return "Todos los roles";
+              if (tipo === "modulo") return "Todos los módulos";
+            }
+            if (!parte || parte === "-") return "Todos los modulos";
+            return parte;
+          }
+
           cuerpoTabla.innerHTML = "";
+
           data.forEach((item) => {
+            const partes = parseModulo(item.modulo);
+
+            const cliente = mostrarTextoAmigable(partes[0], "cliente");
+            const rol = mostrarTextoAmigable(partes[1], "rol");
+            const modulo = mostrarTextoAmigable(partes[2], "modulo");
+
             const fila = document.createElement("tr");
             fila.innerHTML = `
               <td>${item.usuario}</td>
-              <td>${item.modulo}</td>
+              <td>${cliente}</td>
+              <td>${rol}</td>
+              <td>${modulo}</td>
               <td>${new Date(item.fecha_inicio).toLocaleString("es-AR")}</td>
               <td>${item.fecha_fin ? new Date(item.fecha_fin).toLocaleString("es-AR") : "-"}</td>
               <td>${item.estado}</td>
+              <td>
+                <a href="/report/index.html" target="_blank" class="report-link">Ver Reporte</a>
+              </td>
             `;
             cuerpoTabla.appendChild(fila);
           });
         } catch (error) {
-          cuerpoTabla.innerHTML = '<tr><td colspan="5">⚠️ Error cargando historial.</td></tr>';
+          cuerpoTabla.innerHTML = '<tr><td colspan="8">⚠️ Error cargando historial.</td></tr>';
         }
       }
+
     });
   </script>
 

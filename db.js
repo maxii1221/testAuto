@@ -20,6 +20,8 @@ db.serialize(() => {
     CREATE TABLE IF NOT EXISTS historial (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
       usuario TEXT,
+      cliente TEXT,
+      rol TEXT,
       modulo TEXT,
       fecha_inicio TEXT,
       fecha_fin TEXT,

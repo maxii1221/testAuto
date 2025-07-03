@@ -40,7 +40,12 @@ app.post('/run-tests', (req, res) => {
   const module = req.body.module;
   const usuario = req.body.usuario || 'Usuario desconocido';
 
-  if (!module) return res.status(400).json({ error: 'Falta el parámetro "module"' });
+  console.log("🧪 Módulo a ejecutar:", module);
+
+  // ❌ Evitar ejecutar todo si no se especificó correctamente
+  if (!module || (!module.includes("/") && module !== "/")) {
+    return res.status(400).json({ error: '❌ Selección incompleta. Por favor selecciona Cliente, Rol y Módulo.' });
+  }
 
   if (testProcess) {
     return res.status(400).json({ error: '❗ Ya hay un proceso de test en ejecución.' });
@@ -50,9 +55,9 @@ app.post('/run-tests', (req, res) => {
   const reportPath = path.join(__dirname, 'allure-report');
   responseSent = false;
 
-  const fechaInicio = new Date().toISOString(); // 🕐
+  const fechaInicio = new Date().toISOString();
 
-  // 📝 Registrar en base de datos
+  // 📝 Guardar ejecución inicial en base de datos
   db.run(
     `INSERT INTO historial (usuario, modulo, fecha_inicio, estado) VALUES (?, ?, ?, ?)`,
     [usuario, module, fechaInicio, 'pendiente'],
@@ -62,7 +67,7 @@ app.post('/run-tests', (req, res) => {
     }
   );
 
-  // Borrar resultados anteriores
+  // 🔄 Limpiar resultados anteriores
   if (fs.existsSync(resultsPath)) {
     fs.rmSync(resultsPath, { recursive: true, force: true });
   }
@@ -114,7 +119,7 @@ app.post('/run-tests', (req, res) => {
     const fechaFin = new Date().toISOString();
     const estado = code === 0 ? 'exitoso' : 'fallido';
 
-    // 📝 Actualizar el registro en la base de datos
+    // 📝 Actualizar historial
     db.run(
       `UPDATE historial SET fecha_fin = ?, estado = ? 
        WHERE usuario = ? AND modulo = ? AND fecha_inicio = ?`,
@@ -143,6 +148,7 @@ app.post('/run-tests', (req, res) => {
     });
   });
 });
+
 
 app.post('/stop-tests', (req, res) => {
   if (testProcess) {

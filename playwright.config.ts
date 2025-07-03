@@ -36,7 +36,7 @@ reporter: [
   use: {
     locale: 'es-ES',
 
-    actionTimeout: 60000, // <-- tiempo máximo para *cada acción* (click, fill, etc.)
+    actionTimeout: 30000, // <-- tiempo máximo para *cada acción* (click, fill, etc.)
     navigationTimeout: 100000, // <-- tiempo para navegación (page.goto)
 
     /* Base URL to use in actions like `await page.goto('/')`. */
