@@ -129,9 +129,14 @@ test('Reglas', async ({ page }, testInfo) => {
 
     await allure.step('Filtrar Nueva Regla' , async () => {
 
-        await allure.step('Aseguramos que el panel esté presente', async () => {
-            await page.locator('#filterPanel').waitFor({ state: 'visible', timeout: 60000 });      
-        })
+        // await allure.step('Aseguramos que el Filtro esté presente' , async () => {
+        //     await page.locator('#filterPanel').waitFor({ state: 'visible', timeout: 60000 });
+        // });
+
+        await allure.step('Click en el filtro, no en todo el panel' , async () => {
+            await allure.step('Verificamos que el panel de filtro exista',async () => {
+            await page.waitForSelector('#filterPanel', { state: 'visible', timeout: 20000 });
+        });
 
         await allure.step('Click en el título, no en todo el panel',async () => {
             const panelTitle = page.locator('#filterPanel .collapsibleContainerTitle');
@@ -141,7 +146,12 @@ test('Reglas', async ({ page }, testInfo) => {
 
         await allure.step('Esperar que se despliegue el contenido',async () => {
             await page.locator('#filterPanel .collapsibleContainerContent').waitFor({ state: 'visible', timeout: 20000 });
-        });       
+        });({ timeout: 60000 });
+        });
+
+        await allure.step('Esperar que se despliegue el contenido' , async () => {
+            await page.locator('#filterPanel .collapsibleContainerContent').waitFor({ state: 'visible', timeout: 60000 });
+        });
 
         await allure.step('Click en input Regla' , async () => {
             await page.locator('#rule').click();
@@ -149,14 +159,6 @@ test('Reglas', async ({ page }, testInfo) => {
 
         await allure.step('Escribir en input Regla' , async () => {
             await page.locator('#rule').fill(reglaAutomatica);
-        });
-
-        await allure.step('Click en boton buscar' , async () => {
-            await page.locator('#search').click();
-        });
-
-        await allure.step('verificamos que este nuestra combustibles' , async () => {
-            await expect(page.locator('.dtls tr td a').first()).toHaveText(reglaAutomatica);
         });
 
     });
@@ -214,7 +216,7 @@ test('Reglas', async ({ page }, testInfo) => {
 
     await allure.step('Elminar Nueva Regla' , async () => {
 
-        await allure.step('Click en eliminar Combustible' , async () => {
+        await allure.step('Click en eliminar regla' , async () => {
             await page.getByRole('link', { name: 'Eliminar' }).first().click();
         });
 

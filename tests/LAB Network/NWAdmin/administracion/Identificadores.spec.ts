@@ -201,12 +201,15 @@ test('Identificadores', async ({ page }, testInfo) => {
             await page.locator('#label').fill(idEtiqueta);
         });
 
-        await allure.step('Click en boton buscar',async () => {
+        await allure.step('Click en boton buscar', async () => {
             await page.locator('#search').click();
+
+            // Esperar a que al menos un resultado aparezca antes de verificar el texto
+            await page.locator('.dtls tr td a').first().waitFor({ state: 'visible', timeout: 10000 });
         });
 
-        await allure.step('Nos aseguramos que este presente nuevo identificador',async () => {
-            await expect(page.locator('.dtls tr td a').first()).toHaveText(idEtiqueta);
+        await allure.step('Nos aseguramos que este presente nuevo identificador', async () => {
+            await expect(page.locator('.dtls tr td a').first()).toHaveText(idEtiqueta, { timeout: 15000 });
         });
 
     });
@@ -230,7 +233,7 @@ test('Identificadores', async ({ page }, testInfo) => {
 
     });
 
-    await allure.step('Filtrar nuevo Comercio editado',async () => {
+    await allure.step('Filtrar nuevo identificador editado',async () => {
 
         await allure.step('Aseguramos que el panel filtro esté presente',async () => {
             await page.locator('#filterPanel').waitFor({ state: 'visible', timeout: 60000 });

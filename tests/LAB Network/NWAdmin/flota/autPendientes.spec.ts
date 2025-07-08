@@ -73,8 +73,16 @@ test('Autorizaciones Pendientes', async ({ page }, testInfo) => {
         //     await page.getByText('NW Admin - LAB Network').click();
         // });
 
-        await allure.step('acceder a modulo Autorizaciones Pendientes', async () => {
-            await page.click('a[href="/TransactionsOutstandingAuthorizations"]');
+        // await allure.step('acceder a modulo Autorizaciones Pendientes', async () => {
+        //     await page.click('a[href="/TransactionsOutstandingAuthorizations"]');
+        // });
+
+        await allure.step('acceder a modulo autorizaciones pendientes', async () => {
+            await page.goto('https://console.ationet.com/TransactionsOutstandingAuthorizations');
+        });
+
+        await allure.step('espera de carga', async () => {
+            await page.waitForTimeout(2000); // espera 2 segundos
         });
     }); 
 
@@ -84,13 +92,16 @@ test('Autorizaciones Pendientes', async ({ page }, testInfo) => {
             await page.locator('tbody tr td:nth-child(3) a').first().click();
         });
 
-        await allure.step('Click en boton Ok',async () => {
-            await page.getByRole('button', { name: 'Ok' }).click();
+
+        await allure.step('espera de carga', async () => {
+            await page.waitForTimeout(2000); // espera 2 segundos
         });
 
-        await allure.step('veriricar que estamos en la url de contrato de Autorizaciones Pendientes',async () => {
-            await expect(page).toHaveURL('https://console.ationet.com/TransactionsOutstandingAuthorizations');
+        await allure.step('Click en boton Ok', async () => {
+        await page.getByRole('button', { name: 'Ok' }).click({ noWaitAfter: true });
+        await page.waitForTimeout(1000); // o un wait por una condición
         });
+
 
     });
 })

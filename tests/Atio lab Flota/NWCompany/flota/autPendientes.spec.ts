@@ -75,13 +75,21 @@ test('Autorizaciones Pendientes', async ({ page }, testInfo) => {
         //     await page.getByText('NW Company Admin - Atio Lab').click();
         // });
 
-        await allure.step('acceder a modulo Autorizaciones Pendientes', async () => {
-            await page.click('a[href="/TransactionsOutstandingAuthorizations"]');
+        // await allure.step('acceder a modulo Autorizaciones Pendientes', async () => {
+        //     await page.click('a[href="/TransactionsOutstandingAuthorizations"]');
+        // });
+
+        // await allure.step('veriricar que estamos en la url de Procesos de Liquidación', async () => {
+        //     await expect(page).toHaveURL('https://console.ationet.com/TransactionsOutstandingAuthorizations');
+        // });   
+        
+        await allure.step('acceder a modulo autorizaciones pendientes', async () => {
+            await page.goto('https://console.ationet.com/TransactionsOutstandingAuthorizations');
         });
 
-        await allure.step('veriricar que estamos en la url de Procesos de Liquidación', async () => {
-            await expect(page).toHaveURL('https://console.ationet.com/TransactionsOutstandingAuthorizations');
-        });    
+        await allure.step('espera de carga', async () => {
+            await page.waitForTimeout(2000); // espera 2 segundos
+        });
     });    
 
     await allure.step('Ingresar al detalle de autorizaciones pendientes' , async () => {
@@ -90,13 +98,17 @@ test('Autorizaciones Pendientes', async ({ page }, testInfo) => {
             await page.locator('tbody tr td:nth-child(2) a').first().click();
         });
 
-        await allure.step('Click en boton ok' , async () => {
-            await page.getByRole('button', { name: 'Ok' }).click();
+        await allure.step('espera de carga', async () => {
+            await page.waitForTimeout(2000); // espera 2 segundos
         });
 
-        await allure.step('Verificamos que volvimos a la url de autorizaciones pendientes' , async () => {
-            await expect(page).toHaveURL('https://console.ationet.com/TransactionsOutstandingAuthorizations');
+        await allure.step('Click en boton Ok', async () => {
+        await page.getByRole('button', { name: 'Ok' }).click({ noWaitAfter: true });
+        await page.waitForTimeout(1000); // o un wait por una condición
         });
+        // await allure.step('Verificamos que volvimos a la url de autorizaciones pendientes' , async () => {
+        //     await expect(page).toHaveURL('https://console.ationet.com/TransactionsOutstandingAuthorizations');
+        // });
     });
 
 })

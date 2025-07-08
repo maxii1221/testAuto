@@ -74,13 +74,24 @@ test('Transacciones', async ({ page }, testInfo) => {
         //     await page.getByText('NW Admin - Primax Peru').click();
         // });
 
-        await allure.step('acceder a modulo Transacciones', async () => {
-            await page.click('a[href="/Transactions"]');
-        });
+        // await allure.step('acceder a modulo Transacciones', async () => {
+        //     await Promise.all([
+        //         page.waitForNavigation({ waitUntil: 'load' }), // o 'networkidle'
+        //         page.click('a[href="/Transactions"]'),
+        //     ]);
+        // });
 
+
+        await allure.step('acceder a modulo Transacciones', async () => {
+            await page.goto('https://console.ationet.com/Transactions');
+        });
         // await allure.step('veriricar que estamos en la url de Transacciones', async () => {
         //     await expect(page).toHaveURL('https://console.ationet.com/Transactions');
         // });    
+
+        await allure.step('espera de carga', async () => {
+            await page.waitForTimeout(2000); // espera 2 segundos
+        });
     });   
 
     await allure.step('Ingresar al detalle de transaccion' , async () => {
@@ -89,8 +100,14 @@ test('Transacciones', async ({ page }, testInfo) => {
             await page.locator('tbody tr td:nth-child(2) a').first().click();
         });
 
-        await allure.step('Click en boton ok' , async () => {
-            await page.getByRole('button', { name: 'Ok' }).click();
+
+        await allure.step('espera de carga', async () => {
+            await page.waitForTimeout(2000); // espera 2 segundos
+        });
+
+        await allure.step('Click en boton Ok', async () => {
+        await page.getByRole('button', { name: 'Ok' }).click({ noWaitAfter: true });
+        await page.waitForTimeout(1000); // o un wait por una condición
         });
 
         // await allure.step('Verificamos que volvimos a la url de transacciones' , async () => {

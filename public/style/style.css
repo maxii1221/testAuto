@@ -21,7 +21,7 @@
   --color-secundario: #2c3e50;
   --color-terciario: #34495e;
   --color-header: #2980b9;
-  --color-boton-ejecucion: #2980b9;
+  --color-boton-ejecucion: #4caf50;
   --color-boton-cancelar: #a84136;
   --color-terminal: #111;
   --color-tabla-header: #34495e;
@@ -39,7 +39,7 @@
   --color-secundario: #000;
   --color-terciario: #1a1a1a;
   --color-header: #222;
-  --color-boton-ejecucion: #2980b9;
+  --color-boton-ejecucion: #4caf50;
   --color-boton-cancelar: #8b0000;
   --color-terminal: #000;
   --color-tabla-header: #222;
@@ -419,6 +419,7 @@ select.module:focus {
   margin-left: 10px;
   width: 30px;
   height: 30px;
+  margin-bottom: 2px;
 }
 
 .imgPlayStop{

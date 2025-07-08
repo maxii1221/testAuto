@@ -4,6 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <title>Portal QA</title>
+  <link rel="icon" href="flask-conical2.png" type="image/png" />
   <link rel="stylesheet" href="style/style.css" />
 </head>
 
@@ -165,7 +166,7 @@
             <button id="btnEjecutar" class="buttonEjecutarTest" onclick="toggleTest()">
               Empezar Test
               <picture class="contenedorPlayStop">
-                <img id="iconoTest" class="imgPlayStop" src="./pictures/boton-de-play.png" alt="icono">
+                <img id="iconoTest" class="imgPlayStop" src="./pictures/play.png" alt="icono">
               </picture>
             </button>
           </div>
@@ -429,7 +430,7 @@
         btnEjecutar.classList.add("btn-rojo");
         btnEjecutar.innerHTML = `Detener Test
     <picture class="contenedorPlayStop">
-      <img id="iconoTest" class="imgPlayStop" src="./pictures/detener-jugador.png" alt="icono">
+      <img id="iconoTest" class="imgPlayStop" src="./pictures/pause.png" alt="icono">
     </picture>`;
         btnEjecutar.disabled = false;
 

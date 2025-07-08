@@ -1,7 +1,91 @@
 "DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
 "
-    Objetivo: Este test automatiza el proceso de navegacion y descargar en Estados de Cuenta.
-    ","18870","Estado de cuenta","chromium","Thu Jul 03 04:08:04 UTC 2025","passed","Thu Jul 03 04:08:23 UTC 2025","Liquidaciones","NWAdmin","",""
+    Objetivo: Este test automatiza el proceso de navegacion y ver detalles de Transacciones.
+    ","155024","Transacciones","chromium","Mon Jul 07 20:51:38 UTC 2025","broken","Mon Jul 07 20:54:13 UTC 2025","Flota","NWCompany","",""
+"
+    Objetivo: Este test automatiza el proceso de navegacion, y ver detalles en Transacciones Rechazaras.
+    ","71550","Transacciones Rechazadas","chromium","Mon Jul 07 20:56:35 UTC 2025","passed","Mon Jul 07 20:57:46 UTC 2025","Flota","NWAdmin","",""
+"
+    Objetivo: Este test automatiza el proceso de navegacion y acceder a detalles en autorizaciones pendientes.
+    ","38290","Autorizaciones Pendientes","chromium","Mon Jul 07 20:57:59 UTC 2025","passed","Mon Jul 07 20:58:37 UTC 2025","Flota","NWAdmin","",""
+"
+    Objetivo: Este test automatiza el proceso de navegacion, ver detalles de excepciones.
+    ","150502","Transacciones Excepciones","chromium","Mon Jul 07 20:51:33 UTC 2025","failed","Mon Jul 07 20:54:04 UTC 2025","Flota","NWCompany","",""
+"
+    Objetivo: Este test automatiza el proceso de navegacion, creacion y edicion de Sitios.
+    ","37360","Sitios","chromium","Mon Jul 07 20:54:37 UTC 2025","passed","Mon Jul 07 20:55:15 UTC 2025","Administracion","NWAdmin","",""
 "
     Objetivo: Este test automatiza el proceso de navegacion en Procesos de liquidacion.
-    ","22610","Procesos de Liquidación","chromium","Thu Jul 03 04:08:23 UTC 2025","passed","Thu Jul 03 04:08:46 UTC 2025","Liquidaciones","NWAdmin","",""
+    ","11363","Procesos de Liquidación","chromium","Mon Jul 07 20:57:48 UTC 2025","passed","Mon Jul 07 20:57:59 UTC 2025","Liquidaciones","NWAdmin","",""
+"
+    Objetivo: Este test automatiza el proceso de navegacion en notificaciones.
+    ","9674","Nofificaciones","chromium","Mon Jul 07 20:54:17 UTC 2025","passed","Mon Jul 07 20:54:27 UTC 2025","Administracion","NWAdmin","",""
+"
+    Objetivo: Este test automatiza el proceso de navegacion y ver detalles de Transacciones.
+    ","83179","Transacciones","chromium","Mon Jul 07 20:56:22 UTC 2025","passed","Mon Jul 07 20:57:45 UTC 2025","Flota","NWAdmin","",""
+"
+    Objetivo: Este test automatiza el proceso completo de creación, edición y eliminación de una regla.
+    ","24841","Reglas","chromium","Mon Jul 07 20:51:35 UTC 2025","passed","Mon Jul 07 20:52:00 UTC 2025","Flota","NWCompany","",""
+"
+    Objetivo: Este test automatiza el proceso de navegacion y acceder a detalles en autorizaciones pendientes.
+    ","56251","Autorizaciones Pendientes","chromium","Mon Jul 07 20:54:57 UTC 2025","passed","Mon Jul 07 20:55:53 UTC 2025","Flota","NWAdmin","",""
+"
+    Objetivo: Este test automatiza el proceso de navegacion y acceder a detalles en autorizaciones pendientes.
+    ","27531","Autorizaciones Pendientes","chromium","Mon Jul 07 20:51:04 UTC 2025","passed","Mon Jul 07 20:51:31 UTC 2025","Flota","NWCompany","",""
+"
+    Objetivo: Este test automatiza el proceso de navegacion, creacion y poder editar Contratos de comercio.
+    ","46816","Contratos de Comercio","chromium","Mon Jul 07 20:55:16 UTC 2025","passed","Mon Jul 07 20:56:02 UTC 2025","Flota","NWAdmin","",""
+"
+    Objetivo: Este test automatiza el proceso de navegacion, creacion y edicion de Comercios.
+    ","29455","Comercios","chromium","Mon Jul 07 20:54:07 UTC 2025","passed","Mon Jul 07 20:54:37 UTC 2025","Administracion","NWAdmin","",""
+"
+    Objetivo: Este test automatiza el proceso de navegacion, creacion y edicion de Terminal & Controladores.
+    ","24917","Terminal y controladores","chromium","Mon Jul 07 20:54:45 UTC 2025","passed","Mon Jul 07 20:55:09 UTC 2025","Administracion","NWAdmin","",""
+"
+    Objetivo: Este test automatiza el proceso completo de creación, edición y eliminación de un Vehiculos.
+    ","29633","Vehiculos","chromium","Mon Jul 07 20:51:04 UTC 2025","passed","Mon Jul 07 20:51:33 UTC 2025","Administracion","NWCompany","",""
+"
+    Objetivo: Este test automatiza el proceso de navegacion y ver detalles de Transacciones.
+    ","125622","Transacciones","chromium","Mon Jul 07 20:58:08 UTC 2025","failed","Mon Jul 07 21:00:14 UTC 2025","Flota","NWAdmin","",""
+"
+    Objetivo: Este test automatiza el proceso de navegacion, y ver detalles en Transacciones Rechazaras.
+    ","81286","Transacciones Rechazadas","chromium","Mon Jul 07 20:52:00 UTC 2025","failed","Mon Jul 07 20:53:21 UTC 2025","Flota","NWCompany","",""
+"
+    Objetivo: Este test automatiza el proceso de navegacion y descargar en Estados de Cuenta.
+    ","12957","Estado de cuenta","chromium","Mon Jul 07 20:57:48 UTC 2025","passed","Mon Jul 07 20:58:01 UTC 2025","Liquidaciones","NWAdmin","",""
+"
+    Objetivo: Este test automatiza el proceso de navegacion, creacion y edicion de banderas.
+    ","16635","Banderas","chromium","Mon Jul 07 20:53:24 UTC 2025","passed","Mon Jul 07 20:53:41 UTC 2025","Administracion","NWAdmin","",""
+"
+    Objetivo: Este test automatiza el proceso de navegacion, creacion y edicion de Identificadores.
+    ","44595","Identificadores","chromium","Mon Jul 07 20:54:10 UTC 2025","failed","Mon Jul 07 20:54:54 UTC 2025","Administracion","NWAdmin","",""
+"
+    Objetivo: Este test automatiza el proceso de navegacion, ver detalles de excepciones.
+    ","67568","Transacciones Excepciones","chromium","Mon Jul 07 20:58:01 UTC 2025","failed","Mon Jul 07 20:59:08 UTC 2025","Flota","NWAdmin","",""
+"
+    Objetivo: Este test automatiza el proceso de navegacion, creacion y poder editar Contingencia.
+    ","35071","Contingencias","chromium","Mon Jul 07 20:55:10 UTC 2025","passed","Mon Jul 07 20:55:45 UTC 2025","Flota","NWAdmin","",""
+"
+    Objetivo: Este test automatiza el proceso completo de creación, edición y eliminación de un Conductor.
+    ","32508","Conductores","chromium","Mon Jul 07 20:51:04 UTC 2025","passed","Mon Jul 07 20:51:36 UTC 2025","Administracion","NWCompany","",""
+"
+    Objetivo: Este test automatiza el proceso completo de creación, edición y eliminación de una regla.s
+    ","23785","Reglas","chromium","Mon Jul 07 20:56:10 UTC 2025","passed","Mon Jul 07 20:56:34 UTC 2025","Flota","NWAdmin","",""
+"
+    Objetivo: Este test automatiza el proceso de navegacion, creacion y edicion de Combustibles.
+    ","28087","Combustibles","chromium","Mon Jul 07 20:53:41 UTC 2025","passed","Mon Jul 07 20:54:09 UTC 2025","Administracion","NWAdmin","",""
+"
+    Objetivo: Este test automatiza el proceso de navegacion, creacion y poder editar Contratos de Compañia.
+    ","23124","Contratos de compañia","chromium","Mon Jul 07 20:55:46 UTC 2025","passed","Mon Jul 07 20:56:09 UTC 2025","Flota","NWAdmin","",""
+"
+    Objetivo: Este test automatiza el proceso de navegacion, creacion y edicion de Precios De Distribucion.
+    ","17371","Precios de distribucion","chromium","Mon Jul 07 20:54:27 UTC 2025","passed","Mon Jul 07 20:54:45 UTC 2025","Administracion","NWAdmin","",""
+"
+    Objetivo: Este test automatiza el proceso de navegacion, ver detalles de excepciones.
+    ","130313","Transacciones Excepciones","chromium","Mon Jul 07 20:55:55 UTC 2025","passed","Mon Jul 07 20:58:05 UTC 2025","Flota","NWAdmin","",""
+"
+    Objetivo: Este test automatiza el proceso de navegacion, de identificaciones solicitadas.
+    ","18280","Identificaciones solicitadas","chromium","Mon Jul 07 20:56:04 UTC 2025","passed","Mon Jul 07 20:56:22 UTC 2025","Flota","NWAdmin","",""
+"
+    Objetivo: Este test automatiza el proceso de navegacion, y ver detalles en Transacciones Rechazaras.
+    ","76825","Transacciones Rechazadas","chromium","Mon Jul 07 20:58:38 UTC 2025","passed","Mon Jul 07 20:59:55 UTC 2025","Flota","NWAdmin","",""

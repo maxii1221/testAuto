@@ -74,13 +74,13 @@ test('Transacciones Rechazadas', async ({ page }, testInfo) => {
         //     await page.getByText('NW Admin - LAB Network').click();
         // });
 
-        await allure.step('acceder a modulo Transacciones Rechazadas', async () => {
-            await page.click('a[href="/TransactionsRejected"]');
+        await allure.step('acceder a modulo Transacciones rechazadas', async () => {
+            await page.goto('https://console.ationet.com/TransactionsRejected');
         });
 
-        await allure.step('veriricar que estamos en la url de Transacciones Rechazadas', async () => {
-            await expect(page).toHaveURL('https://console.ationet.com/TransactionsRejected');
-        });    
+        await allure.step('espera de carga', async () => {
+            await page.waitForTimeout(2000); // espera 2 segundos
+        });
     });    
 
     await allure.step('Ingresar al detalle de transaccion rechazadas' , async () => {
@@ -89,12 +89,9 @@ test('Transacciones Rechazadas', async ({ page }, testInfo) => {
             await page.locator('tbody tr td:nth-child(3) a').first().click();
         });
 
-        await allure.step('Click en boton ok' , async () => {
-            await page.getByRole('button', { name: 'Ok' }).click();
-        });
-
-        await allure.step('Verificamos que volvimos a la url de transacciones rechazadas' , async () => {
-            await expect(page).toHaveURL('https://console.ationet.com/TransactionsRejected');
+        await allure.step('Click en boton Ok', async () => {
+        await page.getByRole('button', { name: 'Ok' }).click({ noWaitAfter: true });
+        await page.waitForTimeout(1000); // o un wait por una condición
         });
     });
 

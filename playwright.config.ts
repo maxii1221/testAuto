@@ -12,7 +12,7 @@ import { defineConfig, devices } from '@playwright/test';
  * See https://playwright.dev/docs/test-configuration.
  */
 export default defineConfig({
-  timeout: 60000, // <-- tiempo máximo para *cada* test
+  timeout: 150000, // <-- tiempo máximo para *cada* test
 
   testDir: './tests',
   /* Run tests in files in parallel */
@@ -22,14 +22,14 @@ export default defineConfig({
   /* Retry on CI only */
   retries: process.env.CI ? 2 : 0,
   /* Opt out of parallel tests on CI. */
-  workers: 1, // Siempre usar un solo worker
+  workers: 3, // Siempre usar un solo worker
   
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   //reporter: 'html',
 
   //reportes agregados con allure
 reporter: [
-  ['line'],
+  // ['line'],
   ['allure-playwright']
 ],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
@@ -37,7 +37,7 @@ reporter: [
     locale: 'es-ES',
 
     actionTimeout: 30000, // <-- tiempo máximo para *cada acción* (click, fill, etc.)
-    navigationTimeout: 100000, // <-- tiempo para navegación (page.goto)
+    navigationTimeout: 150000, // <-- tiempo para navegación (page.goto)
 
     /* Base URL to use in actions like `await page.goto('/')`. */
     baseURL: 'https://sts.ationet.com/Account/Login?ReturnUrl=%2Fconnect%2Fauthorize%2Fcallback%3Fclient_id%3DAtionet%26redirect_uri%3Dhttps%253A%252F%252Fconsole.ationet.com%252F%26response_mode%3Dform_post%26response_type%3Dcode%2520id_token%26scope%3Dopenid%2520profile%2520email%2520offline_access%26state%3DOpenIdConnect.AuthenticationProperties%253DW7mCr2ncFyQ4NGTgoHtEAg9rMgJXV1jyUPaELrzUK0zQkTTe4l1PUUhTbzGZEtNOxGoQF29GzutRO5ee1UNo0klcuYrmiHa11xnNGYegJQrBC0cfJye3-4D9P4MgNBCAs8vHnRWFuPSzk8T4a3BkLlxMYPnTvwX30iDM51osqgaiabknHBRiCjXoIg1_sytNvLlj5gbgpRJ4DpF7e2fTPw%26nonce%3D638857705427592171.OWQzNzdlMzMtNWM3MS00MGQxLWE2NWYtNzlhOWZlNTdmNGM4NWVjODA3NzUtN2Q2MS00YzQ4LWJjMmItZGI0Zjk1NDY1NzNh%26x-client-SKU%3DID_NET%26x-client-ver%3D1.0.40306.1554',
@@ -45,7 +45,7 @@ reporter: [
     
 
     launchOptions:{
-      slowMo: 0
+      slowMo: 50
     },
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',

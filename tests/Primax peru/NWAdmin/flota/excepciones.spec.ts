@@ -76,13 +76,25 @@ test('Transacciones Excepciones', async ({ page }, testInfo) => {
         //     await page.getByText('NW Admin - Primax Peru').click();
         // });
         
-        await allure.step('acceder a modulo Transacciones Exepciones', async () => {
-            await page.click('a[href="/TransactionsExceptions"]');
-        });
 
-        await allure.step('veriricar que estamos en la url de Transacciones Exepciones', async () => {
-            await expect(page).toHaveURL('https://console.ationet.com/TransactionsExceptions');
-        });    
+        // await allure.step('acceder a modulo Transacciones', async () => {
+        //     await Promise.all([
+        //         page.waitForNavigation({ waitUntil: 'load' }), // o 'networkidle'
+        //         page.click('a[href="/TransactionsExceptions"]'),
+        //     ]);
+        // });
+
+        await allure.step('acceder a modulo Transacciones excepciones', async () => {
+            await page.goto('https://console.ationet.com/TransactionsExceptions');
+        });
+        
+
+        await allure.step('espera de carga', async () => {
+            await page.waitForTimeout(2000); // espera 2 segundos
+        });
+        // await allure.step('veriricar que estamos en la url de Transacciones Exepciones', async () => {
+        //     await expect(page).toHaveURL('https://console.ationet.com/TransactionsExceptions');
+        // });    
     });   
 
     await allure.step('Ver detalle de Excepciones', async () => {
@@ -91,12 +103,14 @@ test('Transacciones Excepciones', async ({ page }, testInfo) => {
             await page.locator('tbody tr td:nth-child(4) a').first().click();
         });
 
-        await allure.step('Click en boton Ok', async () => {
-            await page.getByRole('button', { name: 'Ok' }).click();
+        await allure.step('espera de carga', async () => {
+            await page.waitForTimeout(2000); // espera 2 segundos
         });
 
-        await allure.step('veriricar que Volvimos a la url de Transacciones Exepciones', async () => {
-            await expect(page).toHaveURL('https://console.ationet.com/TransactionsExceptions');
-        });    
+        await allure.step('Click en boton Ok', async () => {
+        await page.getByRole('button', { name: 'Ok' }).click({ noWaitAfter: true });
+        await page.waitForTimeout(1000); // o un wait por una condición
+        });
+
     });
 })

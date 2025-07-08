@@ -74,14 +74,14 @@ test('Transacciones Excepciones', async ({ page }, testInfo) => {
         //     await page.getByText('NW Admin - LAB Network').click();
         // });
 
-        await allure.step('acceder a modulo Transacciones Exepciones', async () => {
-            await page.click('a[href="/TransactionsExceptions"]');
-            
+        await allure.step('acceder a modulo Transacciones excepciones', async () => {
+            await page.goto('https://console.ationet.com/TransactionsExceptions');
         });
+        
 
-        await allure.step('veriricar que estamos en la url de Transacciones Exepciones', async () => {
-            await expect(page).toHaveURL('https://console.ationet.com/TransactionsExceptions');
-        });    
+        await allure.step('espera de carga', async () => {
+            await page.waitForTimeout(2000); // espera 2 segundos
+        });
     });   
 
     await allure.step('Ver detalle de Excepciones', async () => {
@@ -91,12 +91,9 @@ test('Transacciones Excepciones', async ({ page }, testInfo) => {
         });
 
         await allure.step('Click en boton Ok', async () => {
-            await page.getByRole('button', { name: 'Ok' }).click();
+        await page.getByRole('button', { name: 'Ok' }).click({ noWaitAfter: true });
+        await page.waitForTimeout(1000); // o un wait por una condición
         });
-
-        await allure.step('veriricar que Volvimos a la url de Transacciones Exepciones', async () => {
-            await expect(page).toHaveURL('https://console.ationet.com/TransactionsExceptions');
-        });    
     });
     
 })

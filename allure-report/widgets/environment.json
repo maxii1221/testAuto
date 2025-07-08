@@ -1,1 +1,1 @@
-[{"values":["QA"],"name":"Ambiente"},{"values":["LAB Network/NWAdmin/liquidaciones"],"name":"Modulo"},{"values":["Chromium"],"name":"Navegador"},{"values":["https://console.ationet.com"],"name":"BaseURL"},{"values":["7/3/2025"],"name":"Fecha"}]
+[{"values":["QA"],"name":"Ambiente"},{"values":["/"],"name":"Modulo"},{"values":["Chromium"],"name":"Navegador"},{"values":["https://console.ationet.com"],"name":"BaseURL"},{"values":["7/7/2025"],"name":"Fecha"}]
