@@ -6,6 +6,7 @@
   <title>Portal QA</title>
   <link rel="icon" href="flask-conical2.png" type="image/png" />
   <link rel="stylesheet" href="style/style.css" />
+  <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 
 <body>
@@ -178,14 +179,16 @@
           </div>
 
           <div class="headerTerminal">
-            <p class="textHeaderTerminal">Terminal de progreso</p>
+            <p class="textHeaderTerminal">Progreso de test</p>
           </div>
           <div class="contenedorDerecho2-5">
             <p id="status">Esperando ejecución...</p>
-            <a id="reportLink" class="report-link" href="#" target="_blank" style="display: none;">Ver Reporte
-              Allure</a>
+
           </div>
 
+          <div class="contenedoresLabelInput">
+            <a id="reportLink" class="report-link" href="#" target="_blank" style="display: none;">Ver Reporte Allure</a>
+          </div>
 
         </div>
       </div>
@@ -217,6 +220,10 @@
       </div>
     </div>
   </div>
+
+  <script>
+    lucide.createIcons();
+  </script>
 
   <script src="/socket.io/socket.io.js"></script>
 

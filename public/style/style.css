@@ -542,13 +542,16 @@ button:disabled {
 }
 
 /* ====== ENLACES ====== */
-a.report-link {
-  color: var(--color-primario);
+.a.report-link {
+  color: var(--color-boton-ejecucion);
   text-decoration: underline;
   margin-top: 10px;
   display: inline-block;
   font-weight: 600;
 }
+
+
+
 
 /* ====== VISIBILIDAD SECCIONES ====== */
 .seccionOculta {
