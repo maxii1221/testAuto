@@ -88,7 +88,7 @@ body {
   flex-direction: column;
   align-items: center;
   padding-top: 20px;
-  box-shadow: 3px 0 8px rgba(0,0,0,0.1);
+  box-shadow: 3px 0 8px rgba(0, 0, 0, 0.1);
   overflow: hidden;
 
 }
@@ -118,7 +118,7 @@ body {
   object-fit: contain;
 }
 
-.ocutarMostrar{
+.ocutarMostrar {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -147,7 +147,7 @@ body {
   font-weight: 600;
   font-size: 0.9rem;
   color: var(--color-texto-lateral);
-  box-shadow: inset 0 -1px 0 rgba(255,255,255,0.1);
+  box-shadow: inset 0 -1px 0 rgba(255, 255, 255, 0.1);
 }
 
 
@@ -198,10 +198,6 @@ body {
   transition: background-color 0.3s;
 }
 
-.contenedorUsuario:hover {
-  background-color: var(--color-primario);
-  cursor: pointer;
-}
 
 .imagenUsuarioMiniatura {
   width: 24px;
@@ -210,7 +206,7 @@ body {
   display: block;
 }
 
-.imagenUsuarioMiniatura1{
+.imagenUsuarioMiniatura1 {
   width: 24px;
   height: 24px;
   object-fit: contain;
@@ -226,7 +222,7 @@ body {
   background-color: white;
   border: 1px solid #ccc;
   border-radius: 6px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
   list-style: none;
   padding: 0;
   z-index: 1000;
@@ -259,7 +255,7 @@ body {
   width: 120px;
 }
 
-.menu-config li:hover > .submenu {
+.menu-config li:hover>.submenu {
   display: block;
 }
 
@@ -296,15 +292,15 @@ body {
   gap: 18px;
 }
 
-.contenedorDerecho2-1{
+.contenedorDerecho2-1 {
   width: 100%;
 }
 
-.contenedorDerecho2-2{
+.contenedorDerecho2-2 {
   width: 100%;
 }
 
-.contenedorDerecho2-3{
+.contenedorDerecho2-3 {
   display: flex;
   flex-direction: row;
 }
@@ -354,11 +350,11 @@ label {
   color: #555;
 }
 
-.module{
+.module {
   width: 100%;
 }
 
-input#usuario{
+input#usuario {
   width: 100%;
 }
 
@@ -394,7 +390,7 @@ select.module:focus {
   cursor: pointer;
   font-weight: 700;
   transition: background-color 0.3s;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
 }
 
 .buttonEjecutarTest {
@@ -412,7 +408,7 @@ select.module:focus {
   filter: brightness(0.9);
 }
 
-.contenedorPlayStop{
+/* .contenedorPlayStop{
   display: flex;
   justify-content: center;
   align-items: center;
@@ -420,11 +416,25 @@ select.module:focus {
   width: 30px;
   height: 30px;
   margin-bottom: 2px;
+} */
+
+.imgPlayStop {
+  margin-left: 8px;
+  width: 22px;
+  height: 22px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  position: relative;
+  top: -1px;
+  /* o prueba con 0px, -1px según tu fuente */
 }
 
-.imgPlayStop{
-  width: 25px;
-  height: 25px;
+.imgPlayStop svg {
+  width: 100%;
+  height: 100%;
+  display: block;
 }
 
 button:disabled {
@@ -470,7 +480,7 @@ button:disabled {
   background-color: #ddd;
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: inset 0 2px 5px rgba(0,0,0,0.1);
+  box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .progress-bar {
@@ -497,12 +507,13 @@ button:disabled {
   color: var(--color-texto);
   padding: 20px 25px;
   border-radius: 10px;
-  max-height: calc(100vh - 150px); /* Resta header o padding superior/inferior */
+  max-height: calc(100vh - 150px);
+  /* Resta header o padding superior/inferior */
   overflow-y: auto;
   overflow-y: auto;
   width: 100%;
   margin-top: auto;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.2);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
 }
 
 .tituloHistorial {
@@ -516,7 +527,7 @@ button:disabled {
   border-collapse: collapse;
 }
 
-.TrHistorialEjecuciones:hover{
+.TrHistorialEjecuciones:hover {
   background-color: var(--color-secundario);
 }
 
@@ -557,6 +568,7 @@ button:disabled {
 .seccionOculta {
   display: none;
 }
+
 .seccionVisible {
   display: flex;
   align-items: center;
@@ -569,13 +581,15 @@ button:disabled {
   height: 75%;
   object-fit: contain;
 }
+
 .logoMini {
   display: none;
   height: 75%;
   object-fit: contain;
 }
 
-.contenedorParaOcultar{
+/* contenedor general */
+.contenedorParaOcultar {
   width: 90%;
   height: 50px;
   margin-top: auto;
@@ -583,102 +597,93 @@ button:disabled {
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  gap: 20px;
+  gap: 10px;
   margin-bottom: 5px;
 }
 
-.contenedorParaOcultar1{
+/* input */
+.contenedorParaOcultar1 {
   width: 80%;
   height: 35px;
   display: flex;
   align-items: center;
-  justify-content:center;
+  justify-content: center;
   border: 0.1px solid var(--color-borde-buscador);
   border-radius: 10px;
-  margin-left: 15px;
+  margin-left: 5px;
 }
 
 .contenedorParaOcultar1:has(.inputBuscador:focus) {
   border: 0.1px solid var(--color-borde-buscador-selec);
 }
 
-/* buscador de menu lateral */
-.contenedorImgBuscador{
+.contenedorImgBuscador {
   width: 15%;
   height: 100%;
-  background-color: transparent;
-  border-radius: 10px 0px 0px 10px;
   display: flex;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
-
 }
 
-.imgBuscador{
+.imgBuscador {
+  width: 18px;
   height: 18px;
 }
 
-.inputBuscador{
+.inputBuscador {
   width: 85%;
   height: 60%;
   border-radius: 0px 5px 5px 0px;
   background-color: var(--color-secundario);
   color: var(--color-texto);
   text-align: center;
-  font-size: 1.0rem;
+  font-size: 1rem;
   border: none;
 }
 
 .inputBuscador:focus {
   outline: none;
-  border: none;
   box-shadow: none;
 }
 
-/* Botón de toggle */
-.toggle-menu-boton {
+/* toggle botón */
+.contenedorImgtoggle {
   width: 30px;
   height: 30px;
-  text-align: center;
-  cursor: pointer;
-  color: var(--color-texto-lateral);
-  font-size: 2.0rem;
-  user-select: none;
-  transition: background-color 0.3s ease;
-  border-radius: 0.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.toggle-menu-boton:hover {
-  background-color: var(--color-primario);
-  color: white;
+
+.toggle-menu-boton {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.5rem;
+  color: var(--color-texto-lateral);
+  font-size: 2rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-.iconoOcultar {
-  width: 15px;
-  height: auto;
-  display: block;
+
+
+.toggle-menu-boton i {
+  width: 25px;
+  height: 25px;
 }
 
-.iconoOcultar1 {
-  width: 15px;
-  height: auto;
-  display: none;
-
+.toggle-menu-boton i svg {
+  width: 100%;
+  height: 100%;
 }
 
-.iconoOcultar2 {
-  width: 15px;
-  height: auto;
-  display: none;
-}
-
-.iconoOcultar3 {
-  width: 15px;
-  height: auto;
-  display: none;
+/* Rotación */
+.iconoOcultar.rotado {
+  transform: rotate(180deg);
+  transition: transform 0.3s ease;
 }
 
 /* Panel lateral y comportamiento cuando está oculto */
@@ -688,6 +693,7 @@ button:disabled {
   overflow: hidden;
   flex-shrink: 0;
 }
+
 .menu-oculto .contenedorIzquierdo {
   width: 70px;
 }
@@ -702,11 +708,11 @@ button:disabled {
 }
 
 .menu-oculto .iconoOcultar {
-    display: none;
+  display: block;
 }
 
 .menu-oculto .iconoOcultar1 {
-    display: block;
+  display: block;
 }
 
 /* Panel derecho se expande */
@@ -714,6 +720,7 @@ button:disabled {
   flex: 1;
   transition: all 0.3s ease;
 }
+
 .menu-oculto .ContenedorDerecho {
   padding-left: 20px;
   width: calc(100vw - 10px);
@@ -723,6 +730,7 @@ button:disabled {
 .tema-black .imagenUsuarioMiniatura {
   display: block;
 }
+
 .tema-black .imagenUsuarioMiniatura1 {
   display: none;
 }
@@ -731,6 +739,7 @@ button:disabled {
 .tema-blue .imagenUsuarioMiniatura {
   display: none;
 }
+
 .tema-blue .imagenUsuarioMiniatura1 {
   display: block;
 }
@@ -738,6 +747,7 @@ button:disabled {
 .tema-light .imagenUsuarioMiniatura {
   display: none;
 }
+
 .tema-light .imagenUsuarioMiniatura1 {
   display: block;
 }
@@ -746,8 +756,8 @@ button:disabled {
 .iconoOcultar1,
 .iconoOcultar2,
 .iconoOcultar3 {
-  display: none;
-  width: 15px;
+  display: block;
+  width: 25px;
   height: auto;
 }
 
@@ -758,6 +768,7 @@ button:disabled {
 .tema-black:not(.menu-oculto) .iconoOcultar {
   display: block;
 }
+
 /* Menú cerrado → mostrar arrow cerrado f2f2f2 */
 .tema-blue.menu-oculto .iconoOcultar1,
 .tema-black.menu-oculto .iconoOcultar1 {
@@ -770,6 +781,7 @@ button:disabled {
 .tema-light:not(.menu-oculto) .iconoOcultar2 {
   display: block;
 }
+
 /* Menú cerrado → mostrar arrow cerrado black */
 .tema-light.menu-oculto .iconoOcultar3 {
   display: block;
@@ -777,7 +789,7 @@ button:disabled {
 
 .imgBuscador,
 .imgBuscador1 {
-  display: none;
+  display: flex;
   height: 18px;
 }
 
@@ -792,3 +804,49 @@ button:disabled {
   display: block;
 }
 
+/* Temas */
+
+.contenedorUsuario svg {
+  stroke: #2c3e50;
+}
+
+.tema-black svg {
+  stroke: #f2f2f2;
+}
+
+
+/* Íconos en modo oscuro o claro */
+.tema-black i {
+  stroke: #f2f2f2;
+}
+
+.contenedorreporteallure{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 15%;
+  justify-content: first baseline;
+}
+
+/* Aplica a todos los íconos dentro de contenedores tipo botón o ícono */
+.iconoOcultar svg,
+.iconoOcultar1 svg,
+.iconoOcultar2 svg,
+.iconoOcultar3 svg,
+.contenedorUsuario svg,
+.toggle-menu-boton svg,
+.imgBuscador svg {
+  transition: transform 0.2s ease, stroke 0.2s ease;
+}
+
+/* Hover: agrandar y cambiar color */
+.iconoOcultar:hover svg,
+.iconoOcultar1:hover svg,
+.iconoOcultar2:hover svg,
+.iconoOcultar3:hover svg,
+.contenedorUsuario:hover svg,
+.toggle-menu-boton:hover svg,
+.imgBuscador:hover svg {
+  transform: scale(1.1);
+  stroke: var(--color-primario);
+}
