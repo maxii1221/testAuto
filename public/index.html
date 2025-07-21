@@ -3,15 +3,20 @@
 
 <head>
   <meta charset="UTF-8" />
-  <title>Portal QA</title>
-  <link rel="icon" href="flask-conical2.png" type="image/png" />
+  <title>PortaL QA</title>
+  <link rel="icon" href="/cog.png" type="image/png" />
+  <!-- Tippy.js CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css" />
+
+  <!-- Tippy.js Script -->
+  <script src="https://unpkg.com/@popperjs/core@2"></script>
+  <script src="https://unpkg.com/tippy.js@6"></script>
   <link rel="stylesheet" href="style/style.css" />
-  <script src="https://unpkg.com/lucide@latest"></script>
+
 </head>
 
 <body>
   <div class="contenedorIzquierdo">
-
     <div class="contenedorLogo">
       <picture class="contenedorLogo1">
         <img class="logoNormal" src="pictures/logoAtioNET2.png" alt="Logo grande" />
@@ -21,81 +26,137 @@
 
     <div id="ocutarMostrar" class="ocutarMostrar">
       <div class="divIzquierdo1">
-        <div class="divIzquierdo1-1">
-          <!-- <p class="textWhite">Tu Espacio QA</p> -->
-          <p class="textWhite">Herramientas QA</p>
+        <!-- <p id="tituloAdmin" class="textWhite">Portal De Administracion</p> -->
+      </div>
+
+      <!-- TABLERO -->
+      <div class="ContenedorMenuLateral li-Menu-Izquierdo" data-vista="dashboard">
+        <div class="contenedorIconoMenu">
+          <i data-lucide="layout-dashboard"></i>
+        </div>
+        <div class="contenedorTextoMenu">
+          <span class="textoMenuLateral">Tablero</span>
         </div>
       </div>
 
-      <div class="divIzquierdo2" id="menuHistorial" data-titulo="Historial de Ejecuciones">
-        <div class="divIzquierdo2-1">
-          <p class="p-menu-lateral">Historial de Ejecuciones</p>
+      <!-- Pruebas automatizacion Test  -->
+      <div class="ContenedorMenuLateralWrap">
+        <div class="ContenedorMenuLateral">
+          <div class="contenedorIconoMenu">
+            <i data-lucide="flask-conical"></i>
+          </div>
+          <div class="contenedorTextoMenu">
+            <span class="textoMenuLateral">automatizacion </span>
+          </div>
         </div>
+        <ul id="menuGestionDeTrabajos" class="menu-Desplegable-gestionDeTrabajos">
+          <span class="titulo-menu">automatizacion </span>
+          <li class="li-Menu-Izquierdo" data-vista="ejecutar"><i data-lucide="test-tube-diagonal"></i><span>Set
+              servicios</span></li>
+          <li class="li-Menu-Izquierdo"><i data-lucide="test-tube-diagonal"></i><span>NWAdmin Beta</span></li>
+          <!-- <li class="li-Menu-Izquierdo"><i data-lucide="test-tube-diagonal"></i><span>NWCompany Beta</span></li>
+          <li class="li-Menu-Izquierdo"><i data-lucide="test-tube-diagonal"></i><span>NWMerchant Beta</span></li>
+          <li class="li-Menu-Izquierdo"><i data-lucide="test-tube-diagonal"></i><span>NWAdmin PrProd</span></li>
+          <li class="li-Menu-Izquierdo"><i data-lucide="test-tube-diagonal"></i><span>NWCompany PrProd</span></li>
+          <li class="li-Menu-Izquierdo"><i data-lucide="test-tube-diagonal"></i><span>NWMerchant PrProd</span></li> -->
+        </ul>
       </div>
 
-      <div class="divIzquierdo2" id="menuAutoServicios"
-        data-titulo="Estabilización Servicios / Consola ATIONET (Producción)">
-        <div class="divIzquierdo2-1">
-          <p class="p-menu-lateral">Estabilización Servicios / Consola ATIONET (Producción)</p>
+
+      <!-- REPORTES -->
+      <div class="ContenedorMenuLateralWrap">
+        <div class="ContenedorMenuLateral">
+          <div class="contenedorIconoMenu">
+            <i data-lucide="bar-chart-3"></i>
+          </div>
+          <div class="contenedorTextoMenu">
+            <span class="textoMenuLateral">Reportes</span>
+          </div>
         </div>
+        <ul id="menuReportes" class="menu-Desplegable-Reportes">
+          <span class="titulo-menu">Reportes</span>
+          <li class="li-Menu-Izquierdo" data-vista="historialDeServicios"><i
+              data-lucide="file-chart-column"></i><span>Set Servicios</span></li>
+          <li class="li-Menu-Izquierdo"><i data-lucide="file-chart-column"></i><span>NWAdmin Beta</span></li>
+          <!-- <li class="li-Menu-Izquierdo"><i data-lucide="file-chart-column"></i><span>NWCompany Beta</span></li>
+          <li class="li-Menu-Izquierdo"><i data-lucide="file-chart-column"></i><span>NWMerchant Beta</span></li>
+          <li class="li-Menu-Izquierdo"><i data-lucide="file-chart-column"></i><span>NWAdmin PrProd</span></li>
+          <li class="li-Menu-Izquierdo"><i data-lucide="file-chart-column"></i><span>NWCompany PrProd</span></li>
+          <li class="li-Menu-Izquierdo"><i data-lucide="file-chart-column"></i><span>NWMerchant PrProd</span></li> -->
+        </ul>
       </div>
     </div>
 
+    <!-- Buscador + Ocultar menú -->
     <div class="contenedorParaOcultar">
       <div id="contenedorParaOcultar1" class="contenedorParaOcultar1">
         <div class="contenedorImgBuscador">
-          <i class="imgBuscador" data-lucide="search"></i>
+          <i data-lucide="search" data-tippy-content="Click para buscar"></i>
         </div>
-        <input class="inputBuscador" type="text" placeholder="Buscador">
+        <input class="inputBuscador" type="text" placeholder="Buscar menú o sección">
       </div>
-
-      <div id="toggleMenuBtn" class="toggle-menu-boton" title="Ocultar menú lateral">
-        <div class="contenedorImgtoggle">
-          <i class="iconoOcultar" data-lucide="chevrons-left"></i>
+      <div id="toggleMenuBtn" class="toggle-menu-boton">
+        <div class="contenedorImgToggle">
+          <i data-lucide="chevrons-left"></i>
         </div>
       </div>
     </div>
-
-
   </div>
 
   <div class="ContenedorDerecho">
-
     <div class="contenedorHeader">
       <div class="contenedorHeader1">
         <div id="iconoNotificaciones" class="contenedorUsuario">
-          <i data-lucide="bell"></i>
+          <i data-lucide="bell" data-tippy-content="Notificaciones"></i>
         </div>
 
         <div id="iconoConfiguracion" class="contenedorUsuario">
-          <i data-lucide="sliders"></i>
+          <i data-lucide="sliders" data-tippy-content="Confiuracion"></i>
         </div>
         <ul id="menuConfiguracion" class="menu-config">
-          <li>
-            Tema
+          <li class="li-Menu-Izquierdo">
+            <i data-lucide="palette"></i>
+            <span>Tema</span>
             <ul class="submenu">
-              <li onclick="cambiarTema('blue')">Blue</li>
-              <li onclick="cambiarTema('black')">Black</li>
-              <li onclick="cambiarTema('light')">Light</li>
+              </li>
+              <li class="li-Menu-Izquierdo" onclick="cambiarTema('black')">
+                <span>Black</span>
+              <li class="li-Menu-Izquierdo" onclick="cambiarTema('blue')">
+                <span>Blue</span>  
+              </li>
+              <li class="li-Menu-Izquierdo" onclick="cambiarTema('light')">
+                <span>Light</span>
+              </li>
             </ul>
           </li>
+          <li class="li-Menu-Izquierdo">
+            <i data-lucide="image"></i>
+            <span>Logo</span>
         </ul>
 
         <div id="iconoUsuario" class="contenedorUsuario">
-          <i data-lucide="user-circle"></i>
+          <i data-lucide="user-circle" data-tippy-content="Usuario"></i>
         </div>
       </div>
     </div>
-
     <div class="contenedorDerecho1">
       <div class="contenedorDerecho1-1">
-        <p class="textNavegacion">Ud. esta en: Estabilización Servicios / Consola ATIONET (Producción)</p>
+        <p class="textNavegacion">Ud. esta en el dashboard</p>
       </div>
     </div>
 
-    <!-- Vista de Ejecución -->
-    <div id="seccionEjecutar" class="seccionOculta">
-      <div class="ContenedorDeEjecutor">
+
+    <!-- vista tablero -->
+    <div id="seccionDashboard" class="seccionOculta">
+      <div class="contenedorDashboard">
+        <p class="textHeaderTerminal">Bienvenido al Dashboard</p>
+        <!-- Podés meter acá tarjetas, widgets, KPIs, etc -->
+      </div>
+    </div>
+
+    <!-- Vista automatizacion set servicios-->
+    <div id="seccionEjecutar" class=" seccionOculta">
+      <div class="contenedorDeEjecutar">
         <div class="contenedorDerecho2">
 
           <div class="contenedorInputsEjecutor">
@@ -103,6 +164,7 @@
             <div class="contenedoresLabelInput">
               <div class="contenedorDerecho2-1">
                 <label for="usuario">Correo de usuario</label>
+                <i class="tooltip-ludice" data-lucide="message-circle-question-mark" data-tippy-content="Aqui va, el correo del usuario que esta ejecutando la automatizacion, este dato aparecera en los reportes"></i>
               </div>
 
               <div class="contenedorDerecho2-1">
@@ -113,6 +175,7 @@
             <div class="contenedoresLabelInput">
               <div class="contenedorDerecho2-1">
                 <label for="cliente">Cliente / Suscripcion</label>
+                <i class="tooltip-ludice" data-lucide="message-circle-question-mark" data-tippy-content="Aqui va, el cliente o subcripcion ejemplo, Primax peru"></i>
               </div>
 
               <div class="contenedorDerecho2-2">
@@ -129,6 +192,7 @@
             <div class="contenedoresLabelInput">
               <div class="contenedorDerecho2-1">
                 <label for="rol">Rol</label>
+                <i class="tooltip-ludice" data-lucide="message-circle-question-mark" data-tippy-content="Aqui va, el rol del cliente, ejemplo NWAdmin, NWCompany"></i>
               </div>
 
               <div class="contenedorDerecho2-2">
@@ -144,6 +208,7 @@
             <div class="contenedoresLabelInput">
               <div class="contenedorDerecho2-1">
                 <label for="modulo">Modulo</label>
+                <i class="tooltip-ludice" data-lucide="message-circle-question-mark" data-tippy-content="Aqui va, el modulo, Ejemplo Administracion, flota, liquidaciones, etc"></i>
               </div>
 
               <div class="contenedorDerecho2-2">
@@ -192,445 +257,46 @@
       </div>
     </div>
 
-    <!-- Vista de Historial -->
-    <div id="seccionHistorial" class="seccionVisible">
-      <div class="contenedorHistorial">
-        <h2 class="tituloHistorial">Historial de Ejecuciones</h2>
-        <table class="tablaHistorial">
-          <thead>
-            <tr>
-              <th>Usuario</th>
-              <th>Cliente/Suscripcion</th>
-              <th>Rol</th>
-              <th>Módulo</th>
-              <th>Inicio</th>
-              <th>Fin</th>
-              <th>Estado</th>
-              <th>Reporte</th>
-            </tr>
-          </thead>
-          <tbody id="tablaHistorialBody">
-            <tr>
-              <td colspan="5">Cargando historial...</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
+<!-- seccion reportes set servicios -->
+<div id="seccionHistorial" class="contenedorTabla seccionOculta">
+  <div id="paginacionTablaArriba" class="paginacionTabla"></div>
+
+  <div class="contenedorFiltroTabla">
+    <input type="text" id="filtroTablaInput" placeholder="Filtrar por correo o cliente" />
   </div>
 
+  <div class="contenedor-scroll-tabla">
+    <table class="tablaEstilo">
+      <thead>
+        <tr>
+          <th>Usuario</th>
+          <th>Cliente/Suscripcion</th>
+          <th>Rol</th>
+          <th>Módulo</th>
+          <th>Inicio</th>
+          <th>Fin</th>
+          <th>Estado</th>
+          <th>Reporte</th>
+        </tr>
+      </thead>
+      <tbody id="tablaHistorialBody">
+        <tr>
+          <td colspan="8">Cargando historial...</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div id="paginacionTabla" class="paginacionTabla"></div>
+</div>
+
+  </div>
+  <script src="https://unpkg.com/lucide@latest"></script>
   <script>
     lucide.createIcons();
   </script>
-
   <script src="/socket.io/socket.io.js"></script>
-
-  <script>
-    window.addEventListener("DOMContentLoaded", () => {
-      const navegacionTexto = document.querySelector(".textNavegacion");
-      const menusLaterales = document.querySelectorAll(".divIzquierdo2");
-      const iconoUsuario = document.getElementById("iconoUsuario");
-      const iconoConfiguracion = document.getElementById("iconoConfiguracion");
-      const menuConfiguracion = document.getElementById("menuConfiguracion");
-      const seccionEjecutar = document.getElementById("seccionEjecutar");
-      const seccionHistorial = document.getElementById("seccionHistorial");
-
-      iconoUsuario?.addEventListener("click", () => alert("se abre desplegable de usuario"));
-
-      const toggleMenuBtn = document.getElementById("toggleMenuBtn");
-
-      const opcionesDeMenu = document.getElementById("ocutarMostrar");
-      const contenedorParaOcultar1 = document.getElementById("contenedorParaOcultar1");
-
-      toggleMenuBtn.addEventListener("click", () => {
-        document.body.classList.toggle("menu-oculto");
-
-        const isHidden = document.body.classList.contains("menu-oculto");
-        toggleMenuBtn.title = isHidden ? "Mostrar menú lateral" : "Ocultar menú lateral";
-
-        const icono = toggleMenuBtn.querySelector(".iconoOcultar");
-        icono.classList.toggle("rotado");
-
-        const estiloActual = window.getComputedStyle(ocutarMostrar).display;
-        ocutarMostrar.style.display = (estiloActual === "none") ? "flex" : "none";
-        contenedorParaOcultar1.style.display = (estiloActual === "none") ? "flex" : "none";
-      });
-
-
-      function activarMenu(menuSeleccionado) {
-        menusLaterales.forEach((menu) => menu.classList.remove("active"));
-        menuSeleccionado.classList.add("active");
-
-        const titulo = menuSeleccionado.getAttribute("data-titulo");
-        navegacionTexto.textContent = `Ud. está en: ${titulo}`;
-
-        if (menuSeleccionado.id === "menuHistorial") {
-          seccionHistorial.classList.replace("seccionOculta", "seccionVisible");
-          seccionEjecutar.classList.replace("seccionVisible", "seccionOculta");
-          cargarHistorial();
-        } else {
-          seccionEjecutar.classList.replace("seccionOculta", "seccionVisible");
-          seccionHistorial.classList.replace("seccionVisible", "seccionOculta");
-        }
-      }
-
-      menusLaterales.forEach((menu) => menu.addEventListener("click", () => activarMenu(menu)));
-
-      // Activar vista por defecto
-      activarMenu(document.getElementById("menuAutoServicios"));
-
-      //ejecucion de inputs
-
-      function resetSelect(select, placeholder = "-- Seleccionar --") {
-        select.innerHTML = `<option value="">${placeholder}</option>`;
-        select.value = "";
-      }
-
-      // Función para agregar opciones, acepta strings o objetos { label, value }
-      function agregarOpciones(select, opciones) {
-        opciones.forEach((opcion) => {
-          const opt = document.createElement("option");
-          if (typeof opcion === "object") {
-            opt.value = opcion.value;
-            opt.textContent = opcion.label;
-          } else {
-            opt.value = opcion;
-            opt.textContent = opcion;
-          }
-          select.appendChild(opt);
-        });
-      }
-
-      const selectCliente = document.getElementById("cliente");
-      const selectRol = document.getElementById("rol");
-      const selectModulo = document.getElementById("modulo");
-
-      // Estado inicial: solo cliente habilitado
-      selectCliente.disabled = false;
-      selectRol.disabled = true;
-      selectModulo.disabled = true;
-
-      // Listener sobre el select de cliente
-      selectCliente.addEventListener("change", () => {
-        const valorCliente = selectCliente.value;
-
-        // Limpiar valores y opciones anteriores
-        selectRol.value = "";
-        selectModulo.value = "";
-        selectRol.disabled = true;
-        selectModulo.disabled = true;
-        resetSelect(selectRol, "-- Seleccionar Rol --");
-        resetSelect(selectModulo, "-- Seleccionar Módulo --");
-
-        if (valorCliente && valorCliente !== "/") {
-          selectRol.disabled = false;
-
-          // Cargar roles y módulos según el cliente
-          if (valorCliente === "Primax peru") {
-            agregarOpciones(selectRol, [
-              { label: "NWAdmin", value: "NWAdmin" }
-            ]);
-            agregarOpciones(selectModulo, [
-              { label: "Todos los modulos", value: "/" },
-              { label: "flota", value: "flota" }
-            ]);
-
-          } else if (valorCliente === "Atio Lab Flota") {
-            agregarOpciones(selectRol, [
-              { label: "NWCompany", value: "NWCompany" }
-            ]);
-            agregarOpciones(selectModulo, [
-
-              { label: "flota", value: "flota" },
-              { label: "administracion", value: "administracion" }
-            ]);
-
-          } else if (valorCliente === "LAB Network") {
-            agregarOpciones(selectRol, [
-              { label: "NWAdmin", value: "NWAdmin" }
-            ]);
-            agregarOpciones(selectModulo, [
-              { label: "Todos los modulos", value: "/" },
-              { label: "administracion", value: "administracion" },
-              { label: "flota", value: "flota" },
-              { label: "liquidaciones", value: "liquidaciones" }
-            ]);
-          }
-        }
-      });
-
-      // Lógica para el cambio en Rol
-      selectRol.addEventListener("change", () => {
-        const valorRol = selectRol.value;
-
-        // Si se selecciona "Todos los roles", deshabilitar el módulo
-        if (valorRol === "/") {
-          selectModulo.value = "";
-          selectModulo.disabled = true;
-        } else {
-          selectModulo.disabled = false;
-        }
-      });
-
-      let isRunning = false;
-
-      window.toggleTest = async function () {
-        if (!isRunning) {
-          await runTest();
-        } else {
-          await stopTest();
-        }
-      }
-
-      window.runTest = async function () {
-        const clienteSelect = document.getElementById("cliente");
-        const rolSelect = document.getElementById("rol");
-        const moduloSelect = document.getElementById("modulo");
-        const usuarioInput = document.getElementById("usuario");
-
-        const cliente = clienteSelect.value;
-        const rol = rolSelect.value;
-        const modulo = moduloSelect.value;
-        const usuario = usuarioInput.value.trim();
-
-        const btnEjecutar = document.getElementById("btnEjecutar");
-        const iconoTest = document.getElementById("iconoTest");
-        const status = document.getElementById("status");
-        const reportLink = document.getElementById("reportLink");
-        const progressBar = document.getElementById("progressBar");
-
-        // Validaciones
-        if (!usuario) {
-          alert("Por favor ingrese el correo del ejecutor.");
-          usuarioInput.style.border = "2px solid red";
-          return;
-        } else {
-          usuarioInput.style.border = "";
-        }
-
-        if (!cliente && !clienteSelect.disabled) {
-          alert("Por favor selecciona un Cliente.");
-          clienteSelect.focus();
-          return;
-        }
-
-        if (!rol && !rolSelect.disabled) {
-          alert("Por favor selecciona un Rol.");
-          rolSelect.focus();
-          return;
-        }
-
-        if (!modulo && !moduloSelect.disabled) {
-          alert("Por favor selecciona un Módulo.");
-          moduloSelect.focus();
-          return;
-        }
-
-        // Construcción del path de módulo
-        const parts = [cliente, rol, modulo].filter(val => val && val !== "/");
-        const module = parts.length ? parts.join("/") : "/";
-
-        // Estado inicial de ejecución
-        isRunning = true;
-        btnEjecutar.classList.add("btn-rojo");
-        btnEjecutar.innerHTML = `Detener Test
-          <i id="iconoTest" class="imgPlayStop" data-lucide="pause" alt="icono"></i>
-    `;
-        lucide.createIcons();
-        btnEjecutar.disabled = false;
-
-        status.textContent = "Ejecutando...";
-        status.className = "";
-        reportLink.style.display = "none";
-        progressBar.style.width = "0%";
-
-        const etapas = [
-          { porcentaje: 30, mensaje: "Iniciando pruebas..." },
-          { porcentaje: 60, mensaje: "Preparando reporte..." },
-          { porcentaje: 90, mensaje: "Ejecutando pruebas..." },
-        ];
-
-        let etapaIndex = 0;
-        const simulador = setInterval(() => {
-          if (etapaIndex < etapas.length) {
-            progressBar.style.width = etapas[etapaIndex].porcentaje + "%";
-            status.textContent = etapas[etapaIndex].mensaje;
-            etapaIndex++;
-          }
-        }, 1000);
-
-        try {
-          const res = await fetch("/run-tests", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ module, usuario, cliente, rol, modulo }),
-          });
-
-          const data = await res.json();
-          clearInterval(simulador);
-          progressBar.style.width = "100%";
-
-          if (res.ok) {
-            status.textContent = data.message || "✅ Test ejecutado correctamente.";
-            status.className = "success";
-            reportLink.href = data.reportUrl;
-            reportLink.style.display = "inline-block";
-          } else {
-            throw new Error(data.error || "Error ejecutando tests");
-          }
-        } catch (err) {
-          clearInterval(simulador);
-          progressBar.style.width = "100%";
-          status.textContent = "❌ " + err.message;
-          status.className = "error";
-        } finally {
-          isRunning = false;
-          btnEjecutar.classList.remove("btn-rojo");
-          btnEjecutar.innerHTML = `Ejecutar Test
-                <i id="iconoTest" class="imgPlayStop" data-lucide="play" alt="icono"></i>`;
-          lucide.createIcons();
-          btnEjecutar.disabled = false;
-
-          usuarioInput.value = "";
-          clienteSelect.value = "";
-          rolSelect.value = "";
-          moduloSelect.value = "";
-
-          rolSelect.disabled = true;
-          moduloSelect.disabled = true;
-        }
-      }
-
-      window.stopTest = async function () {
-        const btnEjecutar = document.getElementById("btnEjecutar");
-        const iconoTest = document.getElementById("iconoTest");
-        const status = document.getElementById("status");
-        const progressBar = document.getElementById("progressBar");
-
-        try {
-          const res = await fetch("/stop-tests", { method: "POST" });
-          if (res.ok) {
-            status.textContent = "⏹️ Ejecución detenida.";
-          } else {
-            status.textContent = "Error al detener ejecución.";
-          }
-        } catch (error) {
-          status.textContent = "Error al detener ejecución.";
-        } finally {
-          isRunning = false;
-          btnEjecutar.classList.remove("btn-rojo");
-          btnEjecutar.innerHTML = `Ejecutar Test
-                <i id="iconoTest" class="imgPlayStop" data-lucide="play" alt="icono"></i>`;
-          lucide.createIcons();
-          progressBar.style.width = "0%";
-        }
-      }
-      const socket = io();
-      socket.on("test-progress", (data) => {
-        const status = document.getElementById("status");
-        const progressBar = document.getElementById("progressBar");
-
-        const match = data.match(/\[(\d+)\/(\d+)\]/);
-        if (match) {
-          const current = parseInt(match[1]);
-          const total = parseInt(match[2]);
-          const percent = Math.round((current / total) * 100);
-          progressBar.style.width = percent + "%";
-          status.textContent = `Progreso: ${current} de ${total}`;
-        } else {
-          status.textContent = data;
-        }
-      });
-
-      async function cargarHistorial() {
-        const cuerpoTabla = document.getElementById("tablaHistorialBody");
-        try {
-          const res = await fetch("/history");
-          const data = await res.json();
-
-          if (data.length === 0) {
-            cuerpoTabla.innerHTML = '<tr><td colspan="8">Sin ejecuciones registradas.</td></tr>';
-            return;
-          }
-
-          function parseModulo(modulo) {
-            if (!modulo) return ["-", "-", "-"];
-            if (modulo === "/") return ["/", "/", "/"];
-            const partes = modulo.split("/");
-            while (partes.length < 3) partes.push("-");
-            return partes;
-          }
-
-          function mostrarTextoAmigable(parte, tipo) {
-            if (parte === "/") {
-              if (tipo === "cliente") return "Todos los clientes";
-              if (tipo === "rol") return "Todos los roles";
-              if (tipo === "modulo") return "Todos los módulos";
-            }
-            if (!parte || parte === "-") return "Todos los modulos";
-            return parte;
-          }
-
-          cuerpoTabla.innerHTML = "";
-
-          data.forEach((item) => {
-            const partes = parseModulo(item.modulo);
-
-            const cliente = mostrarTextoAmigable(partes[0], "cliente");
-            const rol = mostrarTextoAmigable(partes[1], "rol");
-            const modulo = mostrarTextoAmigable(partes[2], "modulo");
-
-            const fila = document.createElement("tr");
-            fila.innerHTML = `
-              <td>${item.usuario}</td>
-              <td>${cliente}</td>
-              <td>${rol}</td>
-              <td>${modulo}</td>
-              <td>${new Date(item.fecha_inicio).toLocaleString("es-AR")}</td>
-              <td>${item.fecha_fin ? new Date(item.fecha_fin).toLocaleString("es-AR") : "-"}</td>
-              <td>${item.estado}</td>
-              <td>
-                <a href="/report/index.html" target="_blank" class="report-link">Ver Reporte</a>
-              </td>
-            `;
-            cuerpoTabla.appendChild(fila);
-          });
-        } catch (error) {
-          cuerpoTabla.innerHTML = '<tr><td colspan="8">⚠️ Error cargando historial.</td></tr>';
-        }
-      }
-
-    });
-  </script>
-
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const iconoConfiguracion = document.getElementById("iconoConfiguracion");
-      const menuConfiguracion = document.getElementById("menuConfiguracion");
-
-      iconoConfiguracion?.addEventListener("click", (e) => {
-        e.stopPropagation();
-        menuConfiguracion.style.display = menuConfiguracion.style.display === "block" ? "none" : "block";
-      });
-
-      window.addEventListener("click", () => {
-        menuConfiguracion.style.display = "none";
-      });
-
-      function aplicarTema(tema) {
-        document.body.classList.remove("tema-black", "tema-blue", "tema-light");
-        document.body.classList.add("tema-" + tema);
-      }
-
-      window.cambiarTema = function (tema) {
-        aplicarTema(tema);
-        localStorage.setItem("temaSeleccionado", tema);
-      };
-
-      const temaGuardado = localStorage.getItem("temaSeleccionado") || "black";
-      aplicarTema(temaGuardado);
-    });
-  </script>
+  <script src="./script/index.js"></script>
 
 </body>
 
