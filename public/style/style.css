@@ -696,7 +696,7 @@ svg {
 .tippy-box[data-theme~='custom-tooltip'] {
   background-color: #333;
   color: #f1f1f1;
-  font-size: 12px;      /* Texto más chico */
+  font-size: 12px;  /* Texto más chico */
   padding: 2px 10px;     /* Menos padding */
   border-radius: 6px;
   max-width: 200px;
@@ -1074,3 +1074,4 @@ button:disabled {
   color: #555 !important;
   stroke: #555 !important;
 }
+

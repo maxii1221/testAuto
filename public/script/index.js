@@ -37,12 +37,31 @@ selectModulo.disabled = true;
 
 
 function activarMenu(menuSeleccionado) {
-  menusLaterales.forEach(menu => menu.classList.remove("active"));
-  menuSeleccionado.classList.add("active");
+  // Eliminar clase .activo de TODOS los menús principales y submenús
+  document.querySelectorAll(".ContenedorMenuLateral, .li-Menu-Izquierdo").forEach(menu => {
+    menu.classList.remove("activo");
+  });
+
+  const submenuDe = menuSeleccionado.getAttribute("data-submenu");
+
+  if (submenuDe) {
+    // Activar el menú principal relacionado
+    const menuPrincipal = document.querySelector(`.ContenedorMenuLateral[data-menu="${submenuDe}"]`);
+    if (menuPrincipal) {
+      menuPrincipal.classList.add("activo");
+    }
+
+    // También marcar el submenú (opcional)
+    menuSeleccionado.classList.add("activo");
+  } else {
+    // Activar el menú directamente (es principal)
+    menuSeleccionado.classList.add("activo");
+  }
 
   const vista = menuSeleccionado.getAttribute("data-vista");
   const titulo = menuSeleccionado.getAttribute("data-titulo") || menuSeleccionado.textContent.trim();
 
+  // Mostrar la sección correspondiente
   if (vista === "historialDeServicios") {
     navegacionTexto.textContent = `Ud. está en: Historial de automatizacion ${titulo}`;
     seccionHistorial.classList.replace("seccionOculta", "seccionVisible");
@@ -61,6 +80,8 @@ function activarMenu(menuSeleccionado) {
     document.getElementById("seccionHistorial")?.classList.replace("seccionVisible", "seccionOculta");
   }
 }
+
+
 
   function filtrarMenuLateral() {
     const valor = buscadorInput.value.toLowerCase().trim();

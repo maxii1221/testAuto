@@ -39,52 +39,80 @@
         </div>
       </div>
 
-      <!-- Pruebas automatizacion Test  -->
-      <div class="ContenedorMenuLateralWrap">
-        <div class="ContenedorMenuLateral">
-          <div class="contenedorIconoMenu">
-            <i data-lucide="flask-conical"></i>
-          </div>
-          <div class="contenedorTextoMenu">
-            <span class="textoMenuLateral">automatizacion </span>
-          </div>
-        </div>
-        <ul id="menuGestionDeTrabajos" class="menu-Desplegable-gestionDeTrabajos">
-          <span class="titulo-menu">automatizacion </span>
-          <li class="li-Menu-Izquierdo" data-vista="ejecutar"><i data-lucide="test-tube-diagonal"></i><span>Set
-              servicios</span></li>
-          <li class="li-Menu-Izquierdo"><i data-lucide="test-tube-diagonal"></i><span>NWAdmin Beta</span></li>
-          <!-- <li class="li-Menu-Izquierdo"><i data-lucide="test-tube-diagonal"></i><span>NWCompany Beta</span></li>
-          <li class="li-Menu-Izquierdo"><i data-lucide="test-tube-diagonal"></i><span>NWMerchant Beta</span></li>
-          <li class="li-Menu-Izquierdo"><i data-lucide="test-tube-diagonal"></i><span>NWAdmin PrProd</span></li>
-          <li class="li-Menu-Izquierdo"><i data-lucide="test-tube-diagonal"></i><span>NWCompany PrProd</span></li>
-          <li class="li-Menu-Izquierdo"><i data-lucide="test-tube-diagonal"></i><span>NWMerchant PrProd</span></li> -->
-        </ul>
-      </div>
+<!-- Pruebas automatizacion Test  -->
+<div class="ContenedorMenuLateralWrap">
+  <!-- Menú principal -->
+  <div class="ContenedorMenuLateral" data-menu="automatizacion" onclick="activarMenu(this)">
+    <div class="contenedorIconoMenu">
+      <i data-lucide="flask-conical"></i>
+    </div>
+    <div class="contenedorTextoMenu">
+      <span class="textoMenuLateral">automatizacion</span>
+    </div>
+  </div>
+
+  <!-- Submenús -->
+  <ul id="menuGestionDeTrabajos" class="menu-Desplegable-gestionDeTrabajos">
+    <span class="titulo-menu">automatizacion</span>
+
+    <li class="li-Menu-Izquierdo"
+        data-vista="ejecutar"
+        data-submenu="automatizacion"
+        onclick="activarMenu(this)">
+      <i data-lucide="test-tube-diagonal"></i>
+      <span>Set servicios</span>
+    </li>
+
+    <li class="li-Menu-Izquierdo"
+        data-submenu="automatizacion"
+        onclick="activarMenu(this)">
+      <i data-lucide="test-tube-diagonal"></i>
+      <span>NWAdmin Beta</span>
+    </li>
+
+    <!-- Más submenús si querés -->
+  </ul>
+</div>
 
 
       <!-- REPORTES -->
-      <div class="ContenedorMenuLateralWrap">
-        <div class="ContenedorMenuLateral">
-          <div class="contenedorIconoMenu">
-            <i data-lucide="bar-chart-3"></i>
-          </div>
-          <div class="contenedorTextoMenu">
-            <span class="textoMenuLateral">Reportes</span>
-          </div>
-        </div>
-        <ul id="menuReportes" class="menu-Desplegable-Reportes">
-          <span class="titulo-menu">Reportes</span>
-          <li class="li-Menu-Izquierdo" data-vista="historialDeServicios"><i
-              data-lucide="file-chart-column"></i><span>Set Servicios</span></li>
-          <li class="li-Menu-Izquierdo"><i data-lucide="file-chart-column"></i><span>NWAdmin Beta</span></li>
-          <!-- <li class="li-Menu-Izquierdo"><i data-lucide="file-chart-column"></i><span>NWCompany Beta</span></li>
-          <li class="li-Menu-Izquierdo"><i data-lucide="file-chart-column"></i><span>NWMerchant Beta</span></li>
-          <li class="li-Menu-Izquierdo"><i data-lucide="file-chart-column"></i><span>NWAdmin PrProd</span></li>
-          <li class="li-Menu-Izquierdo"><i data-lucide="file-chart-column"></i><span>NWCompany PrProd</span></li>
-          <li class="li-Menu-Izquierdo"><i data-lucide="file-chart-column"></i><span>NWMerchant PrProd</span></li> -->
-        </ul>
-      </div>
+<div class="ContenedorMenuLateralWrap">
+  <div class="ContenedorMenuLateral" data-menu="reportes">
+    <div class="contenedorIconoMenu">
+      <i data-lucide="bar-chart-3"></i>
+    </div>
+    <div class="contenedorTextoMenu">
+      <span class="textoMenuLateral">Reportes</span>
+    </div>
+  </div>
+  <ul id="menuReportes" class="menu-Desplegable-Reportes">
+    <span class="titulo-menu">Reportes</span>
+    
+    <li class="li-Menu-Izquierdo" 
+        data-vista="historialDeServicios" 
+        data-submenu="reportes" 
+        data-titulo="Set Servicios">
+      <i data-lucide="file-chart-column"></i>
+      <span>Set Servicios</span>
+    </li>
+
+    <li class="li-Menu-Izquierdo" 
+        data-submenu="reportes" 
+        data-titulo="NWAdmin Beta">
+      <i data-lucide="file-chart-column"></i>
+      <span>NWAdmin Beta</span>
+    </li>
+
+    <!--
+    <li class="li-Menu-Izquierdo" data-submenu="reportes"><i data-lucide="file-chart-column"></i><span>NWCompany Beta</span></li>
+    <li class="li-Menu-Izquierdo" data-submenu="reportes"><i data-lucide="file-chart-column"></i><span>NWMerchant Beta</span></li>
+    <li class="li-Menu-Izquierdo" data-submenu="reportes"><i data-lucide="file-chart-column"></i><span>NWAdmin PrProd</span></li>
+    <li class="li-Menu-Izquierdo" data-submenu="reportes"><i data-lucide="file-chart-column"></i><span>NWCompany PrProd</span></li>
+    <li class="li-Menu-Izquierdo" data-submenu="reportes"><i data-lucide="file-chart-column"></i><span>NWMerchant PrProd</span></li>
+    -->
+  </ul>
+</div>
+
     </div>
 
     <!-- Buscador + Ocultar menú -->
@@ -118,9 +146,10 @@
             <i data-lucide="palette"></i>
             <span>Tema</span>
             <ul class="submenu">
-              </li>
+              
               <li class="li-Menu-Izquierdo" onclick="cambiarTema('black')">
                 <span>Black</span>
+              </li>  
               <li class="li-Menu-Izquierdo" onclick="cambiarTema('blue')">
                 <span>Blue</span>  
               </li>
